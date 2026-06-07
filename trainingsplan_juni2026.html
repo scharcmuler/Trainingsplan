@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Trainingsplan Jun/Jul 2026</title>
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #e0ddd6;
+    --lauf: #1a6eb5;
+    --lauf-bg: #e8f1fb;
+    --rad: #b56e00;
+    --rad-bg: #fdf0d8;
+    --kraft: #6240b5;
+    --kraft-bg: #f0ebfd;
+    --regen: #1a7a4a;
+    --regen-bg: #e5f5ed;
+    --event: #c0380a;
+    --event-bg: #fdeee8;
+    --rest: #888;
+    --rest-bg: #f0f0ee;
+    --done-border: #1a7a4a;
+    --done-bg: #e5f5ed;
+    --accent: #1a6eb5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.5; }
+
+  header { background: #1a1a1a; color: #fff; padding: 16px 16px 12px; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 17px; font-weight: 600; }
+  header p { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  .stats-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 12px 12px 0; }
+  .stat { background: var(--card); border-radius: 10px; padding: 10px 12px; text-align: center; border: 1px solid var(--border); }
+  .stat-val { font-size: 19px; font-weight: 700; color: var(--accent); }
+  .stat-lbl { font-size: 10px; color: var(--muted); margin-top: 1px; }
+
+  .progress-wrap { padding: 10px 12px 4px; }
+  .progress-track { background: var(--border); border-radius: 6px; height: 7px; overflow: hidden; }
+  .progress-fill { background: var(--accent); height: 100%; border-radius: 6px; transition: width 0.3s; }
+  .progress-label { font-size: 11px; color: var(--muted); text-align: right; margin-top: 4px; }
+
+  .info-box { margin: 10px 12px 6px; background: var(--card); border-radius: 10px; padding: 10px 14px; border: 1px solid var(--border); font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .info-box b { color: var(--text); font-weight: 600; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 12px 10px; }
+  .legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink:0; }
+
+  .week-section { padding: 0 12px 4px; }
+  .week-header { padding: 14px 4px 4px; }
+  .week-tag { display: inline-block; font-size: 10px; font-weight: 700; background: var(--text); color: #fff; border-radius: 4px; padding: 2px 7px; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .week-focus { font-size: 14px; font-weight: 600; margin-bottom: 1px; }
+  .week-desc { font-size: 12px; color: var(--muted); }
+  .week-progress { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .day-card { background: var(--card); border-radius: 12px; border: 1.5px solid var(--border); margin: 8px 0; overflow: hidden; }
+  .day-card.done { border-color: var(--done-border); background: var(--done-bg); }
+  .day-card.event-card { border-color: var(--event); }
+
+  .day-header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 14px; cursor: pointer; user-select: none; }
+  .day-meta { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+  .day-dow { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .day-date { font-size: 15px; font-weight: 700; white-space: nowrap; }
+  .day-main { flex: 1; min-width: 0; }
+  .day-type-pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 3px; }
+  .pill-lauf { background: var(--lauf-bg); color: var(--lauf); }
+  .pill-rad  { background: var(--rad-bg);  color: var(--rad);  }
+  .pill-regen{ background: var(--regen-bg);color: var(--regen);}
+  .pill-event{ background: var(--event-bg);color: var(--event);}
+  .day-title-text { font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .day-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .day-check { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; font-size: 17px; transition: all 0.15s; background: var(--bg); }
+  .day-check.checked { background: var(--done-border); border-color: var(--done-border); color: #fff; }
+
+  .day-detail { display: none; border-top: 1px solid var(--border); padding: 12px 14px 14px; }
+  .day-detail.open { display: block; }
+
+  .chips { display: flex; gap: 8px; margin-bottom: 10px; }
+  .chip { flex: 1; background: var(--bg); border-radius: 8px; padding: 7px 10px; }
+  .chip-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+  .chip-val { font-size: 13px; font-weight: 600; }
+
+  .hz-wrap { margin-bottom: 10px; }
+  .hz-lbl { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .hz-bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; gap: 1px; }
+  .hz-z1 { background: #9fe1cb; }
+  .hz-z2 { background: #c0dd97; }
+  .hz-z3 { background: #fac775; }
+  .hz-z4 { background: #f0997b; }
+  .hz-z5 { background: #f09595; }
+  .hz-zones { display: flex; gap: 1px; margin-top: 3px; }
+  .hz-zones span { flex: 1; font-size: 9px; text-align: center; }
+
+  .goal-box { background: var(--bg); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 10px 12px; font-size: 13px; line-height: 1.6; margin-bottom: 8px; }
+  .goal-box.ev { border-color: var(--event); }
+  .tip-box { background: var(--bg); border-radius: 8px; padding: 10px 12px; font-size: 12px; color: var(--muted); line-height: 1.65; }
+  .tip-box b { color: var(--text); font-weight: 600; }
+
+  .divider { height: 1px; background: var(--border); margin: 4px 12px; }
+
+  .gefuehl-box { margin-bottom: 10px; background: #fffbf0; border: 1px solid #f0d080; border-radius: 8px; padding: 8px 12px; font-size: 12px; line-height: 1.6; color: #7a5a00; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏃 Trainingsplan Jun / Jul 2026</h1>
+  <p>08. Jun – 06. Jul · Bodensee ★ Sa 20.06. · Fußball ab 07.07.</p>
+</header>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-val">55</div><div class="stat-lbl">VO₂max</div></div>
+  <div class="stat"><div class="stat-val">48</div><div class="stat-lbl">Ruhepuls bpm</div></div>
+  <div class="stat"><div class="stat-val">77</div><div class="stat-lbl">Sleep Score Ø</div></div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+  <div class="progress-label" id="prog-label">0 / 28 Einheiten</div>
+</div>
+
+<div class="info-box">
+  <b>HF-Zonen (HFmax 197 bpm):</b> Z1 &lt;118 · Z2 118–138 · Z3 139–158 · Z4 159–177 · Z5 &gt;178<br>
+  <b>Rad-Gefühlsskala:</b> Z2 = locker, kannst dich unterhalten · Z3 = nur kurze Sätze · Z4 = kaum sprechen<br>
+  <b>Laktatschwelle Laufen:</b> 187 bpm · 4:20/km · <b>Ruhepuls:</b> 48 bpm
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#1a6eb5"></div>Laufen</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b56e00"></div>Rennrad</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1a7a4a"></div>Regeneration/Ruhe</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#c0380a"></div>Event</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6240b5"></div>+ Kraft/Mobility optional</div>
+</div>
+
+<div id="plan"></div>
+
+<div style="text-align:center;padding:20px 12px 36px;font-size:11px;color:#aaa;">
+  Tippe auf einen Tag für Details · Kreis rechts zum Abhaken<br>
+  Fortschritt wird lokal gespeichert
+</div>
+
+<script>
+const days = [
+
+// ── WOCHE 1: RAD-FOKUS ─────────────────────────────────────────────────────
+{ w:1, dow:"Mo", date:"08.06.", type:"rad", pill:"pill-rad",
+  title:"Grundlagenfahrt Rennrad",
+  sub:"75–90 min · Z2 · locker",
+  dur:"75–90 min", hz:"Z2 · 118–138 bpm · locker unterhalten",
+  int:"Moderat-Niedrig", hzmap:{z1:10,z2:75,z3:15,z4:0,z5:0},
+  goal:"Erster Trainingstag – Körper sanft reaktivieren. Gleichmäßiges, entspanntes Tempo. Du solltest dich die ganze Zeit unterhalten können. Ca. 28–32 km/h auf flachem Gelände.",
+  tip:"Kein Druck, kein Held. Bei Hügeln runterschalten statt reißen. Trinken alle 20 min, 1 Gel nach 50 min wenn lang genug. Abends normal essen – leichtes Defizit ok." },
+
+{ w:1, dow:"Di", date:"09.06.", type:"lauf", pill:"pill-lauf",
+  title:"Lockerer Grundlagenlauf",
+  sub:"40 min · Z2",
+  dur:"40 min", hz:"Z2 · 118–138 bpm · ca. 5:45–6:15/km",
+  int:"Niedrig", hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
+  goal:"Beine locker halten nach Rad-Tag. Ruhiges Tempo, Puls unter 138 bpm. Wenn HF für normales Tempo zu hoch: einfach langsamer laufen.",
+  tip:"Kein Tempo-Ziel. Pace egal – Puls entscheidet. Das ist kein Leistungstest. <b>Optional danach:</b> 15 min Rumpf (Plank 3×40s, Glute Bridge 3×15, Dead Bug 3×10) wenn Lust da." },
+
+{ w:1, dow:"Mi", date:"10.06.", type:"rad", pill:"pill-rad",
+  title:"Rennrad mit Intensitäts-Spitzen",
+  sub:"90 min · Z2 + 3×8 min Z3",
+  dur:"90 min", hz:"Basis Z2 · Blöcke Z3 (139–158 bpm) · kurze Sätze möglich",
+  int:"Moderat", hzmap:{z1:5,z2:55,z3:35,z4:5,z5:0},
+  goal:"Erste intensivere Radeinheit. 20 min einfahren (Z2), dann 3 Blöcke à 8 min leicht erhöhtes Tempo (Z3 – du kannst noch kurze Sätze sagen), je 5 min locker dazwischen. 15 min ausfahren.",
+  tip:"Z3 auf dem Rad = du merkst, dass du arbeitest, aber es ist kein Kampf. Auf Hügeln natürlich: Anstiege werden die Intensitäts-Blöcke. <b>Gefühl:</b> zügig aber kontrolliert." },
+
+{ w:1, dow:"Do", date:"11.06.", type:"regen", pill:"pill-regen",
+  title:"Aktive Erholung",
+  sub:"20–30 min · Z1 · sehr locker",
+  dur:"20–30 min", hz:"Z1 · unter 118 bpm",
+  int:"Sehr leicht", hzmap:{z1:90,z2:10,z3:0,z4:0,z5:0},
+  goal:"Regeneration fördern. Spaziergang, sehr lockeres Radeln oder gar nichts. Nur Durchblutung anregen.",
+  tip:"<b>Optional:</b> 15 min Mobility – Hüftbeuger, Piriformis, IT-Band Foam-Rolling, Schultern. Früh schlafen, gut essen." },
+
+{ w:1, dow:"Fr", date:"12.06.", type:"lauf", pill:"pill-lauf",
+  title:"Intervalle hoch-aerob",
+  sub:"50 min · Z4 · Garmins Fokus schließen",
+  dur:"50 min", hz:"Aufwärmen Z2 · Intervalle Z4 · 159–170 bpm · ca. 4:25–4:40/km",
+  int:"Mittel-Hoch", hzmap:{z1:5,z2:25,z3:10,z4:55,z5:5},
+  goal:"Garmins 'Hoch Aerob zu gering'-Lücke direkt angehen. 10 min einlaufen (Z2), dann 4×4 min bei 159–170 bpm, je 90s Trabpause. 10 min auslaufen. Pace ist zweitrangig – Puls entscheidet.",
+  tip:"<b>Wichtigste Lauf-Einheit der Woche.</b> Nach den Intervallen steigt Garmins Hoch-Aerob-Wert. Danach: gut essen, ausreichend Protein (30g+). Gut schlafen – morgen langer Rad-Tag." },
+
+{ w:1, dow:"Sa", date:"13.06.", type:"rad", pill:"pill-rad",
+  title:"Lange Grundlagenfahrt",
+  sub:"2:30–3:00h · Z2 · Bodensee-Vorbereitung",
+  dur:"2:30–3:00 h", hz:"Z2 dominant · 118–145 bpm · locker bis moderat",
+  int:"Moderat (Volumen)", hzmap:{z1:5,z2:70,z3:20,z4:5,z5:0},
+  goal:"Wichtigste Rad-Einheit der Woche. Letzter langer Trainingsreiz vor Bodensee-Tapering. Gleichmäßiges Tempo, keine Attacken. 70–90 km je nach Topographie.",
+  tip:"Alle 45 min essen (Gel, Banane, Riegel). Trinken alle 20 min. Bei Hügeln: Puls im Griff behalten, lieber langsamer. <b>Optional nach der Fahrt:</b> 20 min Stabilisierung (Plank, Calf Raises, Schultern) wenn noch Energie." },
+
+{ w:1, dow:"So", date:"14.06.", type:"regen", pill:"pill-regen",
+  title:"Ruhetag",
+  sub:"Vollständige Erholung",
+  dur:"—", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Vollständige Erholung nach der langen Radeinheit. Kein Sport.",
+  tip:"Beine hochlegen, gut essen. Optional: 10 min ruhiges Stretching. Früh schlafen für die letzte Aufbau-Woche." },
+
+// ── WOCHE 2: AUFBAU + TAPERING + BODENSEE ──────────────────────────────────
+{ w:2, dow:"Mo", date:"15.06.", type:"rad", pill:"pill-rad",
+  title:"Mittellange Radfahrt",
+  sub:"90 min · Z2-Z3",
+  dur:"90 min", hz:"Z2–Z3 · 118–155 bpm · zügig aber kontrolliert",
+  int:"Moderat", hzmap:{z1:5,z2:50,z3:40,z4:5,z5:0},
+  goal:"Letzter ordentlicher Trainingsreiz auf dem Rad vor Bodensee. Gleichmäßiges Tempo, 45–55 km. Letzte 20 min leicht erhöht (Z3).",
+  tip:"Nicht mehr als das – wir beginnen heute mit dem Aufbau zum Event. Trinken und Essen gut im Griff behalten. Abends kohlenhydratbetont essen." },
+
+{ w:2, dow:"Di", date:"16.06.", type:"lauf", pill:"pill-lauf",
+  title:"Kurzer Tempolauf",
+  sub:"40 min · Z3-Z4",
+  dur:"40 min", hz:"Z3–Z4 · 145–172 bpm · ca. 4:30–4:50/km",
+  int:"Mittel", hzmap:{z1:5,z2:25,z3:30,z4:35,z5:5},
+  goal:"Letzter intensiverer Lauf vor Event. 10 min einlaufen, 20 min gleichmäßig bei Z3-Z4 (Schwellenbereich), 10 min auslaufen. Kein Intervalltraining – flüssiger Dauerblock.",
+  tip:"Pace ca. 4:30–4:50/km je nach Tagesform. Nicht übertreiben – wir tapen jetzt. Danach gut essen und viel trinken." },
+
+{ w:2, dow:"Mi", date:"17.06.", type:"regen", pill:"pill-regen",
+  title:"Sehr lockere Aktivität + Mobility",
+  sub:"30 min · Z1 · Tapering",
+  dur:"30 min", hz:"Z1 · unter 120 bpm",
+  int:"Sehr leicht", hzmap:{z1:85,z2:15,z3:0,z4:0,z5:0},
+  goal:"Tapering beginnt – nur locker bleiben. 20 min Spaziergang oder ruhiges Radeln + 10 min Mobility Hüfte/Schultern. Kein Muskelkater provozieren!",
+  tip:"Kein Kraft-Training heute! Beine schonen. Abends: <b>Kohlenhydrat-Loading beginnt</b> – mehr Pasta, Reis, Brot als sonst. Kein Kaloriendefizit mehr ab heute." },
+
+{ w:2, dow:"Do", date:"18.06.", type:"regen", pill:"pill-regen",
+  title:"Vollständige Erholung",
+  sub:"Ruhetag · Equipment check",
+  dur:"—", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Maximale Erholung vor Bodensee. Kein Sport. Schlafen, gut essen, Beine hochlegen.",
+  tip:"<b>Equipment-Check:</b> Rad prüfen (Schaltung, Bremsen, Reifendruck 7–8 bar), 8–10 Gels einpacken, Elektrolyte, Riegel, Bidons. Wettercheck. Kleidung rauslegen. <b>Abends:</b> Pasta-Abend, früh schlafen (22:00 Uhr!)." },
+
+{ w:2, dow:"Fr", date:"19.06.", type:"rad", pill:"pill-rad",
+  title:"Kurze Aktivierungsfahrt",
+  sub:"35 min · Z1 · Beine wecken",
+  dur:"35 min", hz:"Z1–Z2 · unter 130 bpm · sehr locker",
+  int:"Sehr leicht", hzmap:{z1:60,z2:35,z3:5,z4:0,z5:0},
+  goal:"Beine locker halten, nicht belasten. 25 min ruhig drehen, dann 3×20s Trittfrequenz erhöhen (>100 rpm) damit die Beine 'wach' sind. Kein Trainingsstress.",
+  tip:"Rad nochmal final checken. Bidons befüllen (Elektrolyte). Abends früh essen, dann schlafen. <b>Morgen früh:</b> 2–3h vor Start frühstücken (Haferflocken, Brot, Banane, Kaffee)." },
+
+{ w:2, dow:"Sa", date:"20.06.", type:"event", pill:"pill-event",
+  title:"★ BODENSEE-RUNDFAHRT 240 km",
+  sub:"~8–10h · Z2-Z3 · ankommen & genießen",
+  dur:"~8–10 Stunden", hz:"Z2–Z3 dominant · nie dauerhaft über 158 bpm",
+  int:"Hoch (Volumen)", hzmap:{z1:5,z2:55,z3:35,z4:5,z5:0},
+  goal:"ANKOMMEN und genießen! Gleichmäßiges Tempo – wer die ersten 3h verreißt, zahlt auf den letzten 60 km. Puls unter 155 bpm halten so gut es geht. Bei Anstiegen natürlich kurz höher – aber danach sofort wieder runterkommen.",
+  tip:"<b>Ernährung:</b> 60–90g Kohlenhydrate/Stunde. Alle 20–30 min essen – NIE warten bis Hunger kommt. Alle 60 min Salz/Elektrolyte. Mind. 500–700ml/h trinken. Ab km 150 mehr KH reinpumpen. <b>Tempo:</b> ~28–30 km/h Schnitt ist gut – kein Vergleich mit anderen." },
+
+{ w:2, dow:"So", date:"21.06.", type:"regen", pill:"pill-regen",
+  title:"Vollständige Erholung Tag 1",
+  sub:"Ruhetag nach Event",
+  dur:"—", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Körper nach Extrembelastung regenerieren. Schlafen, viel essen, kein Training. HRV wird heute stark abweichen – einfach ignorieren.",
+  tip:"<b>Viel essen</b> – kein Defizit! Kohlenhydrate und Protein auffüllen. Beine hochlegen, kalte Dusche oder Wechseldusche. Muskelkater und Erschöpfung sind nach 240km völlig normal." },
+
+// ── WOCHE 3: REGEN NACH BODENSEE → DANN LAUF-FOKUS ────────────────────────
+{ w:3, dow:"Mo", date:"22.06.", type:"regen", pill:"pill-regen",
+  title:"Sehr lockere Aktivität",
+  sub:"20 min · Z1 · nur Durchblutung",
+  dur:"20 min", hz:"Z1 · unter 115 bpm",
+  int:"Minimal", hzmap:{z1:95,z2:5,z3:0,z4:0,z5:0},
+  goal:"Nur Durchblutung anregen. 20 min Spaziergang oder ganz ruhiges Radeln. Kein Laufen. Foam-Rolling Beine.",
+  tip:"Noch immer gut essen – kein Defizit. Erhöhte Ruheherzfrequenz und schwere Beine nach 240km sind absolut normal. Kein Stress." },
+
+{ w:3, dow:"Di", date:"23.06.", type:"regen", pill:"pill-regen",
+  title:"Aktive Erholung + Mobility",
+  sub:"30 min · Z1",
+  dur:"30 min", hz:"Z1 · unter 118 bpm",
+  int:"Sehr leicht", hzmap:{z1:85,z2:15,z3:0,z4:0,z5:0},
+  goal:"Erste etwas längere Einheit nach Event. HRV beobachten. 20 min lockeres Radeln oder Spaziergang + 10 min Stretching Hüfte, Oberschenkel, Waden.",
+  tip:"Wenn HRV noch unausgewogen: nochmal kürzen oder Ruhetag. Keine Eile. Der Körper braucht nach 240km mindestens 4–5 Tage echte Schonung." },
+
+{ w:3, dow:"Mi", date:"24.06.", type:"lauf", pill:"pill-lauf",
+  title:"Erster Testlauf nach Event",
+  sub:"25–35 min · Z1-Z2",
+  dur:"25–35 min", hz:"Z1–Z2 · unter 138 bpm · Pace egal",
+  int:"Niedrig", hzmap:{z1:20,z2:70,z3:10,z4:0,z5:0},
+  goal:"Wie fühlen sich die Beine an? Kein Leistungsdruck. Wenn Puls für normales Tempo zu hoch ist: kürzen oder abbrechen – das ist völlig normal nach 240km.",
+  tip:"Pace egal, Puls entscheidet. 6:00–7:00/km ist vollkommen ok. Das ist kein Training – nur ein Systemcheck. Ab jetzt Kaloriendefizit wieder leicht einführen ok." },
+
+{ w:3, dow:"Do", date:"25.06.", type:"lauf", pill:"pill-lauf",
+  title:"Grundlagenlauf Wiederaufbau",
+  sub:"40–45 min · Z2",
+  dur:"40–45 min", hz:"Z2 · 118–138 bpm · ca. 5:30–6:15/km",
+  int:"Moderat-Niedrig", hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
+  goal:"Erste ordentliche Laufeinheit nach Event. Gleichmäßiges Z2-Tempo, keine Ambitionen. Körper zeigt dir heute, wie weit die Erholung ist.",
+  tip:"Wenn alles gut läuft: <b>danach optional 15 min Rumpf</b> (Plank, Glute Bridge, Dead Bug). Zeichen dass der Körper wieder fit wird." },
+
+{ w:3, dow:"Fr", date:"26.06.", type:"regen", pill:"pill-regen",
+  title:"Ruhetag oder Mobility",
+  sub:"optional 20 min",
+  dur:"0–20 min", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Erholen vor dem Wochenend-Wiederaufbau.",
+  tip:"Mobility wenn Lust: Hüftbeuger, Piriformis, Brustwirbelsäule, Schultern. Gut für Verletzungsprävention und Fußball-Start." },
+
+{ w:3, dow:"Sa", date:"27.06.", type:"lauf", pill:"pill-lauf",
+  title:"Langer Grundlagenlauf",
+  sub:"55–65 min · Z2",
+  dur:"55–65 min", hz:"Z2 · 118–138 bpm · entspanntes Tempo",
+  int:"Moderat", hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
+  goal:"Erste längere Laufeinheit nach Event-Regen. Lauf-Fokus beginnt jetzt. Gleichmäßiges Z2-Tempo – Pace darf 5:45–6:30/km sein.",
+  tip:"<b>Optional danach:</b> 20 min Kraft (Squat, Romanian Deadlift, Plank) wenn Energie gut ist. Nicht übertreiben." },
+
+{ w:3, dow:"So", date:"28.06.", type:"regen", pill:"pill-regen",
+  title:"Ruhetag",
+  sub:"Vollständige Erholung",
+  dur:"—", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Erholen nach Wochenend-Lauf. Kein Sport.",
+  tip:"Gut essen, schlafen. Letzte Woche vor Fußball-Start – nächste Woche wird nochmal richtig gefordert." },
+
+// ── WOCHE 4: LAUF-FOKUS + FUSSBALL-VORBEREITUNG ────────────────────────────
+{ w:4, dow:"Mo", date:"29.06.", type:"lauf", pill:"pill-lauf",
+  title:"Intervalltraining hoch-aerob",
+  sub:"50 min · Z4 · Fußball-Fitness",
+  dur:"50 min", hz:"Aufwärmen Z2 · Intervalle Z4 · 159–172 bpm · 4:20–4:40/km",
+  int:"Hoch", hzmap:{z1:5,z2:20,z3:10,z4:60,z5:5},
+  goal:"Wichtigste Einheit der Woche. Fußball-spezifische Schnelligkeitsausdauer. 10 min einlaufen, 5×4 min bei 159–172 bpm, je 90s Trabpause, 10 min auslaufen.",
+  tip:"<b>Diese Intensität entspricht Fußball-Spielbelastung.</b> Pace zweitrangig – Puls und Atemgefühl entscheiden. Danach gut essen (KH + 30g+ Protein)." },
+
+{ w:4, dow:"Di", date:"30.06.", type:"regen", pill:"pill-regen",
+  title:"Aktive Erholung",
+  sub:"25 min · Z1",
+  dur:"25 min", hz:"Z1 · unter 118 bpm",
+  int:"Sehr leicht", hzmap:{z1:90,z2:10,z3:0,z4:0,z5:0},
+  goal:"Erholen nach Intervall-Tag. Spaziergang oder sehr lockeres Radeln. HRV-Check.",
+  tip:"Foam-Rolling Beine. Schlaf priorisieren. <b>Optional:</b> 15 min Rumpf (Plank, Dead Bug, Glute Bridge) wenn Körper frisch ist." },
+
+{ w:4, dow:"Mi", date:"01.07.", type:"lauf", pill:"pill-lauf",
+  title:"Schwellen-Dauerlauf",
+  sub:"55 min · Z3-Z4 · Laktatschwelle",
+  dur:"55 min", hz:"Z3–Z4 · 148–177 bpm · ca. 4:25–4:45/km",
+  int:"Mittel-Hoch", hzmap:{z1:5,z2:20,z3:25,z4:45,z5:5},
+  goal:"Laktatschwellen-Einheit. 15 min einlaufen, 25 min gleichmäßig nahe Schwelle (ca. 4:30–4:45/km), 15 min auslaufen. Fühlt sich 'komfortabel hart' an.",
+  tip:"Stabile HF ohne starken Drift nach oben = gute Form. Diese Einheit zeigt dir, wie gut der 4-Wochen-Block gewirkt hat." },
+
+{ w:4, dow:"Do", date:"02.07.", type:"regen", pill:"pill-regen",
+  title:"Ruhetag oder Mobility",
+  sub:"optional 20 min",
+  dur:"0–20 min", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Erholen vor den letzten Einheiten.",
+  tip:"Mobility: Hüftbeuger, Piriformis, Schultern, Brustwirbelsäule. Gut für Verletzungsprävention und Fußball-Start." },
+
+{ w:4, dow:"Fr", date:"03.07.", type:"lauf", pill:"pill-lauf",
+  title:"Langer Grundlagenlauf",
+  sub:"65–75 min · Z2",
+  dur:"65–75 min", hz:"Z2 · 118–138 bpm · entspanntes Tempo",
+  int:"Moderat", hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
+  goal:"Letzter langer Lauf vor Fußball-Start. Aerobe Basis zementieren. Laufen genießen – in 4 Tagen geht's los!",
+  tip:"<b>Optional danach:</b> 20 min Athletik (Squat Jump, Lateral Lunge, Plank) als Fußball-Aktivierung. Abends früh schlafen." },
+
+{ w:4, dow:"Sa", date:"04.07.", type:"lauf", pill:"pill-lauf",
+  title:"Kurzer Intervall-Abschluss",
+  sub:"40 min · Z3-Z4",
+  dur:"40 min", hz:"Z3–Z4 · 145–170 bpm · zügig",
+  int:"Mittel", hzmap:{z1:5,z2:20,z3:30,z4:40,z5:5},
+  goal:"Letzter Trainingsreiz – kurz und knackig. 10 min einlaufen, 3×4 min Z4, je 90s Pause, 10 min auslaufen. Beine sollen 'wach' sein für Fußball.",
+  tip:"Nicht übertreiben – wir brauchen Frische für Montag. Kürzer ist heute besser als länger." },
+
+{ w:4, dow:"So", date:"05.07.", type:"regen", pill:"pill-regen",
+  title:"Ruhetag – Fußball startet morgen!",
+  sub:"Vollständige Erholung",
+  dur:"—", hz:"—",
+  int:"Ruhe", hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+  goal:"Volle Frische für den Fußball-Start am 07.07. Kein Sport, gut essen, früh ins Bett.",
+  tip:"<b>Glückwunsch!</b> Du startest mit deutlich besserem Ausdauer-Fundament, gestärkter Laktatschwelle und nach einer unvergesslichen 240km-Erfahrung in die Vorbereitung. 🎉" }
+];
+
+const weekMeta = {
+  1:{ label:"W1 · 08–14. Jun", focus:"🚴 Rad-Fokus · Aerobe Basis", desc:"Rad-Schwerpunkt, Hoch-Aerob-Lücke mit Laufen schließen" },
+  2:{ label:"W2 · 15–21. Jun", focus:"🚴 Aufbau + Tapering + ★ Bodensee", desc:"Steigerung Mo–Di, Tapering Mi–Fr, Event Sa 20.06." },
+  3:{ label:"W3 · 22–28. Jun", focus:"🏃 Regen → Lauf-Fokus", desc:"4–5 Tage Schonung nach Event, dann Laufen wieder aufbauen" },
+  4:{ label:"W4 · 29. Jun–05. Jul", focus:"🏃 Lauf-Fokus · Fußball-Vorbereitung", desc:"Intervalle + Schwelle, Fußball-Athletik, Fußball ab 07.07." }
+};
+
+const STORE = 'tp2026v3';
+let done = {};
+try { done = JSON.parse(localStorage.getItem(STORE)||'{}'); } catch(e){}
+function save(){ try{ localStorage.setItem(STORE, JSON.stringify(done)); }catch(e){} }
+
+function hz(map){
+  return `<div class="hz-bar">
+    <div class="hz-z1" style="flex:${map.z1}"></div>
+    <div class="hz-z2" style="flex:${map.z2}"></div>
+    <div class="hz-z3" style="flex:${map.z3}"></div>
+    <div class="hz-z4" style="flex:${map.z4}"></div>
+    <div class="hz-z5" style="flex:${map.z5}"></div>
+  </div>
+  <div class="hz-zones">
+    <span style="color:#1a7a4a">Z1</span>
+    <span style="color:#5a8a1a">Z2</span>
+    <span style="color:#b57a00">Z3</span>
+    <span style="color:#c05020">Z4</span>
+    <span style="color:#c03030">Z5</span>
+  </div>`;
+}
+
+function toggleDetail(i){
+  document.getElementById('d'+i).classList.toggle('open');
+}
+function toggleDone(i,e){
+  e.stopPropagation();
+  done[i]=!done[i];
+  save();
+  updateProgress();
+  const card=document.getElementById('c'+i);
+  card.className='day-card'+(done[i]?' done':'')+(days[i].type==='event'?' event-card':'');
+  const ck=document.getElementById('ck'+i);
+  ck.className='day-check'+(done[i]?' checked':'');
+  ck.textContent=done[i]?'✓':'';
+  updateWeekProgress(days[i].w);
+}
+
+function updateProgress(){
+  const total=days.length;
+  const n=Object.values(done).filter(Boolean).length;
+  const pct=Math.round(n/total*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=n+' / '+total+' Einheiten abgehakt';
+}
+
+function updateWeekProgress(w){
+  const wdays=days.map((d,i)=>({d,i})).filter(x=>x.d.w===w);
+  const wdone=wdays.filter(x=>done[x.i]).length;
+  const el=document.getElementById('wp'+w);
+  if(el) el.textContent=wdone+'/'+wdays.length+' ✓';
+}
+
+function render(){
+  let html=''; let lw=0;
+  days.forEach((d,i)=>{
+    if(d.w!==lw){
+      if(lw) html+='</div>';
+      const wm=weekMeta[d.w];
+      const wdays=days.map((x,j)=>({x,j})).filter(a=>a.x.w===d.w);
+      const wdone=wdays.filter(a=>done[a.j]).length;
+      html+=`<div class="week-section">
+        <div class="week-header">
+          <div class="week-tag">${wm.label}</div>
+          <div class="week-focus">${wm.focus}</div>
+          <div class="week-desc">${wm.desc}</div>
+          <div class="week-progress" id="wp${d.w}">${wdone}/${wdays.length} ✓</div>
+        </div>`;
+      lw=d.w;
+    }
+    const isDone=done[i]||false;
+    const isEvent=d.type==='event';
+    html+=`<div class="day-card${isDone?' done':''}${isEvent?' event-card':''}" id="c${i}">
+      <div class="day-header" onclick="toggleDetail(${i})">
+        <div class="day-meta">
+          <span class="day-dow">${d.dow}</span>
+          <span class="day-date">${d.date}</span>
+        </div>
+        <div class="day-main">
+          <span class="day-type-pill ${d.pill}">${isEvent?'★ EVENT':d.type.toUpperCase()}</span>
+          <div class="day-title-text">${d.title}</div>
+          <div class="day-sub">${d.sub}</div>
+        </div>
+        <div class="day-check${isDone?' checked':''}" id="ck${i}" onclick="toggleDone(${i},event)">${isDone?'✓':''}</div>
+      </div>
+      <div class="day-detail" id="d${i}">
+        <div class="chips">
+          <div class="chip"><div class="chip-lbl">Dauer</div><div class="chip-val">${d.dur}</div></div>
+          <div class="chip"><div class="chip-lbl">Intensität</div><div class="chip-val">${d.int}</div></div>
+        </div>
+        <div class="hz-wrap">
+          <div class="hz-lbl">HF-Bereich: ${d.hz}</div>
+          ${hz(d.hzmap)}
+        </div>
+        <div class="goal-box${isEvent?' ev':''}">${d.goal}</div>
+        <div class="tip-box">${d.tip}</div>
+      </div>
+    </div>`;
+  });
+  html+='</div>';
+  document.getElementById('plan').innerHTML=html;
+  updateProgress();
+}
+
+render();
+</script>
+</body>
+</html>
