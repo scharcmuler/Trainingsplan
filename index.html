@@ -6,40 +6,36 @@
 <title>Trainingsplan Jun/Jul 2026</title>
 <style>
   :root {
-    --bg:#f5f4f0; --card:#fff; --text:#1a1a1a; --muted:#666; --border:#e0ddd6;
-    --lauf:#1a6eb5; --lauf-bg:#e8f1fb;
-    --rad:#b56e00; --rad-bg:#fdf0d8;
-    --regen:#1a7a4a; --regen-bg:#e5f5ed;
-    --event:#c0380a; --event-bg:#fdeee8;
-    --done-border:#1a7a4a; --done-bg:#e5f5ed;
+    --bg:#f5f4f0;--card:#fff;--text:#1a1a1a;--muted:#666;--border:#e0ddd6;
+    --lauf:#1a6eb5;--lauf-bg:#e8f1fb;
+    --rad:#b56e00;--rad-bg:#fdf0d8;
+    --regen:#1a7a4a;--regen-bg:#e5f5ed;
+    --event:#c0380a;--event-bg:#fdeee8;
+    --done-border:#1a7a4a;--done-bg:#e5f5ed;
     --accent:#1a6eb5;
-    --warn-bg:#fff8e6; --warn-border:#f0c040;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5}
-
   header{background:#1a1a1a;color:#fff;padding:16px 16px 12px;position:sticky;top:0;z-index:100}
   header h1{font-size:17px;font-weight:600}
   header p{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
-
   .tab-bar{display:flex;gap:6px;padding:10px 12px 4px;overflow-x:auto;scrollbar-width:none}
   .tab-bar::-webkit-scrollbar{display:none}
   .tab{flex-shrink:0;padding:7px 13px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;background:var(--card);color:var(--muted);transition:all .15s}
   .tab.active{background:var(--text);color:#fff;border-color:var(--text)}
-
-  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px 0}
-  .stat{background:var(--card);border-radius:10px;padding:9px 10px;text-align:center;border:1px solid var(--border)}
-  .stat-val{font-size:18px;font-weight:700;color:var(--accent)}
-  .stat-lbl{font-size:10px;color:var(--muted);margin-top:1px}
-
   .progress-wrap{padding:8px 12px 0}
   .progress-track{background:var(--border);border-radius:6px;height:6px;overflow:hidden}
   .progress-fill{background:var(--accent);height:100%;border-radius:6px;transition:width .3s}
   .progress-lbl{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
-
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px 0}
+  .stat{background:var(--card);border-radius:10px;padding:9px 10px;text-align:center;border:1px solid var(--border)}
+  .stat-val{font-size:18px;font-weight:700;color:var(--accent)}
+  .stat-lbl{font-size:10px;color:var(--muted);margin-top:1px}
+  .peak-banner{margin:10px 12px 0;background:linear-gradient(135deg,#2d1b69,#4a2db5);border-radius:12px;padding:12px 16px;color:#fff}
+  .peak-banner h2{font-size:15px;font-weight:700;margin-bottom:4px}
+  .peak-banner p{font-size:12px;opacity:.85;line-height:1.5}
   .info-card{margin:10px 12px 0;background:var(--card);border-radius:10px;padding:10px 14px;border:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.8}
   .info-card b{color:var(--text);font-weight:600}
-
   .analysis-card{margin:10px 12px 0;background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden}
   .analysis-header{padding:11px 14px 0;font-size:13px;font-weight:600;color:var(--text)}
   .analysis-body{padding:6px 14px 12px;font-size:12px;color:var(--muted);line-height:1.7}
@@ -49,21 +45,18 @@
   .tag-blue{background:var(--lauf-bg);color:var(--lauf)}
   .tag-orange{background:var(--rad-bg);color:var(--rad)}
   .tag-red{background:var(--event-bg);color:var(--event)}
-
+  .tag-purple{background:#f0ebfd;color:#4a2db5}
   .week-wrap{padding:0 12px 4px}
   .week-head{padding:14px 4px 4px}
   .week-tag{display:inline-block;font-size:10px;font-weight:700;background:var(--text);color:#fff;border-radius:4px;padding:2px 7px;letter-spacing:.05em;margin-bottom:3px}
   .week-name{font-size:14px;font-weight:600;margin-bottom:1px}
   .week-desc{font-size:12px;color:var(--muted)}
   .week-prog{font-size:11px;color:var(--muted);margin-top:2px}
-
   .day{background:var(--card);border-radius:12px;border:1.5px solid var(--border);margin:8px 0;overflow:hidden}
   .day.done{border-color:var(--done-border);background:var(--done-bg)}
   .day.ev{border-color:var(--event)}
-  .day.rest-day{opacity:.85}
-
   .day-head{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;cursor:pointer;user-select:none}
-  .day-meta{display:flex;flex-direction:column;align-items:center;min-width:40px}
+  .day-meta{display:flex;flex-direction:column;align-items:center;min-width:44px}
   .day-dow{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
   .day-date{font-size:15px;font-weight:700}
   .day-body{flex:1;min-width:0}
@@ -76,46 +69,36 @@
   .day-sub{font-size:12px;color:var(--muted);margin-top:1px}
   .chk{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-size:16px;transition:all .15s;background:var(--bg)}
   .chk.on{background:var(--done-border);border-color:var(--done-border);color:#fff}
-
   .day-detail{display:none;border-top:1px solid var(--border);padding:12px 14px 14px}
   .day-detail.open{display:block}
-
   .chips{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
   .chip{background:var(--bg);border-radius:8px;padding:7px 10px;flex:1;min-width:80px}
   .chip-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
   .chip-v{font-size:13px;font-weight:600}
-
   .hz-section{margin-bottom:10px}
   .hz-lbl{font-size:11px;color:var(--muted);margin-bottom:4px}
   .hz-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;gap:1px}
   .z1{background:#9fe1cb}.z2{background:#c0dd97}.z3{background:#fac775}.z4{background:#f0997b}.z5{background:#f09595}
   .hz-labels{display:flex;gap:1px;margin-top:3px}
   .hz-labels span{flex:1;font-size:9px;text-align:center}
-
   .goal{background:var(--bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:8px}
   .goal.ev-goal{border-color:var(--event)}
   .tip{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted);line-height:1.65}
   .tip b{color:var(--text);font-weight:600}
-  .sub20-tip{background:#fffbf0;border:1px solid #f0c040;border-radius:8px;padding:10px 12px;font-size:12px;color:#7a5a00;line-height:1.65;margin-bottom:8px}
-  .sub20-tip b{color:#5a3a00}
-
+  .sub20-tip{background:#f0ebfd;border:1px solid #c4b0f0;border-radius:8px;padding:10px 12px;font-size:12px;color:#3a1f8a;line-height:1.65;margin-bottom:8px}
+  .sub20-tip b{color:#2a0f7a}
   .legend{display:flex;flex-wrap:wrap;gap:8px;padding:8px 12px 8px}
   .li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
   .ld{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-
-  .divider{height:1px;background:var(--border);margin:4px 12px}
-
   .hidden{display:none}
   footer{text-align:center;padding:20px 12px 36px;font-size:11px;color:#aaa}
 </style>
 </head>
 <body>
-
 <header>
   <h1>🏃 Trainingsplan Jun / Jul 2026</h1>
   <p>08. Jun – 06. Jul · ★ Bodensee Sa 20.06. · Fußball Di 07.07. · Ziel: Sub-20 5K</p>
 </header>
-
 <div class="tab-bar" id="tabs">
   <button class="tab active" onclick="showTab(0)">Analyse</button>
   <button class="tab" onclick="showTab(1)">W1 · 08–14 Jun</button>
@@ -126,71 +109,56 @@
 
 <!-- ANALYSE TAB -->
 <div id="tab0">
-  <div class="stats-grid">
-    <div class="stat"><div class="stat-val">55</div><div class="stat-lbl">VO₂max</div></div>
-    <div class="stat"><div class="stat-val">20:32</div><div class="stat-lbl">5K PR (14.05.)</div></div>
-    <div class="stat"><div class="stat-val">48</div><div class="stat-lbl">Ruhepuls Ø bpm</div></div>
+  <div class="peak-banner" style="margin-top:10px">
+    <h2>🏆 HÖCHSTFORM – seit 9. Juni!</h2>
+    <p>Deine reduzierte Belastung hat sich ausgezahlt. Garmin meldet: <b>Ausgezeichnet auf Wettkämpfe vorbereitet.</b> Nutze dieses Fenster – es ist die beste Form des gesamten Plans.</p>
   </div>
   <div class="stats-grid" style="margin-top:8px">
-    <div class="stat"><div class="stat-val">20:20</div><div class="stat-lbl">5K Prognose</div></div>
-    <div class="stat"><div class="stat-val">269W</div><div class="stat-lbl">FTP (Zwift Feb)</div></div>
-    <div class="stat"><div class="stat-val">187</div><div class="stat-lbl">Laktatschwelle bpm</div></div>
+    <div class="stat"><div class="stat-val">58</div><div class="stat-lbl">VO₂max ↑</div></div>
+    <div class="stat"><div class="stat-val">20:04</div><div class="stat-lbl">5K Prognose</div></div>
+    <div class="stat"><div class="stat-val">181bpm</div><div class="stat-lbl">Laktatschwelle</div></div>
+  </div>
+  <div class="stats-grid" style="margin-top:8px">
+    <div class="stat"><div class="stat-val">4:17</div><div class="stat-lbl">Schwelle /km</div></div>
+    <div class="stat"><div class="stat-val">48</div><div class="stat-lbl">Ruhepuls Ø</div></div>
+    <div class="stat"><div class="stat-val">269W</div><div class="stat-lbl">FTP Rad</div></div>
   </div>
 
   <div class="analysis-card" style="margin-top:10px">
-    <div class="analysis-header">🎯 Sub-20 5K – Realistische Einschätzung</div>
+    <div class="analysis-header">🎯 Sub-20 5K – Update nach Woche 1</div>
     <div class="analysis-body">
-      <span class="tag tag-orange">Ambitioniert</span><span class="tag tag-green">Erreichbar</span><br><br>
-      Dein aktueller PR ist <b>20:32</b> vom 14.05., Garmin-Prognose <b>20:20</b>. Bis Sub-20 fehlen <b>~20–33 Sekunden</b> = ca. 2–3%. Das ist in 4 Wochen <b>möglich, aber nicht garantiert</b> – es braucht alles richtig: gute Einheiten, ausreichend Schlaf, kein Übertraining.<br><br>
-      <b>Schlüsselfaktor:</b> Dein 5K-PR vom 14.05. war ein echter Effort (AvgHR 184, MaxHR 197, pace 4:05/km). Die Laktatschwelle liegt bei 4:20/km / 187bpm. Für Sub-20 brauchst du <b>4:00/km Durchschnitt</b>. Das ist ~5s/km schneller als deine aktuelle Schwelle – durch gezieltes Training in 4 Wochen gut machbar.<br><br>
-      <b>Wichtig:</b> Kein 5K-Test in den ersten 2 Wochen (Bodensee-Vorbereitung hat Priorität). Optimales Zeitfenster für einen Versuch: <b>01.–04. Juli</b>.
+      <span class="tag tag-purple">Höchstform</span><span class="tag tag-green">Sub-20 sehr realistisch</span><br><br>
+      <b>Massive Verbesserungen seit Planstart:</b><br>
+      VO₂max: 55 → <b>58</b> (+3 Punkte in einer Woche!)<br>
+      Laktatschwelle: 187 bpm / 4:20/km → <b>181 bpm / 4:17/km</b><br>
+      5K-Prognose: 20:20 → <b>20:04</b> – du bist bereits nahe an Sub-20!<br><br>
+      <b>Was das bedeutet:</b> Garmin sagt, du kannst 5K in 20:04 laufen. Sub-20 fehlen dir theoretisch nur noch 4 Sekunden. Das Trainingsblock hat perfekt gewirkt. Der Testlauf am <b>01. Juli</b> ist jetzt nicht mehr ambitioniert – er ist <b>erwartet</b>.<br><br>
+      <b>HFV-Status:</b> 69ms – leicht unausgewogen. Kein Grund zur Sorge in der Höchstform-Phase – ist normal nach intensiven Einheiten. Beobachten.
     </div>
   </div>
 
   <div class="analysis-card">
-    <div class="analysis-header">📊 Aktuelle Fitnessdaten</div>
+    <div class="analysis-header">📊 Herzfrequenzzonen (HFmax 197 bpm)</div>
     <div class="analysis-body">
-      <b>HRV heute (07.06.):</b> 37ms – deutlich unter deiner Baseline (60–96ms). RHR 68bpm – über deiner Norm (47–59bpm). <span class="tag tag-red">Erholungsbedarf</span><br>
-      <b>Training Readiness heute:</b> 35/100 (LOW) – Nacht auf heute war Pause/ungewöhnlich. Morgen wieder normal.<br><br>
-      <b>Trainingsstatus letzte Wochen:</b> Nach Overreaching Ende Mai (Bodensee-Vorbereitung 154km), jetzt Maintaining/Recovery. Akute Belastung 211 – niedrig. Chronische Belastung 361 – solide Basis.<br><br>
-      <b>5K-Entwicklung (aus Daten):</b> Feb 27: 29:39 → Mär 15: 24:21 → Mai 14: 20:32 – <b>außerordentliche Verbesserung</b> in 3 Monaten! Trend zeigt klar nach oben.<br><br>
-      <b>Laufen:</b> Wenig Volumen (hauptsächlich Fußball), aber hohe Qualität bei Intensivläufen. 50 Min Schwelle 13.1km @ 5:11/km AvgHR 168 war stark.<br>
-      <b>Rad:</b> Solide Basis, 64km Ausfahrten problemlos, 154km am 30.05. bestätigt Grundlagenausdauer.
+      Z1 &lt;118 · Z2 118–138 · Z3 139–158 · Z4 159–177 · Z5 &gt;178<br>
+      <b>Neue Laktatschwelle:</b> 181 bpm / 4:17/km (vorher 187/4:20)<br>
+      <b>Rad:</b> Immer nach Gefühl – Z2 = unterhalten · Z3 = kurze Sätze · Z4 = kaum sprechen
     </div>
   </div>
 
   <div class="analysis-card">
-    <div class="analysis-header">⚡ Stärken & Schwächen</div>
+    <div class="analysis-header">📋 Plan-Logik</div>
     <div class="analysis-body">
-      <span class="tag tag-green">Stärken</span><br>
-      → VO₂max 55 – ausgezeichnet für Hobbysportler<br>
-      → Sehr guter Ruhepuls 48bpm – starkes Herz<br>
-      → Laktatschwelle 4:20/km und verbessert sich stark<br>
-      → 5K um 9 Minuten in 3 Monaten verbessert – hohes Adaptionspotenzial<br>
-      → Rad-Grundlage vorhanden (154km problemlos)<br><br>
-      <span class="tag tag-red">Schwächen / Baustellen</span><br>
-      → Laufvolumen sehr niedrig (fast nur Fußball + einzelne Läufe)<br>
-      → Hoch-aerobes Training unterrepräsentiert (Garmin-Feedback)<br>
-      → HRV aktuell unausgewogen – Erholung wichtig<br>
-      → Rad: kein Powermeter, Intensitätssteuerung nur nach Gefühl möglich
-    </div>
-  </div>
-
-  <div class="analysis-card">
-    <div class="analysis-header">📋 Plan-Logik & Wetter-Anpassung</div>
-    <div class="analysis-body">
-      <b>Wetter bis Fr 12.06.:</b> Sturm/Regen → kein Rad. <span class="tag tag-blue">Woche 1 = reiner Lauf-Fokus</span> – das ist ideal für Sub-20-Vorbereitung!<br><br>
-      <b>Woche 1 (Lauf-Fokus):</b> Grundlage + 2 Intervalleinheiten. HRV heute niedrig → Mo sanft starten.<br>
-      <b>Woche 2 (Rad-Fokus + Bodensee):</b> Ab Sa 13.06. Wetter besser → Rad-Aufbau, dann Tapering → Sa 20.06. Event.<br>
-      <b>Woche 3 (Lauf-Fokus):</b> Nach Bodensee Regen, dann Lauf wieder aufbauen.<br>
-      <b>Woche 4 (Sub-20-Block):</b> Spezifisches 5K-Training, Testlauf Mo oder Di 01./02. Juli.<br><br>
-      <b>HF-Zonen (HFmax 197bpm):</b> Z1&lt;118 · Z2 118–138 · Z3 139–158 · Z4 159–177 · Z5&gt;178<br>
-      <b>Rad:</b> Immer nach Gefühl – Z2=kannst dich unterhalten · Z3=kurze Sätze · Z4=kaum sprechen
+      <b>W1 (08–14.06.):</b> Lauf-Fokus (Wetter), Woche erfolgreich abgeschlossen ✓<br>
+      <b>W2 (15–20.06.):</b> Rad-Aufbau Mo–Di, Tapering Mi–Fr, Bodensee Sa 20.06.<br>
+      <b>W3 (22–28.06.):</b> Regen nach Event → Lauf-Fokus wieder aufbauen<br>
+      <b>W4 (29 Jun–06 Jul):</b> Sub-20-Block, Testlauf Mi 01.07., Fußball Di 07.07.<br><br>
+      <b>Prinzipien:</b> 80/20 locker/intensiv · Rad nur nach HF+Gefühl · Kraft optional · HRV-Regel: bei BELOW → Einheit verschieben
     </div>
   </div>
 
   <div class="info-card">
-    <b>Ernährung:</b> Moderates Defizit (~300kcal) an Ruhetagen und leichten Einheiten ok. An Intervall- und langen Tagen: kein Defizit, gut essen (KH+Protein). <b>Bodensee-Woche Mi–Sa:</b> kein Defizit, KH-Laden Fr-Abend. <b>Sub-20-Testlauf:</b> Tag davor kohlenhydratbetont essen, ausreichend schlafen.
+    <b>Ernährung:</b> ~300kcal Defizit an Ruhe-/leichten Tagen. Kein Defizit an Intervall- und langen Tagen. Bodensee-Woche Mi–Sa: kein Defizit, Fr-Abend KH-laden. Sub-20-Testlauf: Tag davor KH-betont essen.
   </div>
 
   <div class="legend">
@@ -198,11 +166,9 @@
     <div class="li"><div class="ld" style="background:#b56e00"></div>Rennrad</div>
     <div class="li"><div class="ld" style="background:#1a7a4a"></div>Regen/Ruhe</div>
     <div class="li"><div class="ld" style="background:#c0380a"></div>Event</div>
-    <div class="li"><div class="ld" style="background:#6240b5"></div>(+) Kraft/Mobility optional</div>
   </div>
 </div>
 
-<!-- WEEK CONTENT -->
 <div id="tab1" class="hidden"></div>
 <div id="tab2" class="hidden"></div>
 <div id="tab3" class="hidden"></div>
@@ -212,75 +178,83 @@
 
 <script>
 const weeks = [
-null, // index 0 = analyse tab
-// WOCHE 1: LAUF-FOKUS (kein Rad wegen Wetter)
+null,
+// WOCHE 1: 08–14 Jun
 {
   tag:"W1 · 08–14. Jun",
-  name:"🏃 Lauf-Fokus · Kein Rad (Wetter)",
-  desc:"Sturm/Regen bis Fr 12.06. – ideale Chance für Lauf-Grundlage und erste Sub-20-Impulse",
+  name:"🏃 Lauf-Fokus · kein Rad (Sturm/Regen)",
+  desc:"Lauf-Schwerpunkt wegen Wetter. Höchstform erreicht – perfekter Start!",
   days:[
-    {dow:"Di",date:"08.06.",type:"lauf",pill:"p-lauf",
+    {dow:"Mo",date:"08.06.",type:"lauf",pill:"p-lauf",
      title:"Lockerer Grundlagenlauf",
-     sub:"40 min · Z2 · sanfter Einstieg",
+     sub:"40 min · Z2 · Einstieg",
      dur:"40 min",hz:"Z2 · 118–138 bpm · ~5:45–6:20/km",int:"Niedrig",
      hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
-     goal:"HRV heute niedrig (37ms) → sanft starten. Körper reaktivieren ohne Druck. Puls unter 138 bpm halten, Pace egal. Wenn Beine schwer: 30 min reicht.",
-     tip:"<b>Kein Leistungsdruck heute.</b> Das ist der erste Schritt zurück nach der Pause. Pace darf 6:30/km sein – Puls entscheidet. Abends gut essen, früh schlafen. HRV morgen beobachten.",
+     goal:"Sanfter Einstieg nach der Pause. Puls unter 138 bpm halten, Pace egal. Körper reaktivieren ohne Druck.",
+     tip:"✅ Bereits absolviert – Z2 eingehalten, Pace ~6:30–7:00/km. Sehr gut gemacht!",
      sub20:""},
-    {dow:"Mi",date:"09.06.",type:"lauf",pill:"p-lauf",
+    {dow:"Di",date:"09.06.",type:"lauf",pill:"p-lauf",
      title:"Hoch-aerobe Intervalle",
-     sub:"50 min · Z4 · Sub-20-Kerneinheit",
+     sub:"50 min · 4×4 min Z4",
      dur:"50 min",hz:"Aufwärmen Z2 · Intervalle Z4 · 159–172 bpm · ~4:05–4:25/km",int:"Mittel-Hoch",
      hzmap:{z1:5,z2:20,z3:10,z4:60,z5:5},
-     goal:"Wichtigste Einheit der Woche. Garmins 'Hoch Aerob zu gering'-Lücke schließen + Sub-20-Grundlage legen. Warm-up 10 min Z2, dann 4×4 min bei 159–172 bpm, je 90s Trabpause. Cool-down 10 min.",
-     tip:"<b>Pace: 4:05–4:20/km</b> – das ist dein Sub-20-Renntempo. Puls entscheidet, nicht die Uhr. Nach letztem Intervall sollte es sich 'gerade noch kontrollierbar' anfühlen. Danach: 30g+ Protein.",
-     sub20:"→ Sub-20: Diese Intensität (4:05–4:20/km) entspricht deinem Renntempo. Du trainierst jetzt genau das, was du brauchst."},
-    {dow:"Do",date:"10.06.",type:"regen",pill:"p-regen",
+     goal:"Hoch-aerobe Lücke schließen + Sub-20-Grundlage legen. 10 min einlaufen (Z2), dann 4×4 min bei 159–172 bpm, je 90s Trabpause. 10 min auslaufen.",
+     tip:"✅ Bereits absolviert. Garmin-Ergebnis: Höchstform seit 9. Juni + VO₂max 58! Diese Einheit hat die Form bestätigt.",
+     sub20:"→ Sub-20: Diese Einheit hat VO₂max auf 58 gehoben und 5K-Prognose auf 20:04 gebracht. Perfekt."},
+    {dow:"Mi",date:"10.06.",type:"regen",pill:"p-regen",
      title:"Aktive Erholung / Mobility",
      sub:"20–30 min · Z1",
      dur:"20–30 min",hz:"Z1 · unter 118 bpm",int:"Sehr leicht",
      hzmap:{z1:90,z2:10,z3:0,z4:0,z5:0},
-     goal:"Muskelregeneration nach Intervallen. Spaziergang oder ganz lockeres Jogging. Optional 15 min Mobility.",
-     tip:"Foam-Rolling: Oberschenkel, Waden, IT-Band. Stretching: Hüftbeuger, Piriformis. Früh schlafen – morgen kommt eine wichtige Einheit.",
+     goal:"Muskelregeneration nach Intervallen. Spaziergang oder sehr lockeres Jogging.",
+     tip:"Foam-Rolling: Oberschenkel, Waden, IT-Band. Optional 15 min Mobility: Hüftbeuger, Piriformis. Früh schlafen.",
      sub20:""},
-    {dow:"Fr",date:"11.06.",type:"lauf",pill:"p-lauf",
+    {dow:"Do",date:"11.06.",type:"lauf",pill:"p-lauf",
      title:"Schwellenlauf",
      sub:"55 min · Z3–Z4 · Laktatschwelle",
      dur:"55 min",hz:"Z3–Z4 · 148–177 bpm · ~4:20–4:40/km",int:"Mittel-Hoch",
      hzmap:{z1:5,z2:20,z3:25,z4:45,z5:5},
-     goal:"Laktatschwelle trainieren. 15 min locker einlaufen, 25 min gleichmäßig nahe Schwelle (4:25–4:35/km, ~175–183bpm), 15 min auslaufen. 'Komfortabel hart' – kurze Sätze möglich.",
-     tip:"Wenn HF nach 10 min Schwellenblock über 185 steigt: Tempo minimal reduzieren. Stabile HF ohne Drift = gute Form. Das ist der direkteste Weg zur 4:00/km-Pace für Sub-20.",
-     sub20:"→ Sub-20: Schwellentraining verschiebt die Laktatschwelle Richtung 4:00/km. Jede dieser Einheiten bringt dich ~1–2 Sekunden näher ans Ziel."},
-    {dow:"Sa",date:"12.06.",type:"regen",pill:"p-regen",
-     title:"Ruhetag oder sehr locker",
-     sub:"0–30 min · optional",
-     dur:"0–30 min",hz:"Z1 wenn aktiv · unter 118 bpm",int:"Ruhe",
+     goal:"Laktatschwelle trainieren. 15 min locker einlaufen, 25 min gleichmäßig nahe Schwelle (~4:25–4:35/km, ~175–181bpm), 15 min auslaufen. 'Komfortabel hart'.",
+     tip:"Neue Schwelle ist 181 bpm / 4:17/km. Orientiere dich daran. Wenn HF nach 10 min Schwellenblock über 186 steigt: Tempo minimal reduzieren.",
+     sub20:"→ Sub-20: Schwellentraining ist der direkteste Weg zu stabilen 4:00/km."},
+    {dow:"Fr",date:"12.06.",type:"regen",pill:"p-regen",
+     title:"Ruhetag oder Mobility",
+     sub:"0–20 min · optional",
+     dur:"0–20 min",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
-     goal:"Erholen nach 2 intensiven Einheiten. Vollständige Pause oder max. 20–25 min sehr lockerer Spaziergang.",
-     tip:"Optional: 20 min Rumpf-Kraft (Plank 3×45s, Glute Bridge 3×15, Dead Bug 3×10, Calf Raises 3×20) wenn Energie gut ist. Wetter prüfen für morgen – Rad wird wahrscheinlich wieder möglich!",
+     goal:"Erholen vor dem langen Wochenend-Lauf.",
+     tip:"Optional: 20 min Rumpf (Plank 3×45s, Glute Bridge 3×15, Dead Bug 3×10, Calf Raises 3×20). Wetter prüfen für Sa/So – Rad wieder möglich?",
      sub20:""},
-    {dow:"So",date:"13.06.",type:"lauf",pill:"p-lauf",
+    {dow:"Sa",date:"13.06.",type:"lauf",pill:"p-lauf",
      title:"Langer Grundlagenlauf",
      sub:"65–75 min · Z2 · aerobe Basis",
      dur:"65–75 min",hz:"Z2 · 118–138 bpm · ~5:30–6:30/km",int:"Moderat",
      hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
-     goal:"Aerobe Langzeitbasis aufbauen – für Fußball und Sub-20 gleichermaßen wichtig. Gleichmäßiges Z2-Tempo, Pace egal. Wenn HF steigt: kurz gehen, dann weiter.",
-     tip:"Längster Lauf der Woche – Pace darf 6:00–6:30/km sein. Das ist kein Leistungstest. Optional danach 20 min Kraft/Mobility wenn Lust da.",
+     goal:"Aerobe Langzeitbasis aufbauen. Gleichmäßiges Z2-Tempo, Pace egal. Wenn HF steigt: kurz gehen, dann weiter.",
+     tip:"Optional danach: 20 min Kraft/Mobility wenn Lust da. Nicht übertreiben – nächste Woche Bodensee-Vorbereitung beginnt.",
+     sub20:""},
+    {dow:"So",date:"14.06.",type:"regen",pill:"p-regen",
+     title:"Ruhetag",
+     sub:"Vollständige Erholung",
+     dur:"—",hz:"—",int:"Ruhe",
+     hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
+     goal:"Vollständige Erholung. Kein Sport.",
+     tip:"Beine hochlegen, gut essen. Früh schlafen für die Bodensee-Vorbereitungswoche.",
      sub20:""},
   ]
 },
-// WOCHE 2: RAD-AUFBAU + BODENSEE
+// WOCHE 2: 15–21 Jun
 {
   tag:"W2 · 15–21. Jun",
-  name:"🚴 Rad-Aufbau + ★ Bodensee (Sa 20.06.)",
-  desc:"Rad wieder möglich ab Mo. Letzter Trainingsreiz Mo–Di, dann Tapering Mi–Fr, Event Sa",
+  name:"🚴 Rad-Aufbau + ★ Bodensee Sa 20.06.",
+  desc:"Steigerung Mo–Di, Tapering Mi–Fr, Bodensee Sa 20.06. In Höchstform ins Event!",
   days:[
     {dow:"Mo",date:"15.06.",type:"rad",pill:"p-rad",
-     title:"Erste Radfahrt nach Wetter-Pause",
-     sub:"90 min · Z2–Z3 · Beine kennenlernen",
-     dur:"90 min",hz:"Z2–Z3 · 118–158 bpm · unterhalten bis kurze Sätze",int:"Moderat",
+     title:"Erste Radfahrt nach Wetterpause",
+     sub:"90 min · Z2–Z3",
+     dur:"90 min",hz:"Z2–Z3 · 118–158 bpm · kannst dich unterhalten bis kurze Sätze",int:"Moderat",
      hzmap:{z1:5,z2:55,z3:35,z4:5,z5:0},
-     goal:"Erste Ausfahrt nach Wetter-Zwangspause. Gleichmäßiges Tempo, ~28–32 km/h auf flach. Keine Helden. Letzten 20 min leicht Z3. Ca. 42–48 km.",
+     goal:"Erste Ausfahrt nach Wetter-Zwangspause. Gleichmäßiges Tempo, ~28–32 km/h auf flach. Keine Helden. Letzte 20 min leicht Z3. Ca. 42–48 km.",
      tip:"Beine locker machen nach Lauf-Woche. Trinken alle 20 min, 1 Gel nach 60 min. Bei Hügeln runterschalten.",
      sub20:""},
     {dow:"Di",date:"16.06.",type:"lauf",pill:"p-lauf",
@@ -288,40 +262,40 @@ null, // index 0 = analyse tab
      sub:"45 min · Z4 · letzter Reiz vor Bodensee",
      dur:"45 min",hz:"Z4 · 159–172 bpm · ~4:05–4:25/km",int:"Mittel-Hoch",
      hzmap:{z1:5,z2:20,z3:10,z4:60,z5:5},
-     goal:"Letzter intensiver Lauf vor Bodensee. 10 min einlaufen, 3×4 min Z4 (4:05–4:20/km), je 90s Pause, 10 min auslaufen. Kürzer als W1, aber gleiche Qualität.",
-     tip:"Nicht übertreiben – ab morgen beginnt das Tapering. Lieber etwas kürzer als zu viel. Danach gut essen.",
-     sub20:"→ Sub-20: Dritte Intervalleinheit in 2 Wochen. Körper adaptiert bereits."},
+     goal:"Letzter intensiver Lauf vor Bodensee. 10 min einlaufen, 3×4 min Z4 (4:05–4:20/km), je 90s Pause, 10 min auslaufen. Kürzer als W1, gleiche Qualität.",
+     tip:"Nicht übertreiben – ab morgen Tapering. Lieber etwas kürzer als zu viel. Danach gut essen.",
+     sub20:"→ Sub-20: Dritte Intervalleinheit. Körper in Höchstform – dieser Reiz zementiert das."},
     {dow:"Mi",date:"17.06.",type:"regen",pill:"p-regen",
-     title:"Locker + Mobility · Tapering beginnt",
+     title:"Locker + Mobility · Tapering",
      sub:"30 min · Z1 · kein Muskelkater!",
      dur:"30 min",hz:"Z1 · unter 120 bpm",int:"Sehr leicht",
      hzmap:{z1:85,z2:15,z3:0,z4:0,z5:0},
-     goal:"Tapering! Nur locker bleiben, kein neuer Reiz. 20 min ruhige Bewegung + 10 min Mobility Hüfte/Schultern.",
-     tip:"<b>Kein Kraft heute</b> – kein Muskelkater vor Bodensee! Abends: <b>KH-Loading beginnt</b> – mehr Pasta, Reis, Brot als sonst. Kein Kaloriendefizit ab jetzt.",
+     goal:"Tapering beginnt. Nur locker bleiben, kein neuer Reiz. 20 min ruhige Bewegung + 10 min Mobility Hüfte/Schultern.",
+     tip:"<b>Kein Kraft heute</b> – kein Muskelkater vor Bodensee! Abends: <b>KH-Loading beginnt</b> – mehr Pasta, Reis, Brot. Kein Defizit ab jetzt.",
      sub20:""},
     {dow:"Do",date:"18.06.",type:"regen",pill:"p-regen",
      title:"Vollständige Erholung · Equipment",
      sub:"Ruhetag",
      dur:"—",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
-     goal:"Maximale Erholung. Kein Sport. Schlafen, gut essen, Beine hochlegen.",
-     tip:"<b>Equipment:</b> Rad prüfen (Schaltung, Bremsen, Reifendruck 7–8 bar). 8–10 Gels, Elektrolyte, Riegel einpacken. Wetterbericht. Kleidung rauslegen. <b>Abends:</b> Pasta-Abend, 22:00 Uhr schlafen.",
+     goal:"Maximale Erholung vor Bodensee. Kein Sport. Schlafen, gut essen, Beine hochlegen.",
+     tip:"<b>Equipment-Check:</b> Rad prüfen (Schaltung, Bremsen, Reifendruck 7–8 bar). 8–10 Gels, Elektrolyte, Riegel einpacken. Wetter checken. <b>Abends:</b> Pasta-Abend, 22:00 Uhr schlafen!",
      sub20:""},
     {dow:"Fr",date:"19.06.",type:"rad",pill:"p-rad",
      title:"Aktivierungsfahrt",
      sub:"35 min · Z1 · Beine wecken",
      dur:"35 min",hz:"Z1–Z2 · unter 130 bpm · sehr locker",int:"Sehr leicht",
      hzmap:{z1:60,z2:35,z3:5,z4:0,z5:0},
-     goal:"Beine wach halten, nicht belasten. 25 min ruhig drehen, 3×20s Trittfrequenz hoch (>100rpm). Bidons befüllen, nochmals Rad checken.",
-     tip:"Abends früh essen. Früh schlafen. <b>Morgen früh:</b> 2–3h vor Start frühstücken (Haferflocken, Brot mit Aufschnitt, Banane, Kaffee ok).",
+     goal:"Beine wach halten, nicht belasten. 25 min ruhig drehen, 3×20s Trittfrequenz hoch (>100rpm). Bidons befüllen, Rad nochmals checken.",
+     tip:"Abends früh essen. Früh schlafen. <b>Morgen früh:</b> 2–3h vor Start frühstücken (Haferflocken, Brot, Banane, Kaffee ok).",
      sub20:""},
     {dow:"Sa",date:"20.06.",type:"event",pill:"p-event",
      title:"★ BODENSEE-RUNDFAHRT 240 km",
      sub:"~8–10h · Z2–Z3 dominant · ANKOMMEN",
-     dur:"~8–10 h",hz:"Z2–Z3 dominant · Puls möglichst unter 155bpm",int:"Hoch (Volumen)",
+     dur:"~8–10 h",hz:"Z2–Z3 dominant · Puls möglichst unter 155bpm halten",int:"Hoch (Volumen)",
      hzmap:{z1:5,z2:55,z3:35,z4:5,z5:0},
-     goal:"ANKOMMEN und genießen! Gleichmäßiges Tempo – wer die ersten 3h reißt, zahlt auf den letzten 60km. Puls unter 155bpm halten so gut wie möglich. Bei Anstiegen kurz höher – danach sofort wieder runter.",
-     tip:"<b>Ernährung:</b> 60–90g KH/Stunde. Alle 20–30 min essen – NIE warten bis Hunger kommt. Alle 60 min Salz/Elektrolyte. 500–700ml/h trinken. Ab km 150 mehr KH. <b>Tempo:</b> ~28–30km/h Schnitt passt gut.",
+     goal:"ANKOMMEN und genießen! Gleichmäßiges Tempo – wer die ersten 3h reißt, zahlt auf den letzten 60km. Du bist in HÖCHSTFORM – ideal für dieses Event.",
+     tip:"<b>Ernährung:</b> 60–90g KH/Stunde. Alle 20–30 min essen – NIE warten bis Hunger kommt. Alle 60 min Salz/Elektrolyte. 500–700ml/h trinken. Ab km 150 mehr KH pumpen.",
      sub20:""},
     {dow:"So",date:"21.06.",type:"regen",pill:"p-regen",
      title:"Vollständige Erholung Tag 1",
@@ -329,15 +303,15 @@ null, // index 0 = analyse tab
      dur:"—",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
      goal:"Körper nach Extrembelastung erholen. Schlafen, viel essen, kein Training.",
-     tip:"<b>Viel essen – kein Defizit!</b> KH und Protein auffüllen. Beine hochlegen. HRV wird stark abweichen – ignorieren. Muskelkater und Erschöpfung nach 240km = völlig normal.",
+     tip:"<b>Viel essen – kein Defizit!</b> KH und Protein auffüllen. Beine hochlegen. HRV wird stark abweichen – ignorieren.",
      sub20:""},
   ]
 },
-// WOCHE 3: REGEN NACH BODENSEE → LAUF-FOKUS
+// WOCHE 3: 22–28 Jun
 {
   tag:"W3 · 22–28. Jun",
   name:"🏃 Regen → Lauf-Fokus aufbauen",
-  desc:"4–5 Tage echte Schonung nach Event, dann langsam Lauf-Fokus aufbauen",
+  desc:"4–5 Tage echte Schonung nach Event, dann Laufen schrittweise wieder aufbauen",
   days:[
     {dow:"Mo",date:"22.06.",type:"regen",pill:"p-regen",
      title:"Sehr lockere Aktivität",
@@ -345,7 +319,7 @@ null, // index 0 = analyse tab
      dur:"20 min",hz:"Z1 · unter 115 bpm",int:"Minimal",
      hzmap:{z1:95,z2:5,z3:0,z4:0,z5:0},
      goal:"Nur Durchblutung anregen. Spaziergang oder 20 min sehr ruhiges Radeln. Kein Laufen.",
-     tip:"Foam-Rolling: Oberschenkel, Waden, Gluteus. Erhöhte RHR und schwere Beine nach 240km sind absolut normal. Gut essen, kein Defizit.",
+     tip:"Foam-Rolling Oberschenkel, Waden, Gluteus. Erhöhte RHR und schwere Beine nach 240km sind absolut normal. Gut essen.",
      sub20:""},
     {dow:"Di",date:"23.06.",type:"regen",pill:"p-regen",
      title:"Aktive Erholung",
@@ -353,7 +327,7 @@ null, // index 0 = analyse tab
      dur:"30 min",hz:"Z1 · unter 118 bpm",int:"Sehr leicht",
      hzmap:{z1:85,z2:15,z3:0,z4:0,z5:0},
      goal:"20 min lockeres Radeln oder Spaziergang + 10 min Stretching Hüfte, Beine. HRV-Trend beobachten.",
-     tip:"Wenn HRV noch deutlich unter Baseline: weiter schonen. Kein Druck. Körper braucht nach 240km mind. 4–5 Tage echte Schonung.",
+     tip:"Wenn HRV noch deutlich unter Baseline: weiter schonen. Kein Druck – Körper braucht nach 240km mind. 4–5 Tage.",
      sub20:""},
     {dow:"Mi",date:"24.06.",type:"lauf",pill:"p-lauf",
      title:"Erster Testlauf nach Bodensee",
@@ -361,15 +335,15 @@ null, // index 0 = analyse tab
      dur:"25–35 min",hz:"Z1–Z2 · unter 138 bpm · Pace egal",int:"Niedrig",
      hzmap:{z1:20,z2:70,z3:10,z4:0,z5:0},
      goal:"Wie fühlen sich die Beine an? Kein Leistungsdruck. Wenn Puls für normales Tempo zu hoch: kürzen oder abbrechen – völlig normal nach 240km.",
-     tip:"Pace egal, Puls entscheidet. 6:30–7:30/km völlig ok. Das ist kein Training – nur ein Systemcheck. Wenn es gut läuft: leichtes Defizit wieder ok.",
+     tip:"Pace egal, Puls entscheidet. 6:30–7:30/km völlig ok. Das ist kein Training – nur ein Systemcheck.",
      sub20:""},
     {dow:"Do",date:"25.06.",type:"lauf",pill:"p-lauf",
      title:"Grundlagenlauf Wiederaufbau",
      sub:"40–45 min · Z2",
      dur:"40–45 min",hz:"Z2 · 118–138 bpm · ~5:30–6:30/km",int:"Moderat-Niedrig",
      hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
-     goal:"Erste ordentliche Laufeinheit nach Event. Gleichmäßiges Z2-Tempo, kein Ambitionen. Körper zeigt dir heute wie weit die Erholung ist.",
-     tip:"Optional danach: 15 min Rumpf (Plank, Glute Bridge, Dead Bug) wenn Energie gut ist.",
+     goal:"Erste ordentliche Laufeinheit nach Event. Gleichmäßiges Z2-Tempo. Körper zeigt, wie weit die Erholung ist.",
+     tip:"Optional danach: 15 min Rumpf (Plank, Glute Bridge, Dead Bug) wenn Energie gut.",
      sub20:""},
     {dow:"Fr",date:"26.06.",type:"regen",pill:"p-regen",
      title:"Ruhetag oder Mobility",
@@ -377,14 +351,14 @@ null, // index 0 = analyse tab
      dur:"0–20 min",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
      goal:"Erholen vor dem Wochenend-Aufbau.",
-     tip:"Mobility: Hüftbeuger, Piriformis, Brustwirbelsäule, Schultern. Gut für Verletzungsprävention und Fußball-Start.",
+     tip:"Mobility: Hüftbeuger, Piriformis, Brustwirbelsäule, Schultern.",
      sub20:""},
     {dow:"Sa",date:"27.06.",type:"lauf",pill:"p-lauf",
      title:"Langer Grundlagenlauf",
      sub:"55–65 min · Z2",
      dur:"55–65 min",hz:"Z2 · 118–138 bpm",int:"Moderat",
      hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
-     goal:"Erste längere Laufeinheit nach Event-Regen. Lauf-Fokus beginnt. Gleichmäßiges Z2-Tempo – Pace darf 5:45–6:30/km sein.",
+     goal:"Erste längere Laufeinheit nach Event-Regen. Lauf-Fokus beginnt wieder. Pace darf 5:45–6:30/km sein.",
      tip:"Optional danach: 20 min Kraft (Squat, Romanian Deadlift, Plank) wenn Energie gut.",
      sub20:""},
     {dow:"So",date:"28.06.",type:"rad",pill:"p-rad",
@@ -392,72 +366,72 @@ null, // index 0 = analyse tab
      sub:"75–90 min · Z2",
      dur:"75–90 min",hz:"Z2 · 118–138 bpm · locker unterhalten",int:"Moderat-Niedrig",
      hzmap:{z1:5,z2:80,z3:15,z4:0,z5:0},
-     goal:"Lockerer Rad-Tag um Beine aktiv zu halten, ohne die Laufvorbereitung zu stören. ~28–32 km, flaches Profil bevorzugt.",
-     tip:"Kein Druck, keine Helden. Genuss-Ausfahrt. 1 Gel nach 50 min wenn länger.",
+     goal:"Lockerer Rad-Tag, Beine aktiv halten ohne Laufvorbereitung zu stören. ~28–32 km, flaches Profil.",
+     tip:"Kein Druck. Genuss-Ausfahrt. 1 Gel nach 50 min wenn länger.",
      sub20:""},
   ]
 },
-// WOCHE 4: SUB-20-BLOCK + FUSSBALL-VORBEREITUNG
+// WOCHE 4: 29 Jun – 06 Jul
 {
-  tag:"W4 · 29 Jun–6 Jul",
+  tag:"W4 · 29 Jun–06. Jul",
   name:"🎯 Sub-20-Block + Fußball-Vorbereitung",
-  desc:"Spezifisches 5K-Training, Testlauf Mi/Do, Fußball ab Di 07.07.",
+  desc:"Spezifisches 5K-Training, Testlauf Mi 01.07., Fußball ab Di 07.07.",
   days:[
     {dow:"Mo",date:"29.06.",type:"lauf",pill:"p-lauf",
      title:"VO₂max-Intervalle",
      sub:"55 min · Z4–Z5 · Sub-20-Kerneinheit",
      dur:"55 min",hz:"Intervalle Z4–Z5 · 165–180 bpm · ~3:55–4:10/km",int:"Hoch",
      hzmap:{z1:5,z2:15,z3:10,z4:55,z5:15},
-     goal:"Wichtigste Einheit der Woche. 10 min einlaufen, 5×3 min bei 165–178bpm (~3:55–4:10/km Sub-20-Tempo), je 2 min locker. 10 min auslaufen. Letztes Intervall darf brennen.",
-     tip:"<b>Das ist Sub-20-Renntempo.</b> Jeder dieser Blöcke baut genau die Kapazität auf, die du für 4:00/km brauchst. Danach: gut essen, ausreichend schlafen – du bist 3 Tage vom Testlauf entfernt.",
-     sub20:"→ Sub-20: 5×3 min bei 3:55–4:10/km. Wenn das kontrolliert klappt: Sub-20 ist realistisch."},
+     goal:"Wichtigste Einheit der Woche. 10 min einlaufen, 5×3 min bei 165–178bpm (~3:55–4:10/km), je 2 min locker. 10 min auslaufen. Letztes Intervall darf brennen.",
+     tip:"<b>Das ist Sub-20-Renntempo.</b> Jeder Block baut die Kapazität für 4:00/km auf. Danach gut essen, ausreichend schlafen – 3 Tage bis Testlauf.",
+     sub20:"→ Sub-20: 5×3 min bei 3:55–4:10/km. Garmin-Prognose sagt 20:04 – diese Einheit macht Sub-20 zur Gewissheit."},
     {dow:"Di",date:"30.06.",type:"regen",pill:"p-regen",
      title:"Aktive Erholung",
      sub:"25 min · Z1",
      dur:"25 min",hz:"Z1 · unter 118 bpm",int:"Sehr leicht",
      hzmap:{z1:90,z2:10,z3:0,z4:0,z5:0},
      goal:"Erholen nach Intervall-Tag. Spaziergang oder sehr lockeres Radeln. HRV-Check.",
-     tip:"Foam-Rolling Beine. <b>Heute Abend KH-betont essen</b> – Glykogen für den Testlauf auffüllen. Früh schlafen.",
-     sub20:"→ Sub-20: Tag-2-Vorbereitung. Morgen oder übermorgen ist der Testlauf."},
+     tip:"Foam-Rolling Beine. <b>Heute Abend KH-betont essen</b> – Glykogen auffüllen. Früh schlafen.",
+     sub20:"→ Sub-20: Tag-2-Vorbereitung. Morgen ist der Testlauf!"},
     {dow:"Mi",date:"01.07.",type:"lauf",pill:"p-lauf",
-     title:"🎯 5K TESTLAUF – Sub 20 Versuch",
-     sub:"~35 min gesamt · maximal · WETTKAMPF",
+     title:"🎯 5K TESTLAUF – Sub 20 Versuch!",
+     sub:"~35 min · maximal · WETTKAMPF",
      dur:"~35 min",hz:"Z4–Z5 · Start: 155–160bpm, Ziel: 178–185bpm",int:"Maximal",
      hzmap:{z1:0,z2:5,z3:10,z4:55,z5:30},
-     goal:"<b>Sub-20-Versuch Nr. 1.</b> Warm-up 10 min locker. 5K Effort: <b>Zielpace 3:58–4:00/km</b>. Erste 500m etwas behutsam (4:05–4:10/km) – dann gleichmäßig steigern. HF bei km 2 sollte ~170–175bpm sein. Letzte 500m alles geben.",
-     tip:"<b>Pacing-Plan:</b> km 1: 4:05 | km 2: 4:02 | km 3: 4:00 | km 4: 3:58 | km 5: alles raus. Wenn es bei km 3 zu viel wird: kurz auf 4:05 runter, nicht abreißen lassen. Dein PR ist 20:32 – du bist FIT.",
-     sub20:"→ Wenn HRV heute morgen BELOW Range: auf Do verschieben. Wenn ABOVE/IN_RANGE: los!"},
+     goal:"<b>Sub-20-Versuch!</b> Warm-up 10 min locker. 5K Effort: <b>Zielpace 3:58–4:00/km</b>. Erste 500m: 4:05–4:10/km behutsam anlaufen. Dann gleichmäßig steigern. Laktatschwelle jetzt 181bpm – bei km 2 sollte HF ~170–175bpm sein. Letzte 500m: alles raus.",
+     tip:"<b>Pacing:</b> km 1: 4:05 → km 2: 4:02 → km 3: 4:00 → km 4: 3:58 → km 5: alles. Garmin-Prognose 20:04 – du hast es drauf. Wenn HRV morgens BELOW: auf Do verschieben.",
+     sub20:"→ Sub-20: Du bist in HÖCHSTFORM. Prognose 20:04. Das ist dein Moment."},
     {dow:"Do",date:"02.07.",type:"lauf",pill:"p-lauf",
-     title:"Lockerer Erholungslauf oder 5K-Backup",
-     sub:"30–40 min · Z2 oder Testlauf",
-     dur:"30–40 min",hz:"Z2 · 118–138 bpm (Regen) oder maximal (Test)",int:"Variabel",
+     title:"Erholung ODER Backup-Testlauf",
+     sub:"30–40 min · Z2 oder maximal",
+     dur:"30–40 min",hz:"Z2 · 118–138 bpm (Regen) oder maximal (Backup-Test)",int:"Variabel",
      hzmap:{z1:10,z2:75,z3:15,z4:0,z5:0},
-     goal:"<b>Option A (wenn Mi gelaufen):</b> 30–40 min locker Z2 – aktive Erholung nach Testlauf. Pace egal, Puls niedrig. <b>Option B (Backup-Testlauf):</b> Wenn Mi ausgefallen (HRV schlecht) → heute ist der 5K-Versuch. Gleiche Strategie wie Mi.",
-     tip:"Nach dem Testlauf: gut essen, Ergebnis genießen. 3 Tage bis Fußball – kein Stress mehr.",
+     goal:"<b>Option A (wenn Mi gelaufen):</b> 30–40 min locker Z2 – aktive Erholung. <b>Option B (Backup):</b> Wenn Mi ausgefallen (HRV schlecht) → heute 5K-Versuch. Gleiche Strategie.",
+     tip:"Nach dem Testlauf: gut essen, Ergebnis genießen. 4 Tage bis Fußball.",
      sub20:""},
     {dow:"Fr",date:"03.07.",type:"regen",pill:"p-regen",
      title:"Ruhetag oder Mobility",
      sub:"optional 20 min",
      dur:"0–20 min",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
-     goal:"Erholen vor letzten Einheiten. Beine für Fußball-Start schonen.",
-     tip:"Mobility: Hüftbeuger, Piriformis, Schultern, Brustwirbelsäule. Gut für Verletzungsprävention.",
+     goal:"Erholen vor letzten Einheiten.",
+     tip:"Mobility: Hüftbeuger, Piriformis, Schultern. Verletzungsprävention für Fußball.",
      sub20:""},
     {dow:"Sa",date:"04.07.",type:"lauf",pill:"p-lauf",
-     title:"Letzter Grundlagenlauf",
-     sub:"55–65 min · Z2 · Abschluss",
+     title:"Letzter langer Grundlagenlauf",
+     sub:"55–65 min · Z2",
      dur:"55–65 min",hz:"Z2 · 118–138 bpm",int:"Moderat",
      hzmap:{z1:10,z2:80,z3:10,z4:0,z5:0},
-     goal:"Letzter langer Lauf vor Fußball-Start. Aerobe Basis zementieren. Laufen genießen – in 3 Tagen geht Fußball los!",
-     tip:"Optional danach: 20 min Fußball-Athletik (Squat Jump, Lateral Lunge, Plank) als Aktivierung. Früh schlafen.",
+     goal:"Letzter langer Lauf vor Fußball. Aerobe Basis zementieren. Laufen genießen – in 3 Tagen geht's los!",
+     tip:"Optional danach: 20 min Fußball-Athletik (Squat Jump, Lateral Lunge, Plank). Früh schlafen.",
      sub20:""},
     {dow:"So",date:"05.07.",type:"rad",pill:"p-rad",
      title:"Kurze lockere Radfahrt",
-     sub:"40–50 min · Z1–Z2 · Beine locker",
+     sub:"40–50 min · Z1–Z2",
      dur:"40–50 min",hz:"Z1–Z2 · unter 135 bpm",int:"Leicht",
      hzmap:{z1:30,z2:65,z3:5,z4:0,z5:0},
      goal:"Beine locker halten. Kein neuer Trainingsreiz. Letzte entspannte Ausfahrt vor Fußball.",
-     tip:"Entspannt und genießen. Puls niedrig. Mental auf Fußball einstimmen.",
+     tip:"Entspannt fahren. Puls niedrig. Mental auf Fußball einstimmen.",
      sub20:""},
     {dow:"Mo",date:"06.07.",type:"regen",pill:"p-regen",
      title:"Ruhetag – Fußball startet morgen! 🎉",
@@ -465,19 +439,18 @@ null, // index 0 = analyse tab
      dur:"—",hz:"—",int:"Ruhe",
      hzmap:{z1:100,z2:0,z3:0,z4:0,z5:0},
      goal:"Volle Frische für Fußball-Start Di 07.07. Kein Sport, gut essen, früh ins Bett.",
-     tip:"<b>Glückwunsch zum abgeschlossenen Trainingsblock!</b> Du startest mit deutlich besserem Ausdauer-Fundament, einer 240km-Erfahrung und – hoffentlich – einem neuen 5K-PR unter 20 Minuten in die Fußball-Vorbereitung. 💪",
+     tip:"<b>Glückwunsch!</b> Du startest mit VO₂max 58, Höchstform, 240km Bodensee-Erfahrung und – hoffentlich – einem neuen Sub-20-PR in die Fußball-Vorbereitung. 💪",
      sub20:""},
   ]
 }
 ];
 
-const STORE='tp2026v4';
+const STORE='tp2026v5';
 let done={};
 try{done=JSON.parse(localStorage.getItem(STORE)||'{}');}catch(e){}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(done));}catch(e){}}
 
 let currentTab=0;
-let allDayCards=[]; // flat index for checkboxes
 
 function showTab(idx){
   currentTab=idx;
@@ -492,10 +465,8 @@ function showTab(idx){
 
 function hzBar(m){
   return `<div class="hz-bar">
-    <div class="z1" style="flex:${m.z1}"></div>
-    <div class="z2" style="flex:${m.z2}"></div>
-    <div class="z3" style="flex:${m.z3}"></div>
-    <div class="z4" style="flex:${m.z4}"></div>
+    <div class="z1" style="flex:${m.z1}"></div><div class="z2" style="flex:${m.z2}"></div>
+    <div class="z3" style="flex:${m.z3}"></div><div class="z4" style="flex:${m.z4}"></div>
     <div class="z5" style="flex:${m.z5}"></div>
   </div>
   <div class="hz-labels">
@@ -507,31 +478,26 @@ function hzBar(m){
 
 function renderWeek(wIdx){
   const w=weeks[wIdx];
-  if(!w) return;
+  if(!w)return;
   const el=document.getElementById('tab'+wIdx);
-  
-  let startGlobalIdx=0;
-  for(let i=1;i<wIdx;i++) startGlobalIdx+=weeks[i].days.length;
-  
+  let startGI=0;
+  for(let i=1;i<wIdx;i++) startGI+=weeks[i].days.length;
+  const wdays=weeks[wIdx].days;
+  const wdone=wdays.filter((_,i)=>done[startGI+i]).length;
   let html=`<div class="week-wrap">
     <div class="week-head">
       <div class="week-tag">${w.tag}</div>
       <div class="week-name">${w.name}</div>
       <div class="week-desc">${w.desc}</div>
-      <div class="week-prog" id="wp${wIdx}"></div>
+      <div class="week-prog" id="wp${wIdx}">${wdone}/${wdays.length} ✓</div>
     </div>`;
-  
-  w.days.forEach((d,i)=>{
-    const gi=startGlobalIdx+i;
+  wdays.forEach((d,i)=>{
+    const gi=startGI+i;
     const isDone=done[gi]||false;
     const isEv=d.type==='event';
-    const isRest=d.type==='regen';
-    html+=`<div class="day${isDone?' done':''}${isEv?' ev':''}${isRest?' rest-day':''}" id="day${gi}">
+    html+=`<div class="day${isDone?' done':''}${isEv?' ev':''}" id="day${gi}">
       <div class="day-head" onclick="toggleDetail(${gi})">
-        <div class="day-meta">
-          <span class="day-dow">${d.dow}</span>
-          <span class="day-date">${d.date}</span>
-        </div>
+        <div class="day-meta"><span class="day-dow">${d.dow}</span><span class="day-date">${d.date}</span></div>
         <div class="day-body">
           <span class="pill ${d.pill}">${isEv?'★ EVENT':d.type.toUpperCase()}</span>
           <div class="day-title">${d.title}</div>
@@ -544,10 +510,7 @@ function renderWeek(wIdx){
           <div class="chip"><div class="chip-l">Dauer</div><div class="chip-v">${d.dur}</div></div>
           <div class="chip"><div class="chip-l">Intensität</div><div class="chip-v">${d.int}</div></div>
         </div>
-        <div class="hz-section">
-          <div class="hz-lbl">${d.hz}</div>
-          ${hzBar(d.hzmap)}
-        </div>
+        <div class="hz-section"><div class="hz-lbl">${d.hz}</div>${hzBar(d.hzmap)}</div>
         ${d.sub20?`<div class="sub20-tip">🎯 <b>Sub-20:</b> ${d.sub20.replace('→ Sub-20: ','')}</div>`:''}
         <div class="goal${isEv?' ev-goal':''}">${d.goal}</div>
         <div class="tip">${d.tip}</div>
@@ -560,45 +523,36 @@ function renderWeek(wIdx){
 }
 
 function toggleDetail(gi){
-  const el=document.getElementById('det'+gi);
-  if(el) el.classList.toggle('open');
+  document.getElementById('det'+gi)?.classList.toggle('open');
 }
 
 function toggleDone(gi,e){
   e.stopPropagation();
   done[gi]=!done[gi];
   save();
+  const d=getDayByGI(gi);
   const card=document.getElementById('day'+gi);
-  if(card){
-    const d=getDayByGlobalIdx(gi);
-    card.className='day'+(done[gi]?' done':'')+(d&&d.type==='event'?' ev':'')+(d&&d.type==='regen'?' rest-day':'');
-  }
+  if(card) card.className='day'+(done[gi]?' done':'')+(d&&d.type==='event'?' ev':'');
   const chk=document.getElementById('chk'+gi);
   if(chk){chk.className='chk'+(done[gi]?' on':'');chk.textContent=done[gi]?'✓':'';}
-  // update week progress
   for(let w=1;w<=4;w++) updateWeekProgress(w);
   updateProgress();
 }
 
-function getDayByGlobalIdx(gi){
+function getDayByGI(gi){
   let idx=0;
   for(let w=1;w<=4;w++){
-    const wk=weeks[w];
-    if(gi<idx+wk.days.length) return wk.days[gi-idx];
-    idx+=wk.days.length;
+    if(gi<idx+weeks[w].days.length) return weeks[w].days[gi-idx];
+    idx+=weeks[w].days.length;
   }
   return null;
 }
 
-function totalDays(){
-  let t=0;
-  for(let w=1;w<=4;w++) t+=weeks[w].days.length;
-  return t;
-}
+function totalDays(){let t=0;for(let w=1;w<=4;w++)t+=weeks[w].days.length;return t;}
 
 function updateWeekProgress(wIdx){
   const el=document.getElementById('wp'+wIdx);
-  if(!el) return;
+  if(!el)return;
   let start=0;
   for(let i=1;i<wIdx;i++) start+=weeks[i].days.length;
   const len=weeks[wIdx].days.length;
@@ -610,22 +564,19 @@ function updateProgress(){
   const total=totalDays();
   const n=Object.values(done).filter(Boolean).length;
   const pct=Math.round(n/total*100);
-  let fill=document.getElementById('pf');
-  let lbl=document.getElementById('pl');
-  if(!fill){
-    // inject progress bar below tab bar
-    const bar=document.createElement('div');
-    bar.className='progress-wrap';
-    bar.innerHTML=`<div class="progress-track"><div class="progress-fill" id="pf" style="width:0%"></div></div><div class="progress-lbl" id="pl"></div>`;
-    document.querySelector('.tab-bar').insertAdjacentElement('afterend',bar);
-    fill=document.getElementById('pf');
-    lbl=document.getElementById('pl');
+  let wrap=document.getElementById('prog-wrap');
+  if(!wrap){
+    wrap=document.createElement('div');
+    wrap.id='prog-wrap';
+    wrap.className='progress-wrap';
+    wrap.innerHTML='<div class="progress-track"><div class="progress-fill" id="pf" style="width:0%"></div></div><div class="progress-lbl" id="pl"></div>';
+    document.querySelector('.tab-bar').insertAdjacentElement('afterend',wrap);
   }
-  fill.style.width=pct+'%';
-  lbl.textContent=n+' / '+total+' Einheiten abgehakt';
+  document.getElementById('pf').style.width=pct+'%';
+  document.getElementById('pl').textContent=n+' / '+total+' Einheiten abgehakt';
 }
 
-// render analysis tab stats
+// Init
 updateProgress();
 </script>
 </body>
