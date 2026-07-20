@@ -1,467 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Vorbereitungsplan Jul/Aug 2026</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101415">
+<title>Trainingsplan · 20.07.–17.08.2026</title>
 <style>
-:root{--bg:#f5f4f0;--card:#fff;--text:#1a1a1a;--muted:#666;--border:#e0ddd6;
---cl:#1a6eb5;--cl-bg:#e8f1fb;--cr:#b56e00;--cr-bg:#fdf0d8;
---cg:#1a7a4a;--cg-bg:#e5f5ed;--cev:#c0380a;--cev-bg:#fdeee8;
---ck:#4a2db5;--ck-bg:#f0ebfd;--cf:#0a6a7a;--cf-bg:#e0f2f4;
---cu:#b5387a;--cu-bg:#fbe8f2;--done-c:#1a7a4a;--done-bg:#e5f5ed}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5}
-header{background:#1a1a1a;color:#fff;padding:16px 16px 12px;position:sticky;top:0;z-index:100}
-header h1{font-size:17px;font-weight:600}
-header p{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
-.tabs{display:flex;gap:6px;padding:10px 12px 4px;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:7px 13px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;background:var(--card);color:var(--muted);transition:all .15s}
-.tab.on{background:var(--text);color:#fff;border-color:var(--text)}
-.prog-wrap{padding:8px 12px 0}
-.prog-track{background:var(--border);border-radius:6px;height:6px;overflow:hidden}
-.prog-fill{background:var(--cl);height:100%;border-radius:6px;transition:width .3s}
-.prog-lbl{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px 0}
-.sc{background:var(--card);border-radius:10px;padding:9px 10px;text-align:center;border:1px solid var(--border)}
-.sv{font-size:18px;font-weight:700;color:var(--cl)}
-.sl{font-size:10px;color:var(--muted);margin-top:1px}
-.bnr{margin:10px 12px 0;border-radius:12px;padding:12px 16px;color:#fff}
-.bnr h2{font-size:15px;font-weight:700;margin-bottom:4px}
-.bnr p{font-size:12px;opacity:.9;line-height:1.5}
-.ac{margin:10px 12px 0;background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden}
-.ach{padding:11px 14px 0;font-size:13px;font-weight:600}
-.acb{padding:6px 14px 12px;font-size:12px;color:var(--muted);line-height:1.7}
-.acb b{color:var(--text)}
-.ic{margin:10px 12px 0;background:var(--card);border-radius:10px;padding:10px 14px;border:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.8}
-.ic b{color:var(--text)}
-.lg{display:flex;flex-wrap:wrap;gap:8px;padding:8px 12px}
-.li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
-.ld{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-.ww{padding:0 12px 4px}
-.wh{padding:14px 4px 4px}
-.wt{display:inline-block;font-size:10px;font-weight:700;background:var(--text);color:#fff;border-radius:4px;padding:2px 7px;letter-spacing:.05em;margin-bottom:3px}
-.wn{font-size:14px;font-weight:600;margin-bottom:1px}
-.wd{font-size:12px;color:var(--muted)}
-.wp{font-size:11px;color:var(--muted);margin-top:2px}
-.day{background:var(--card);border-radius:12px;border:1.5px solid var(--border);margin:8px 0;overflow:hidden}
-.day.done{border-color:var(--done-c);background:var(--done-bg)}
-.day.is-ev{border-color:var(--cev);border-width:2px}
-.day.is-key{border-color:var(--ck);border-width:2px}
-.dh{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;cursor:pointer;user-select:none}
-.dm{display:flex;flex-direction:column;align-items:center;min-width:44px}
-.ddow{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.ddat{font-size:15px;font-weight:700}
-.db{flex:1;min-width:0}
-.pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:3px}
-.pl{background:var(--cl-bg);color:var(--cl)}
-.pr{background:var(--cr-bg);color:var(--cr)}
-.pg{background:var(--cg-bg);color:var(--cg)}
-.pev{background:var(--cev-bg);color:var(--cev)}
-.pk{background:var(--ck-bg);color:var(--ck)}
-.pf{background:var(--cf-bg);color:var(--cf)}
-.pu{background:var(--cu-bg);color:var(--cu)}
-.dt{font-size:14px;font-weight:600;line-height:1.3}
-.ds{font-size:12px;color:var(--muted);margin-top:1px}
-.ck{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-size:16px;transition:all .15s;background:var(--bg)}
-.ck.on{background:var(--done-c);border-color:var(--done-c);color:#fff}
-.dd{display:none;border-top:1px solid var(--border);padding:12px 14px 14px}
-.dd.open{display:block}
-.chips{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.chip{background:var(--bg);border-radius:8px;padding:7px 10px;flex:1;min-width:80px}
-.chl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
-.chv{font-size:13px;font-weight:600}
-.hzs{margin-bottom:10px}
-.hzl{font-size:11px;color:var(--muted);margin-bottom:4px}
-.hzb{display:flex;height:6px;border-radius:3px;overflow:hidden;gap:1px}
-.z1{background:#9fe1cb}.z2{background:#c0dd97}.z3{background:#fac775}.z4{background:#f0997b}.z5{background:#f09595}
-.hzn{display:flex;gap:1px;margin-top:3px}
-.hzn span{flex:1;font-size:9px;text-align:center}
-.pb{background:#e8f1fb;border:1px solid #a8c8f0;border-radius:8px;padding:10px 12px;font-size:12px;color:#1a4a8a;line-height:1.8;margin-bottom:8px}
-.pb b{color:#0a2a6a}
-.gb{background:var(--bg);border-left:3px solid var(--cl);border-radius:0 8px 8px 0;padding:10px 12px;font-size:13px;line-height:1.6;margin-bottom:8px}
-.gb.gev{border-color:var(--cev)}
-.gb.gkey{border-color:var(--ck)}
-.tb{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted);line-height:1.65}
-.tb b{color:var(--text)}
-.s2{background:var(--ck-bg);border:1px solid #c4b0f0;border-radius:8px;padding:10px 12px;font-size:12px;color:#3a1f8a;line-height:1.65;margin-bottom:8px}
-.hidden{display:none}
-footer{text-align:center;padding:20px 12px 36px;font-size:11px;color:#aaa}
+:root{color-scheme:dark;--bg:#0b0f10;--card:#141a1c;--ink:#f1f5f3;--muted:#a7b2af;--line:#2b3638;--bike:#4bd5c1;--bike-bg:#123a35;--strength:#b8a8ff;--strength-bg:#302858;--rest:#adc1b6;--rest-bg:#25312b;--trip:#ffb176;--trip-bg:#4a2c1b;--red:#ff7770;--green:#52d695;--shadow:0 8px 24px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+button{font:inherit}header{position:sticky;top:0;z-index:20;background:#080b0c;color:#fff;padding:14px 16px 10px;box-shadow:0 5px 18px rgba(0,0,0,.35)}
+header h1{font-size:17px;margin:0;font-weight:750}header p{font-size:11px;margin:2px 0 0;color:#aeb8b5}
+.tabs{display:flex;gap:7px;padding:11px 12px 4px;overflow:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:650;cursor:pointer}.tab.on{background:var(--bike);border-color:var(--bike);color:#071311}
+.page{display:none;max-width:780px;margin:auto;padding:8px 12px 32px}.page.on{display:block}
+.hero{background:linear-gradient(135deg,#123b38,#0c665d);color:#fff;border:1px solid #27756d;border-radius:16px;padding:18px;margin:4px 0 10px;box-shadow:var(--shadow)}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;opacity:.72}.hero h2{font-size:22px;line-height:1.18;margin:5px 0 8px}.hero p{font-size:13px;margin:0;color:#e1f4f0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stat,.box{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.stat{text-align:center;padding:10px 6px}.stat b{display:block;color:var(--bike);font-size:18px}.stat span{font-size:10px;color:var(--muted)}
+.box{padding:14px;margin:10px 0}.box h3{font-size:14px;margin:0 0 7px}.box p{font-size:12.5px;color:var(--muted);margin:5px 0}.box strong{color:var(--ink)}
+.callout{border-left:4px solid var(--bike);padding-left:11px}.warn{border-left-color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini{padding:12px}.mini b{display:block;font-size:12px}.mini span{font-size:11px;color:var(--muted)}
+.progress{margin:8px 0 0}.track{height:7px;background:#263031;border-radius:9px;overflow:hidden}.fill{height:100%;width:0;background:var(--bike);transition:.25s}.plabel{text-align:right;font-size:10px;color:#b9c5c2;margin-top:3px}
+.weekhead{padding:8px 3px 2px}.weekhead h2{font-size:17px;margin:0}.weekhead p{font-size:12px;color:var(--muted);margin:3px 0}
+.day{background:var(--card);border:1.5px solid var(--line);border-radius:13px;margin:9px 0;overflow:hidden;box-shadow:var(--shadow)}.day.done{border-color:var(--green);background:#12291f}
+.dayhead{display:flex;gap:11px;align-items:center;padding:12px;cursor:pointer;user-select:none}.date{min-width:47px;text-align:center}.date small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:800}.date b{font-size:15px}.main{flex:1;min-width:0}.pill{display:inline-block;border-radius:999px;padding:2px 8px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.bike{background:var(--bike-bg);color:var(--bike)}.strength{background:var(--strength-bg);color:var(--strength)}.rest{background:var(--rest-bg);color:var(--rest)}.trip{background:var(--trip-bg);color:var(--trip)}
+.title{font-weight:700;font-size:14px;line-height:1.3;margin-top:3px}.sub{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.check{width:32px;height:32px;border:2px solid var(--line);background:var(--bg);border-radius:50%;display:grid;place-items:center;font-weight:800;cursor:pointer;flex:none}.check.on{background:var(--green);border-color:var(--green);color:#fff}
+.detail{display:none;border-top:1px solid var(--line);padding:12px 14px 14px}.detail.open{display:block}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}.chip{background:var(--bg);border-radius:8px;padding:6px 9px;font-size:11px}.detail p{font-size:12.5px;margin:7px 0;color:var(--muted)}.detail b{color:var(--ink)}
+.zones{background:var(--bike-bg);color:#b9eee5;border-radius:9px;padding:9px 10px;font-size:11.5px;margin:8px 0}.toe{background:#34271b;border-radius:9px;padding:9px 10px;font-size:11.5px;color:#f2c79d}.search{background:var(--strength-bg);border-radius:9px;padding:9px 10px;font-size:11.5px;color:#ddd6ff;margin:8px 0}.simple{font-size:12px;color:var(--muted);margin:8px 0 0;padding-left:18px}.simple li{margin:4px 0}
+.legend{font-size:11px;color:var(--muted);padding:5px 2px}.foot{text-align:center;color:#929997;font-size:10px;padding:14px 10px 35px}
+@media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.hero h2{font-size:20px}.page{padding-left:10px;padding-right:10px}.dayhead{padding:11px 10px}}
+@media print{header,.tabs,.check{display:none!important}.page{display:block!important;max-width:none;padding:0}.hero,.box,.day{box-shadow:none;break-inside:avoid}.detail{display:block}.page:not(#overview){page-break-before:always}}
 </style>
 </head>
 <body>
-<header>
-  <h1>⚽ Vorbereitungsplan Jul / Aug 2026</h1>
-  <p>06. Jul – 23. Aug · 🎯 Versuch A So 02.08 · 🏖️ Griechenland 07–17.08 · 🎯 Versuch B Do 13.08 · ⚽ Rundenstart So 23.08</p>
-</header>
-<div class="tabs">
-  <button class="tab on" onclick="showTab(0)">Info & Strategie</button>
-  <button class="tab" onclick="showTab(1)">W1 · 06–12 Jul</button>
-  <button class="tab" onclick="showTab(2)">W2 · 13–19 Jul</button>
-  <button class="tab" onclick="showTab(3)">W3 · 20–26 Jul</button>
-  <button class="tab" onclick="showTab(4)">W4 · 27 Jul–2 Aug</button>
-  <button class="tab" onclick="showTab(5)">W5 · 03–09 Aug</button>
-  <button class="tab" onclick="showTab(6)">W6 · 10–16 Aug</button>
-  <button class="tab" onclick="showTab(7)">W7 · 17–23 Aug</button>
-</div>
+<header><h1>🚴 Trainingsblock · Sommer 2026</h1><p>20. Juli – 17. August · Rad + Oberkörper · Griechenland 07.–17.08.</p><div class="progress" aria-label="Trainingsfortschritt"><div class="track"><div id="fill" class="fill"></div></div><div id="plabel" class="plabel">0 von 29 Tagen erledigt</div></div></header>
+<nav class="tabs" aria-label="Planabschnitte">
+  <button class="tab on" data-tab="overview">Übersicht</button>
+  <button class="tab" data-tab="w1">W1 · 20–26 Jul</button>
+  <button class="tab" data-tab="w2">W2 · 27 Jul–02 Aug</button>
+  <button class="tab" data-tab="w3">W3 · 03–09 Aug</button>
+  <button class="tab" data-tab="w4">W4 · 10–16 Aug</button>
+  <button class="tab" data-tab="w5">17. Aug</button>
+</nav>
 
-<div id="t0">
-  <div class="bnr" style="background:linear-gradient(135deg,#1a3d6e,#2a6eb5);margin-top:10px">
-    <h2>🔁 Neue Phase: Fußball führt, Laufen ergänzt</h2>
-    <p>Ab Di 07.07. sind Fußballtraining und Testspiele 3–4 intensive Reize pro Woche. Der Laufplan legt <b>keine zweite Intensitätsschicht</b> obendrauf: eine Qualitätseinheit pro Woche (Sonntag), Rest locker B2. Zwei Sub-20-Fenster: <b>So 02.08. Bahn Freudenstadt</b> (Plan A) und <b>Do 13.08. Nafplio</b> (Plan B, nur falls nötig).</p>
+<main id="overview" class="page on">
+  <section class="hero"><div class="eyebrow">Aktueller Stand · 20.07.2026</div><h2>Fit genug für einen echten Trainingsblock – nur ohne Stoßbelastung.</h2><p>Der linke mittlere Zeh ist unverschoben gebrochen. Radfahren ist ärztlich erlaubt, solange es funktioniert. Deshalb ersetzt viel kontrolliertes Rad aktuell Fußball und Laufen; Oberkörper und Rumpf bleiben regelmäßig dabei.</p></section>
+  <div class="stats">
+    <div class="stat"><b>7,1 h</b><span>Ø Training/Woche · letzte 12 W.</span></div>
+    <div class="stat"><b>12,6 h</b><span>Training · letzte 7 Tage</span></div>
+    <div class="stat"><b>50</b><span>Readiness · moderat</span></div>
+    <div class="stat"><b>44</b><span>Ruhepuls · bpm</span></div>
+    <div class="stat"><b>57</b><span>VO₂max Laufen</span></div>
+    <div class="stat"><b>197</b><span>höchste HF · 12 W.</span></div>
   </div>
-
-  <div class="sg" style="margin-top:8px">
-    <div class="sc"><div class="sv">198</div><div class="sl">HFmax neu (manuell setzen!)</div></div>
-    <div class="sc"><div class="sv">&lt;96s</div><div class="sl">Ø Rundenzeit für Sub-20</div></div>
-    <div class="sc"><div class="sv">2</div><div class="sl">Versuchsfenster</div></div>
+  <section class="box callout"><h3>Der Plan in einem Satz</h3><p><strong>Bis zum Urlaub:</strong> 3–4 Radeinheiten und 2–3 kurze Kraft-/Rumpfreize pro Woche. <strong>Im Urlaub:</strong> 30–45 Minuten Oberkörper oder Core, Pool optional. Keine Lauf-, Fußball- oder Sprungbelastung während dieses Plans.</p></section>
+  <div class="grid2">
+    <div class="box mini"><b>W1 · Rad 6:15 h</b><span>Kraft/Core 2:10 h · Einstieg in den Radblock</span></div>
+    <div class="box mini"><b>W2 · Rad 8:15 h</b><span>Kraft/Core 2:25 h · größte Umfangswoche</span></div>
+    <div class="box mini"><b>W3 · Rad 5:30 h</b><span>Kraft/Core 2:15 h · dann Reise</span></div>
+    <div class="box mini"><b>W4 · kein Rad verfügbar</b><span>3 Kraft + 2 Core/Mobility · Pool optional</span></div>
   </div>
-  <div class="sg" style="margin-top:8px">
-    <div class="sc"><div class="sv">So 19.07</div><div class="sl">HFmax-Feldtest</div></div>
-    <div class="sc"><div class="sv">So 26.07</div><div class="sl">Benchmark 3×1000</div></div>
-    <div class="sc"><div class="sv">So 02.08</div><div class="sl">🎯 Versuch A</div></div>
-  </div>
-
-  <div class="ac" style="margin-top:10px">
-    <div class="ach">🔍 Analyse: Warum die zwei Versuche gescheitert sind</div>
-    <div class="acb">
-      <b>Fail 1 (Fr 03.07., Bahn):</b> Plan war km 1 in 4:05 – gelaufen bist du 3:57 (erste 200 m in 3:53er-Pace). HF nach km 1: <b>182 statt 170</b> wie beim 20:33-Lauf im Mai. Die 190 stand nach 8 Minuten statt nach 13. Anaerobe Reserve in der ersten Hälfte verbrannt → Abbruch bei 2,8 km. Dein bekanntes Muster: 6–8 s/km schneller als geplant.<br><br>
-      <b>Fail 2 (So 05.07., Laufband Schruns):</b> Band-Pace real ~4:02–4:03 – fast Zielpace. Aber HF von Minute 1 an 5–8 bpm über dem Rekordlauf, ab Minute 12 bei 195–196. Ursachen: zweiter Maximalversuch in 48 h, Laufband ohne Luftstrom (+5–10 bpm thermischer Drift), kaum Warmup. Der Lauf war vor dem Start entschieden – <b>keine Formfrage</b>.<br><br>
-      <b>Konsequenz für Versuch A:</b> Bahn statt GPS, Rundenzeiten statt Uhr-Pace, erster km muss sich zu langsam anfühlen. Und: ausgeruht, kühler Morgen, draußen.
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">❤️ HFmax & Prognose: die Strategie</div>
-    <div class="acb">
-      <b>Schritt 1 – sofort (Mo 06.07.):</b> HFmax in Garmin manuell auf <b>198</b> setzen. 12 Monate Daten mit All-time-Max 197 inkl. zweier nahezu maximaler 5K-Efforts sind eine bessere Grundlage als Garmins Schätzung (202). Kein Test heute: nach zwei Maximalversuchen in 72 h drückt die Ermüdung die erreichbare Max-HF um 3–6 bpm – der Test würde falsch-niedrig ausfallen.<br><br>
-      <b>Schritt 2 – So 19.07.:</b> Feldtest ausgeruht als Berganlauf-Protokoll (Details in W2). Höchste gemessene HF + 1–2 bpm = HFmax. Ergebnis nur eintragen, wenn es von 198 abweicht.<br><br>
-      <b>Schritt 3 – Prognose neu lesen:</b> Nach der HFmax-Korrektur wird die Prognose Richtung 19:30–19:50 sinken – das ist <b>Kalibrierung, keine Formverschlechterung</b>. In W1–W2 dippen VO₂max und Prognose zusätzlich durch die Fußball-Ermüdung: ignorieren. Ab jetzt gilt: Die Prognose ist eine Trendanzeige. Ob du bereit bist, sagt der Benchmark am 26.07. Ob es klappt, entscheidet die Rundendisziplin am 02.08.
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">🗓️ Warum diese zwei Fenster (und kein drittes)</div>
-    <div class="acb">
-      <b>Versuch A · So 02.08. Freudenstadt:</b> 4 Wochen Wiederaufbau, Mini-Taper ab Do, kühler deutscher Morgen (~13–17 °C um 8 Uhr), Bahn mit Rundenzeiten-Pacing. Beste Bedingungen – aber mit Fußball-Grundermüdung.<br><br>
-      <b>Versuch B · Do 13.08. Nafplio:</b> Komplett frische Beine (kein Fußball seit 5 Tagen, Urlaubsschlaf). Aber: auch um 6:30 Uhr meist 26–28 °C → kostet realistisch 15–30 s auf einem harten 5K. Deshalb Backup, nicht Plan A. Wenn A klappt, ist B ein Genusslauf.<br><br>
-      <b>Danach wird's eng:</b> Ab 23.08. Rundenspiele sonntags + Training Di/Do. Einziger Qualitäts-Slot wäre Freitag, 48 h vorm Spiel – kein Umfeld für einen Maximalversuch. Das nächste echte Fenster wäre erst eine spielfreie Woche im Herbst.
-    </div>
-  </div>
-
-  <div class="ac">
-    <div class="ach">📐 Pace & HF Referenz</div>
-    <div class="acb">
-      <b>PACE (flach):</b> Schwelle 4:14 · Race-pace 4:00 · Steigerungen 3:40–3:45<br>
-      <b>HF:</b> B2 lockere Läufe 124–143 bpm · Schwelle 181 bpm · <b>HFmax neu: 198</b> · RHR 46 bpm<br>
-      <b>Bahn-Referenz Sub-20:</b> Ø unter 96 s pro 400-m-Runde · 12,5 Runden<br>
-      <b>Rundenschema Versuch A:</b> R1–3: 98 s → R4–6: 96–97 s → R7–11: 95–96 s → R12+: frei<br>
-      <b>km-Schema Versuch B (GPS):</b> km1 4:05 → km2 4:02 → km3 4:00 → km4 3:58 → km5 alles
-    </div>
-  </div>
-
-  <div class="ic">
-    <b>Annahmen im Plan (bitte prüfen):</b> Abflug Fr 07.08. (Fußballtraining entfällt), Rückreise Mo 17.08., Stationen Athen → Nafplio (ab 09.08.) → Stoupa (ab 14.08.). Pokal-Quali 12.08. und 1. Pokalrunde 16.08. fallen in den Urlaub → ohne dich. Testspiel Mi 29.07. auswärts: wenn möglich nicht die vollen 90 min. <b>Was mir noch helfen würde:</b> genaue Flugzeiten am 07./17.08. und ob du beim Blitzturnier 11.07. beide Spiele voll spielst.
-  </div>
-
-  <div class="lg">
-    <div class="li"><div class="ld" style="background:var(--cf)"></div>⚽ Fußball</div>
-    <div class="li"><div class="ld" style="background:var(--cl)"></div>Laufen</div>
-    <div class="li"><div class="ld" style="background:var(--cg)"></div>Ruhe/Regen</div>
-    <div class="li"><div class="ld" style="background:var(--ck)"></div>⚡ Schlüssel</div>
-    <div class="li"><div class="ld" style="background:var(--cev)"></div>🎯 Versuch</div>
-    <div class="li"><div class="ld" style="background:var(--cu)"></div>🏖️ Urlaub/Reise</div>
-  </div>
-</div>
-
-<div id="t1" class="hidden"></div>
-<div id="t2" class="hidden"></div>
-<div id="t3" class="hidden"></div>
-<div id="t4" class="hidden"></div>
-<div id="t5" class="hidden"></div>
-<div id="t6" class="hidden"></div>
-<div id="t7" class="hidden"></div>
-
-<footer>Tippe auf Tag für Details · Kreis = abhaken · Fortschritt lokal gespeichert</footer>
+  <section class="box"><h3>Warum das Körperfett-Ziel so angegangen wird</h3><p>Der zusätzliche Energieverbrauch kommt vor allem über <strong>lange, lockere Radeinheiten</strong> – nicht über tägliche Maximalbelastung. Kraftreize und proteinreiche Mahlzeiten unterstützen den Muskelerhalt. Kein aggressives Kaloriendefizit: Bei 67 kg auf 1,79 m sind ungefähr 65 kg ein mögliches Nebenresultat, aber Training, Heilung und Körperkomposition sind wichtiger als die Tageszahl auf der Waage.</p></section>
+  <section class="box"><h3>Radsteuerung</h3><p><strong>Garmin-Radzonen:</strong> Z1 98–116 · Z2 117–136 · Z3 137–155 · Z4 156–175 · Z5 ab 176 bpm. Auf dem Rad gilt immer zusätzlich: locker = ganze Sätze; Tempo = kurze Sätze; RPE schlägt eine unplausible HF. Keine Wattvorgaben.</p><p>Überwiegend sitzen, normal bis leicht treten. Der Zeh darf währenddessen und am nächsten Morgen nicht schlechter sein.</p></section>
+  <section class="box"><h3>HFmax: testen?</h3><p><strong>Garmin-Messwert:</strong> In den 12 betrachteten Wochen wurden bis zu 197 bpm aufgezeichnet. Die in Garmin hinterlegte HFmax-Schätzung war über den MCP nicht verfügbar. Deine tatsächliche HFmax ist damit mindestens so hoch wie ein verlässlich gemessener Wert – eine Altersformel ist dafür nur grob.</p><p><strong>Mein Vorschlag:</strong> Jetzt keinen Lauf-HFmax-Test. Ein Radtest liefert außerdem eine radbezogene, nicht automatisch eine Lauf-HFmax. Wenn du nach der Zehheilung wirklich exakt kalibrieren willst, ist ein überwachter Leistungs-/Belastungstest die sauberste Variante. Ein eigener maximaler Radtest kommt erst infrage, wenn hartes Pedalieren komplett beschwerdefrei ist und keine Belastungswarnzeichen bestehen; er ersetzt dann eine Tempoeinheit, kommt nie zusätzlich obendrauf.</p></section>
+  <section class="box warn callout"><h3>Eine einfache Zeh-Regel</h3><p><strong>Fahren:</strong> Schuh passt, Gangbild wird nicht schlechter, Pedalieren schmerzt höchstens minimal und die Schwellung nimmt nicht zu. <strong>Abbrechen:</strong> zunehmender Schmerz, mehr Schwellung, Hinken, Taubheit/Kribbeln, Verfärbung oder schlechterer Folgemorgen. Dann keine weitere Fußbelastung und ärztlich rückfragen. Garmin ist keine medizinische Freigabe.</p></section>
+</main>
+<section id="w1" class="page"></section><section id="w2" class="page"></section><section id="w3" class="page"></section><section id="w4" class="page"></section><section id="w5" class="page"></section>
+<div class="foot">Tag antippen für Kurzdetails · Kreis = erledigt · Fortschritt bleibt lokal auf diesem Gerät gespeichert</div>
 
 <script>
-const W=[null,
-// WOCHE 1: Mo 06 – So 12 Jul
-{tag:"W1 · Mo 06–So 12. Jul",name:"⚽ Fußball-Wiedereinstieg · heil durchkommen",desc:"Keine Laufqualität. Nach der Sommerpause ist das Verletzungsrisiko (Adduktoren, hintere Kette) am höchsten.",days:[
-{dow:"Mo",dat:"06.07.",t:"rg",p:"pg",ti:"Vollständige Ruhe + HFmax auf 198 setzen",su:"Kein Training · Garmin-Einstellung ändern",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Zwei Maximalversuche in 72 h liegen hinter dir. Heute passiert die Reparatur – und die eine Aufgabe: HFmax in Garmin manuell auf 198 setzen (Einstellungen → Benutzerprofil → Herzfrequenz).",
-tp:"<b>Kein HFmax-Test heute!</b> Ermüdet erreichst du die echte Max nicht – der Wert wäre falsch-niedrig und der Test damit wertlos. Der saubere Feldtest kommt ausgeruht am So 19.07."},
-{dow:"Di",dat:"07.07.",t:"fb",p:"pf",ti:"⚽ Training + Spielersitzung",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Wiedereinstieg. Erste Einheit nach der Pause – Antritte und Richtungswechsel dosieren, nicht jeden Sprint voll mitgehen.",
-tp:"Vorher 10 min sauber aufwärmen (Adduktoren, hintere Kette aktivieren). Danach: Massagepistole lateral Wade + Tibialis anterior wie gehabt."},
-{dow:"Mi",dat:"08.07.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Zweiter Fußballreiz. Muskelkater von Di ist normal – Belastung weiter dosieren.",
-tp:"Tagsüber viel trinken, abends KH + Protein. Zwei Abendeinheiten hintereinander = Schlaf ist heute der wichtigste Trainingsfaktor."},
-{dow:"Do",dat:"09.07.",t:"l",p:"pl",ti:"Lockerer B2-Lauf",su:"30–35 min · B2 · rein nach HF",dur:"30–35min",hz:"HF: B2 · 124–143bpm",it:"Niedrig",bz:{b1:15,b2:80,b3:5,b4:0,b5:0},
-pa:"~5:40–6:20/km · wenn HF >143 → langsamer",
-go:"Aktive Erholung zwischen den Fußballblöcken. Läuferbeine nicht einschlafen lassen, aber null Intensität – die liefert der Fußball diese Woche zur Genüge.",
-tp:"Wenn die Beine von Di/Mi schwer sind: 25 min reichen. Radpendeln zählt diese Woche als Grundlage mit."},
-{dow:"Fr",dat:"10.07.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Letzter Reiz vor dem Blitzturnier. Wenn der Trainer es zulässt: eher technisch als voll reinhalten.",
-tp:"Abends KH-betont essen – morgen zwei Spiele."},
-{dow:"Sa",dat:"11.07.",t:"fb",p:"pf",ti:"⚽ Blitzturnier Leidringen",su:"16:00 SpVgg Leidringen – SGM · 17:15 Rexingen/Dettingen/Betra – SGM",dur:"2 Spiele",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Erster Wettkampfreiz der Vorbereitung. Zwei Spiele kurz hintereinander = hohe Sprintdichte – das ist dein Intervalltraining diese Woche.",
-tp:"Zwischen den Spielen: trinken, was Kleines essen, warm bleiben. Danach Cooldown + Massagepistole."},
-{dow:"So",dat:"12.07.",t:"rg",p:"pg",ti:"Ruhe oder lockeres Rad",su:"0–60 min · B1–B2 · rein regenerativ",dur:"0–60min",hz:"HF: unter 143bpm",it:"Sehr leicht",bz:{b1:60,b2:38,b3:2,b4:0,b5:0},pa:"lockeres Kurbeln, flach",
-go:"Nach dem Turnier: Beine ausschütteln oder komplett ruhen – beides richtig. Woche 1 Ziel erreicht, wenn du ohne Zwicken durchgekommen bist.",
-tp:"Kurzer Body-Check: Adduktoren, Leiste, hintere Oberschenkel. Irgendwas auffällig → nächste Woche Do-Lauf streichen statt durchziehen."},
+const weeks=[
+{id:'w1',title:'Woche 1 · 20.–26. Juli',desc:'Radumfang aufbauen, ohne direkt die jüngste 12,6-h-Woche zu kopieren.',days:[
+['Mo','20.07.','strength','Brust · Schultern · Trizeps','35 min · RPE 6','Ein Homeworkout für Brust, Schultern und Armrückseite; Übungen kniend, sitzend oder liegend anpassen.','Krafttraining','Kein Fußdruck und keine Liegestütze auf den Zehen.','35 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
+['Di','21.07.','bike','Grundlage Rad','75 min · RPE 3–4','15 min locker · 50 min Z2 · 10 min locker. Ganze Sätze sprechen können.','Radfahren','Z2 117–136 bpm. Bei Zehreaktion: 40 min sehr locker oder Brust/Schultern/Trizeps 30 min.'],
+['Mi','22.07.','strength','Rücken · Schultern · Bizeps','40 min · RPE 6–7','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite; bei Bedarf Wasserflaschen oder einen Rucksack verwenden.','Krafttraining','Sitzende, kniende oder liegende Varianten wählen.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
+['Do','23.07.','bike','Rad Tempo 3 × 10','85 min · RPE 6','20 min locker · 3 × 10 min Z3 mit 5 min locker · 10 min ausrollen.','Radfahren','Z3 137–155 bpm; kurze Sätze möglich. Alles sitzend, kein Sprint.'],
+['Fr','24.07.','rest','Bauch · Rumpf · Mobility','35 min · RPE 3–4','Ein ruhiges Homeworkout für Bauch, seitlichen Rumpf und Beweglichkeit.','Yoga oder Krafttraining','Leichter Tag. Komplett fußfrei auf der Matte.','35 min Core Mobility Workout ohne Geräte no jumping'],
+['Sa','25.07.','bike','Lange lockere Ausfahrt','150 min · RPE 3–4','20 min locker · 115 min stabile Z2 · 15 min ausrollen. Flache, sichere Route.','Radfahren','Z2 117–136 bpm, gleichmäßig essen/trinken. Kürzer: 90 min. Fußfrei: Rücken und Arme 35 min.'],
+['So','26.07.','bike','Lockeres Rad + Bauch','65 + 20 min · RPE 2–3','65 min Z1/untere Z2, danach optional 20 min Bauch und Rumpf. Kein Tempo.','Radfahren + Krafttraining','Regeneration, ganze Sätze. Wenn müde: nur das Homeworkout oder komplett frei.','20 min Bauch Rumpf Workout ohne Geräte no jumping']
 ]},
-// WOCHE 2: Mo 13 – So 19 Jul
-{tag:"W2 · Mo 13–So 19. Jul",name:"⚽ Testspiel-Rhythmus + ⚡ HFmax-Feldtest So",desc:"Zwei Testspiele. Sonntag der ausgeruhte HFmax-Test – die Datengrundlage für alle Prognosen danach.",days:[
-{dow:"Mo",dat:"13.07.",t:"rg",p:"pg",ti:"Ruhe oder lockeres Rad",su:"0–40 min · B1",dur:"0–40min",hz:"HF: unter 130bpm",it:"Sehr leicht",bz:{b1:80,b2:20,b3:0,b4:0,b5:0},pa:"—",
-go:"Erholung nach der Einstiegswoche. Diese Woche kommen zwei Testspiele – Frische sammeln.",
-tp:"Mobility: Hüftbeuger, Piriformis, Waden."},
-{dow:"Di",dat:"14.07.",t:"fb",p:"pf",ti:"⚽ Testspiel SGM – SGM Dunningen I/Seedorf II",su:"19:00 Uhr",dur:"90min",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Erstes 90-min-Testspiel. Hohe Sprint- und Antrittsdichte – zählt als harte Einheit der Woche.",
-tp:"Gutes Warmup ist Pflicht. Danach Regenerationsroutine wie gehabt."},
-{dow:"Mi",dat:"15.07.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Training am Tag nach dem Testspiel – Belastung nach Gefühl dosieren.",
-tp:"Wenn schwere Beine: dem Trainer sagen und Umfänge reduzieren. Do-Lauf hat sonst keinen Wert."},
-{dow:"Do",dat:"16.07.",t:"l",p:"pl",ti:"B2-Lauf + Steigerungen",su:"35–40 min B2 + 4×20s Steigerungen",dur:"~40min",hz:"HF: B2 · 124–143bpm · Steigerungen nach Gefühl",it:"Niedrig",bz:{b1:12,b2:78,b3:6,b4:3,b5:1},
-pa:"<b>35 min</b> @ ~5:40–6:20/km (B2)<br><b>4×20s Steigerungen</b> @ ~3:45/km am Ende · Gehpausen dazwischen",
-go:"Grundlage halten + neuromuskulär wach bleiben. Die Steigerungen sind auch die Generalprobe fürs Anlaufen beim Feldtest So.",
-tp:"Steigerungen auf flachem, sauberem Untergrund. Sauber hochbeschleunigen, nicht aus dem Stand sprinten."},
-{dow:"Fr",dat:"17.07.",t:"fb",p:"pf",ti:"⚽ Testspiel SGM – SV Spaichingen",su:"19:00 Uhr",dur:"90min",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Zweites Testspiel der Woche. Danach beginnt die 40-h-Erholung für den HFmax-Test am Sonntag.",
-tp:"Nach dem Spiel: KH auffüllen, früh schlafen. Sa komplett frei halten."},
-{dow:"Sa",dat:"18.07.",t:"rg",p:"pg",ti:"Vollständige Ruhe",su:"Kein Training · Vorbereitung Feldtest",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Maximale Frische für morgen. Der HFmax-Test funktioniert nur ausgeruht – genau das war das Problem an der Montag-Idee.",
-tp:"Hügel für morgen aussuchen: 4–6 % Steigung, ~300–400 m am Stück, z. B. eine deiner Rad-Pendelrampen. Kein Alkohol, früh schlafen."},
-{dow:"So",dat:"19.07.",t:"k",p:"pk",key:1,ti:"⚡ HFmax-Feldtest (Berganläufe)",su:"~35 min gesamt · 3 Berganläufe, letzter all-out",dur:"~35min",hz:"HF-Spitze zählt · keine Pace-Vorgabe",it:"Maximal (kurz)",bz:{b1:20,b2:30,b3:15,b4:15,b5:20},
-pa:"<b>Warm-up:</b> 15 min locker progressiv + 3×15s Steigerungen<br><b>Anlauf 1:</b> 2 min bergauf zügig (gefühlt 8/10) · zurücktraben<br><b>Anlauf 2:</b> 2 min bergauf hart (9/10) · zurücktraben<br><b>Anlauf 3:</b> 2 min bergauf ALL-OUT + Schlusssprint 15–20s<br><b>Cool-down:</b> 10 min sehr locker",
-go:"Höchste HF im dritten Anlauf (meist in den Sekunden NACH dem Schlusssprint) + 1–2 bpm = deine reale HFmax. Erwartung: 197–200. Bestätigt der Test die 198, bleibt alles wie eingestellt.",
-tp:"<b>Brustgurt falls vorhanden</b> – optische Messung hinkt bei Sprints 5–10s hinterher, deshalb HF-Verlauf nach dem Lauf in Garmin Connect prüfen statt live ablesen. Danach ist das HFmax-Thema abgehakt: eintragen, nie wieder dran zweifeln.",
-s2:"Ab jetzt rechnet Garmin VO₂max und Prognose mit der echten Basis. Prognose-Absacken danach = Kalibrierung, kein Formverlust."},
+{id:'w2',title:'Woche 2 · 27. Juli–2. August',desc:'Größter Radblock. Viel Umfang, aber nur eine echte Tempoeinheit.',days:[
+['Mo','27.07.','bike','Recovery Ride + Brust/Arme','45 + 35 min · RPE 2 / 6','45 min sehr locker; später oder direkt danach 35 min Brust, Schultern und Trizeps.','Radfahren + Krafttraining','Rad Z1 bis untere Z2. Wenn müde: nur das Homeworkout.','35 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
+['Di','28.07.','bike','Grundlage Rad','90 min · RPE 3–4','15 min locker · 65 min Z2 · 10 min ausrollen.','Radfahren','Z2 117–136 bpm, Gesprächstempo. Kürzer: 60 min.'],
+['Mi','29.07.','strength','Rücken · Schultern · Arme','45 min · RPE 7','Ein Homeworkout für Rücken, hintere Schultern und Bizeps; Wasserflaschen oder Rucksack sind optional.','Krafttraining','Keine stehende Vorfußarbeit.','45 min Rücken Schultern Arme Home Workout ohne Geräte no jumping'],
+['Do','30.07.','bike','Rad Tempo 4 × 8','90 min · RPE 6–7','20 min locker · 4 × 8 min obere Z3, je 4 min locker · ausrollen.','Radfahren','Z3 137–155; nur kurz bis niedrige Z4, falls RPE passt. Kein Sprint.'],
+['Fr','31.07.','rest','Bauch · Rumpf · Mobility','35 min · RPE 3','Ruhiges Bauch-/Rumpfvideo plus entspannte Beweglichkeit.','Yoga oder Krafttraining','Bewusst leichter Tag vor der langen Fahrt.','35 min Core Mobility Workout ohne Geräte no jumping'],
+['Sa','01.08.','bike','Lange Z2-Ausfahrt','210 min · RPE 3–4','20 min locker · 170 min Z2 · 20 min locker. Verpflegung ab Start.','Radfahren','Ganze Sätze, Z2 117–136. Kürzer: 135–150 min. Bei Zehreaktion: abbrechen.'],
+['So','02.08.','bike','Lockeres Rad + Brust/Bauch','60 + 30 min · RPE 2–3 / 6','60 min regenerativ; optional 30 min Brust, Arme und Bauch.','Radfahren + Krafttraining','Kein Nachholen, wenn Samstag verkürzt wurde. Bei Gesamtmüdigkeit kompletter Ruhetag.','30 min Brust Arme Bauch Home Workout ohne Geräte no jumping']
 ]},
-// WOCHE 3: Mo 20 – So 26 Jul
-{tag:"W3 · Mo 20–So 26. Jul",name:"⚡ Benchmark-Woche · Entscheidung für Versuch A",desc:"So 26.07.: 3×1000 m als Formcheck. Läuft der kontrolliert → Versuch A am 02.08. ist GO.",days:[
-{dow:"Mo",dat:"20.07.",t:"rg",p:"pg",ti:"Ruhe / Mobility",su:"optional 20 min Dehnen",dur:"0–20min",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Erholung nach dem Feldtest. Diese Woche ist die letzte volle Trainingswoche vor dem Versuch.",
-tp:"Hüftbeuger, Piriformis, Waden, lateral Wade (Supination)."},
-{dow:"Di",dat:"21.07.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Normale Fußballwoche. Volle Teilnahme.",
-tp:"—"},
-{dow:"Mi",dat:"22.07.",t:"fb",p:"pf",ti:"⚽ Testspiel SGM – SC Lindenhof",su:"19:00 Uhr",dur:"90min",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Drittes Testspiel. Harte Einheit der Woche Nr. 1.",
-tp:"Regenerationsroutine danach – Do-Lauf ist bewusst kurz gehalten."},
-{dow:"Do",dat:"23.07.",t:"l",p:"pl",ti:"Lockerer B2-Lauf",su:"30–35 min · B2",dur:"30–35min",hz:"HF: B2 · 124–143bpm",it:"Niedrig",bz:{b1:15,b2:80,b3:5,b4:0,b5:0},
-pa:"~5:40–6:20/km · rein nach HF",
-go:"Aktive Erholung. Nichts beweisen – der Beweis kommt Sonntag.",
-tp:"Wenn HF bei gleicher Pace auffällig hoch: Zeichen für Restermüdung vom Testspiel → 25 min reichen."},
-{dow:"Fr",dat:"24.07.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Letzter Fußballreiz vor dem Benchmark.",
-tp:"Nicht in Extra-Sprintduelle reinsteigern – Sonntag zählt."},
-{dow:"Sa",dat:"25.07.",t:"l",p:"pl",ti:"Aktivierung",su:"20 min B1 + 3×10s Steigerungen",dur:"20min",hz:"HF: B1 · unter 124bpm",it:"Sehr leicht",bz:{b1:85,b2:12,b3:2,b4:1,b5:0},
-pa:"<b>18 min</b> @ ~6:00–6:30/km<br><b>3×10s</b> @ ~4:00/km (Renntempo kurz fühlen)",
-go:"Beine wach machen für morgen, Ermüdung rauslaufen.",
-tp:"Nur diese 20 min. Abends KH-betont, früh schlafen."},
-{dow:"So",dat:"26.07.",t:"k",p:"pk",key:1,ti:"⚡ Benchmark: 3×1000 m @ Renntempo",su:"~45 min · 3×1000 m @ 4:00–4:02 · TP 2:30",dur:"~45min",hz:"PACE: 4:00–4:02/km · HF-Spitzen ≤192 als Kriterium",it:"Hoch",bz:{b1:10,b2:25,b3:15,b4:35,b5:15},
-pa:"<b>Warm-up:</b> 12 min locker + 3×10s Steigerungen<br><b>3×1000 m</b> @ 4:00–4:02/km (auf der Bahn: 96–97s/Runde!)<br><b>Trabpause:</b> 2:30 zwischen den Intervallen<br><b>Cool-down:</b> 10 min sehr locker",
-go:"Der Entscheidungstest. Auf der Bahn in Freudenstadt laufen und nach Rundenzeiten pacen – gleichzeitig Generalprobe fürs Rundenzählen am 02.08. NICHT schneller als 4:00 – Disziplin IST der Test.",
-tp:"<b>GO-Kriterien für Versuch A:</b> alle drei 1000er im Fenster 4:00–4:02, HF-Spitzen ≤192, drittes Intervall fühlbar kontrolliert (nicht all-out). <b>Ein Kriterium verfehlt →</b> Versuch A wird lockerer Testlauf und Versuch B in Nafplio bzw. September wird Plan A – ohne schlechtes Gewissen.",
-s2:"Fühlt es sich an wie bei den Fails (HF explodiert früh), ist das die Info, die dich vor Fehlversuch Nr. 3 bewahrt."},
+{id:'w3',title:'Woche 3 · 3.–9. August',desc:'Drei Radeinheiten vor Abflug; danach kompakt und ohne Equipment.',days:[
+['Mo','03.08.','bike','Grundlage Rad + Bauch','90 + 20 min · RPE 4','90 min Z2, danach optional 20 min Bauch und Rumpf.','Radfahren + Krafttraining','Z2 117–136, ganze Sätze. Homeworkout fußfrei.','20 min Bauch Rumpf Workout ohne Geräte no jumping'],
+['Di','04.08.','strength','Brust · Schultern · Trizeps','40 min · RPE 7','Ein Homeworkout für Brust, Schultern und Armrückseite; Körpergewicht auf Knien, sitzend oder liegend.','Krafttraining','Keine Planks oder Liegestütze auf den Zehen.','40 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
+['Mi','05.08.','bike','Rad Tempo 3 × 12','90 min · RPE 6','20 min locker · 3 × 12 min Z3, 5 min locker · ausrollen.','Radfahren','Kein HFmax-Test als Zusatz. Z3 137–155 und kontrollierte Atmung.'],
+['Do','06.08.','bike','Lange Ausfahrt vor Urlaub','150 min · RPE 3–4','15 min locker · 120 min Z2 · 15 min ausrollen.','Radfahren','Locker halten; morgen ist Reisetag. Kürzer: 90 min.'],
+['Fr','07.08.','trip','Reisetag · frei','0–15 min · sehr leicht','Kein Training nötig. Optional kurze Mobility auf der Matte.','Keine oder Yoga','Urlaub. Kein schlechtes Gewissen und keine Schritte-Challenge mit unrundem Gang.'],
+['Sa','08.08.','trip','Rücken · Schultern · Bizeps','40 min · RPE 6','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite.','Krafttraining','Urlaub ohne besondere Ausrüstung.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
+['So','09.08.','trip','Bauch · Rumpf + Pool optional','35 min + optional 25 min · RPE 4','Bauch/Rumpf und Mobility; Pool nur locker und ohne kräftigen Wandabstoß.','Yoga/Kraft + Schwimmen','Urlaub. Pool ist Bonus, nicht Pflicht.','35 min Core Bauch Mobility Workout ohne Geräte no jumping']
 ]},
-// WOCHE 4: Mo 27 Jul – So 02 Aug
-{tag:"W4 · Mo 27 Jul–So 02. Aug",name:"🎯 Mini-Taper + VERSUCH A So 02.08.",desc:"Fußball dosieren, ab Do nur noch Aktivierung. Sonntag früh: Bahn Freudenstadt, 12,5 Runden.",days:[
-{dow:"Mo",dat:"27.07.",t:"rg",p:"pg",ti:"Vollständige Ruhe",su:"Kein Training",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Erholung nach dem Benchmark. Ab jetzt zählt jede eingesparte Belastung auf Sonntag ein.",
-tp:"—"},
-{dow:"Di",dat:"28.07.",t:"fb",p:"pf",ti:"⚽ Training (dosiert)",su:"19:00 Uhr · keine Extra-Sprints",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:25,b2:40,b3:20,b4:12,b5:3},pa:"—",
-go:"Normal teilnehmen, aber keine freiwilligen Zusatzschichten. Die Woche gehört dem Sonntag.",
-tp:"—"},
-{dow:"Mi",dat:"29.07.",t:"fb",p:"pf",ti:"⚽ Testspiel SV Waldmössingen – SGM (auswärts)",su:"19:00 Uhr · wenn möglich nicht volle 90 min",dur:"bis 90min",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Letzter harter Reiz vor dem Versuch – 3,5 Tage Abstand sind okay, wenn danach konsequent getapert wird.",
-tp:"<b>Wenn es die Kaderlage erlaubt:</b> eine Halbzeit oder Auswechslung anbieten. Volle 90 min sind kein K.-o.-Kriterium, aber jede gesparte Minute hilft."},
-{dow:"Do",dat:"30.07.",t:"l",p:"pl",ti:"Kurze Aktivierung",su:"20–25 min B1/B2 + 3×10s @ Renntempo",dur:"20–25min",hz:"HF: unter 143bpm",it:"Sehr leicht",bz:{b1:60,b2:35,b3:3,b4:2,b5:0},
-pa:"<b>20 min</b> @ ~6:00/km<br><b>3×10s</b> @ 4:00/km",
-go:"Taper beginnt. Beine locker, Renntempo kurz abrufen, fertig.",
-tp:"Ab heute: gut essen, viel schlafen, wenig auf den Beinen."},
-{dow:"Fr",dat:"31.07.",t:"fb",p:"pf",ti:"⚽ Training (stark dosiert)",su:"19:00 Uhr · Technik ja, Sprints minimal",dur:"~90min",hz:"gemischt",it:"Niedrig-Mittel",bz:{b1:35,b2:40,b3:15,b4:8,b5:2},pa:"—",
-go:"36 h vor dem Versuch. Anwesenheit ja, Vollgas nein – Spielformen mitmachen, bei Sprintserien rausnehmen.",
-tp:"<b>Falls du hier flexibel bist:</b> Früher gehen oder aussetzen wäre ideal. Wenn nicht: bewusst im zweiten Gang bleiben. Abends KH-Loading (Pasta/Reis, wenig Fett), vor 22:30 schlafen."},
-{dow:"Sa",dat:"01.08.",t:"rg",p:"pg",ti:"Ruhe + KH-Loading + Logistik",su:"Kein Training",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Glykogenspeicher voll, Kopf sortiert. Rundenschema auswendig: 98 – 98 – 98 – 97 – 96 – 96 – 96 – 95 – 95 – 95 – 95 – frei.",
-tp:"Uhr auf manuelle Rundentaste stellen (Auto-Lap AUS – GPS lügt auf der Bahn). Anreise Freudenstadt checken. Minimal essen am Renntag wie beim letzten Mal geplant. Wetter checken: Startzeit so legen, dass es unter 18 °C ist."},
-{dow:"So",dat:"02.08.",t:"ev",p:"pev",key:1,ti:"🎯 VERSUCH A · Hermann-Saam-Stadion",su:"früh (~8:00) · 12,5 Runden · Ø <96s/Runde",dur:"~40min",hz:"RUNDENZEITEN · kein GPS · kein HF-Blick",it:"Maximal",bz:{b1:0,b2:5,b3:10,b4:50,b5:35},
-pa:"<b>Warm-up:</b> 12 min locker + 3×10s Steigerungen + 3 min Pause<br><b>Runden 1–3:</b> je 98s (fühlt sich ZU LANGSAM an – genau richtig!)<br><b>Runden 4–6:</b> je 96–97s<br><b>Runden 7–11:</b> je 95–96s<br><b>Runde 12 + halbe:</b> alles rausgeben<br><b>Cool-down:</b> 10 min sehr locker",
-go:"Jede Runde ein Kontrollpunkt – das Anti-Fail-Design. Fail 1 ist bei 200 m in 3:53er-Pace entstanden; heute ist die erste Runde bewusst die langsamste des Tages. Bei Ø 96s bist du bei 20:00, das Schema bringt dich auf ~19:50.",
-tp:"<b>Manuelle Rundentaste an der Ziellinie drücken.</b> Runde >2s zu schnell → nächste Runde aktiv rausnehmen. Nach Runde 6 (Halbzeit ~9:40–9:45) darf es hart werden – das ist der Plan, nicht das Problem. Wenn HRV heute früh BELOW: auf nüchternen Kopf entscheiden, Backup ist eingeplant.",
-s2:"Klappt es: Versuch B wird Genusslauf am Meer. Klappt es nicht: Du weißt in Nafplio genau, woran es lag – Rundenzeiten lügen nicht."},
+{id:'w4',title:'Woche 4 · 10.–16. August',desc:'Urlaub: Muskelerhalt, Routine und Erholung – kein künstliches Cardio ohne Rad.',days:[
+['Mo','10.08.','trip','Brust · Schultern · Trizeps','40 min · RPE 7','Ein Homeworkout für Brust, Schultern und Armrückseite; kniende, sitzende oder liegende Varianten.','Krafttraining','Urlaub mit üblichen Haushaltsgegenständen.','40 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
+['Di','11.08.','trip','Bauch · Rumpf + Pool optional','30 min + optional 30 min · RPE 4','Bauch/Rumpf und Mobility; Pool locker bis moderat, sicherer Ein-/Ausstieg.','Kraft/Yoga + Schwimmen','Kein Abstoß über den verletzten Vorfuß.','30 min Core Bauch Mobility Workout ohne Geräte no jumping'],
+['Mi','12.08.','trip','Rücken · Schultern · Bizeps','40 min · RPE 7','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite.','Krafttraining','Langsames Tempo; Wasserflaschen oder Rucksack optional.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
+['Do','13.08.','trip','Oberkörper komplett','45 min · RPE 7','Brust, Rücken, Schultern und Arme in einer Einheit; ohne Springen und stehende Beinarbeit.','Krafttraining','Heute kein HFmax- oder Lauftest.','45 min Full Upper Body Home Workout ohne Geräte no jumping'],
+['Fr','14.08.','trip','Schultern · Rücken · Mobility','25 min · RPE 2','Lockere Beweglichkeit für Schultern, Brustwirbelsäule und Rücken; ruhig atmen.','Yoga','Echter leichter Tag. Komplett frei ist genauso vorgesehen.','25 min Shoulder Back Mobility Workout no equipment'],
+['Sa','15.08.','trip','Brust · Arme · Bauch','40 min · RPE 6–7','Ein kombiniertes Homeworkout für Brust, Bizeps, Trizeps und Bauch; Pool optional sehr locker.','Krafttraining','Alle Varianten fußfrei.','40 min Brust Arme Bauch Home Workout ohne Geräte no jumping'],
+['So','16.08.','trip','Ruhetag','frei · optional 20 min Pool','Keine Pflicht. Optional sehr locker schwimmen.','Keine oder Schwimmen','Erholung vor Rückreise und Entscheidungstag.']
 ]},
-// WOCHE 5: Mo 03 – So 09 Aug
-{tag:"W5 · Mo 03–So 09. Aug",name:"⚽ Abschlusswoche + ✈️ Abflug Athen Fr",desc:"Zwei Fußballeinheiten, dann Urlaub. Lauftechnisch nur Erholung.",days:[
-{dow:"Mo",dat:"03.08.",t:"rg",p:"pg",ti:"Vollständige Ruhe",su:"Kein Training",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Erholung nach dem Versuch – so oder so.",
-tp:"Ergebnis sacken lassen. Bei Erfolg: genießen. Bei Nicht-Erfolg: Rundenzeiten anschauen, Ursache benennen, abhaken – Plan B steht."},
-{dow:"Di",dat:"04.08.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Normale Teilnahme.",
-tp:"—"},
-{dow:"Mi",dat:"05.08.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr · letzte Einheit vor dem Urlaub",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Letzter Fußballreiz für 12 Tage – ruhig voll mitmachen.",
-tp:"Dem Trainer Bescheid geben, welche Termine du verpasst (07.08., 11.–16.08. inkl. Pokal)."},
-{dow:"Do",dat:"06.08.",t:"rg",p:"pg",ti:"Packen · optional Mini-Lauf",su:"optional 25 min B1",dur:"0–25min",hz:"HF: unter 130bpm",it:"Sehr leicht",bz:{b1:85,b2:15,b3:0,b4:0,b5:0},pa:"ganz locker, ohne Uhr-Druck",
-go:"Reisetag-Vorbereitung. Laufschuhe (Clifton + Einlagen) einpacken – auch wenn Versuch A geklappt hat: Urlaubsläufe am Meer willst du nicht verpassen.",
-tp:"Falls Versuch B nötig wird: leichte Race-Kleidung mit einpacken."},
-{dow:"Fr",dat:"07.08.",t:"u",p:"pu",ti:"✈️ Abflug Athen",su:"⚽ Training 19:00 entfällt (Urlaub)",dur:"—",hz:"—",it:"Reise",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Reisetag. Stuttgart → Athen.",
-tp:"Viel trinken im Flieger, abends in Athen nur kurz mobilisieren wenn Lust – kein Programm."},
-{dow:"Sa",dat:"08.08.",t:"u",p:"pu",ti:"🏖️ Athen · optional Schattenlauf",su:"optional 20–25 min B1 · früh & schattig",dur:"0–25min",hz:"HF: unter 130bpm",it:"Sehr leicht",bz:{b1:85,b2:15,b3:0,b4:0,b5:0},pa:"vor 8 Uhr · Nationalgarten oder Küste · Tempo egal",
-go:"Sightseeing-Tag. Wenn Laufen, dann als Stadterkundung ohne jeden Anspruch.",
-tp:"Athen im August = auch früh schon >27 °C. Alles über B1 ist hier sinnlos."},
-{dow:"So",dat:"09.08.",t:"u",p:"pu",ti:"🏖️ Transfer Nafplio",su:"Mietwagen · Ruhe/Pool",dur:"—",hz:"—",it:"Reise",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Umzug zur Pool-Basis. Ankommen, runterfahren.",
-tp:"Falls Versuch B ansteht: heute Abend bei Sonnenuntergang die Hafenpromenade ablaufen/abgehen – Strecke, Wendepunkte, Untergrund checken."},
-]},
-// WOCHE 6: Mo 10 – So 16 Aug
-{tag:"W6 · Mo 10–So 16. Aug",name:"🏖️ Nafplio & Stoupa · 🎯 Versuch B (falls nötig)",desc:"Frische Beine, aber Hitze. Versuch B nur, wenn A nicht geklappt hat – sonst Genussläufe.",days:[
-{dow:"Mo",dat:"10.08.",t:"l",p:"pl",ti:"Früher B2-Lauf Nafplio",su:"30 min B2 · vor 7:30 Uhr · Streckencheck",dur:"30min",hz:"HF: B2 · 124–143bpm · Pace ignorieren!",it:"Niedrig",bz:{b1:20,b2:75,b3:5,b4:0,b5:0},
-pa:"Hafenpromenade/Küstenweg · flachste Strecke der Umgebung",
-go:"Beine nach der Reise sortieren + finaler Streckencheck für Versuch B. In der Hitze läuft dieselbe HF 20–40s/km langsamer – das ist Physik, keine Formkrise.",
-tp:"Direkt danach in den Pool – beste Regeneration des ganzen Plans."},
-{dow:"Di",dat:"11.08.",t:"u",p:"pu",ti:"🏖️ Urlaub pur",su:"Strand/Pool/Ausflug (Mykene, Epidauros …)",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Kein Training. Falls Versuch B ansteht: heute ist Vor-Vorbereitungstag – normal essen, gut schlafen.",
-tp:"⚽ Training daheim entfällt (Urlaub)."},
-{dow:"Mi",dat:"12.08.",t:"l",p:"pl",ti:"Aktivierung ODER Genusslauf",su:"Falls Versuch B morgen: 20 min B1 + 3×10s · sonst 30 min B2",dur:"20–30min",hz:"HF: unter 130bpm",it:"Sehr leicht",bz:{b1:80,b2:17,b3:2,b4:1,b5:0},
-pa:"<b>Option Versuch-B-Vorbereitung:</b> 20 min ganz locker + 3×10s @ 4:00/km, früh<br><b>Option Genuss:</b> 30 min B2 am Meer",
-go:"Beide Wege führen über einen frühen, kurzen Lauf – nur der Zweck unterscheidet sich.",
-tp:"⚽ Pokal-Qualirunde daheim entfällt (Urlaub). Falls Versuch B: abends KH-betont (griechische Küche kann das: Pasta, Reis, Brot, Honig), wenig Alkohol, früh ins Bett."},
-{dow:"Do",dat:"13.08.",t:"ev",p:"pev",key:1,ti:"🎯 VERSUCH B · Nafplio (nur falls A gescheitert)",su:"6:30 Uhr · Hafenpromenade · GPS-Pacing km-Schema",dur:"~40min",hz:"PACE: 4:05→4:02→4:00→3:58→frei · kein HF-Blick",it:"Maximal",bz:{b1:0,b2:5,b3:10,b4:50,b5:35},
-pa:"<b>Warm-up:</b> 10 min locker + 3×10s Steigerungen + 3 min Pause<br><b>km 1:</b> 4:05 (nicht schneller – Hitze bestraft doppelt!)<br><b>km 2:</b> 4:02<br><b>km 3:</b> 4:00<br><b>km 4:</b> 3:58<br><b>km 5:</b> alles<br><b>Cool-down:</b> 10 min + direkt ins Meer",
-go:"Dein Trumpf heute: null Fußball-Ermüdung, Urlaubsschlaf, frische Beine. Dein Gegner: 26–28 °C. Ehrliche Erwartung: Die Hitze kostet 15–30s – wenn es 20:10 wird bei sauberem Pacing, war das eine Sub-20-Leistung unter erschwerten Bedingungen.",
-tp:"<b>Startzeit ist alles:</b> 6:30, keine Minute später. Vorher nur Wasser + evtl. halbe Banane (Minimal-Strategie wie geplant). Bei >28 °C oder schlechtem Schlaf: absagen und als lockeren Lauf genießen – ein Hitze-Fail bringt keine Erkenntnis. <b>Falls Versuch A geklappt hat:</b> Heute Ruhetag oder Schwimmen. 😎",
-s2:"Letztes Fenster vor der Saison. Danach ist der nächste realistische Slot eine spielfreie Woche im Herbst – auch okay: kühler und mit mehr Grundlage."},
-{dow:"Fr",dat:"14.08.",t:"u",p:"pu",ti:"🏖️ Transfer Stoupa",su:"Mietwagen in die Mani · Ruhe",dur:"—",hz:"—",it:"Reise",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Umzug in die letzte Station. Erholung – egal was gestern war.",
-tp:"⚽ Training daheim entfällt (Urlaub)."},
-{dow:"Sa",dat:"15.08.",t:"l",p:"pl",ti:"Genusslauf Stoupa",su:"optional 30 min B2 · früh · Küstenweg",dur:"0–30min",hz:"HF: B2 · Pace komplett egal",it:"Niedrig",bz:{b1:20,b2:75,b3:5,b4:0,b5:0},pa:"Küstenweg Richtung Kardamili oder Strandpromenade",
-go:"Laufen als Urlaubserlebnis. Die Mani-Küste früh morgens – dafür schleppt man Laufschuhe durch Griechenland.",
-tp:"Danach: Meer."},
-{dow:"So",dat:"16.08.",t:"u",p:"pu",ti:"🏖️ Letzter voller Urlaubstag",su:"Ruhe · ⚽ 1. Pokalrunde daheim entfällt",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Genießen. Ab Dienstag ruft der Fußball wieder.",
-tp:"—"},
-]},
-// WOCHE 7: Mo 17 – So 23 Aug
-{tag:"W7 · Mo 17–So 23. Aug",name:"✈️ Rückkehr + ⚽ SAISONSTART So 23.08.",desc:"Zurück in den Rhythmus. Ab jetzt: So Spiel + Di/Do Training – Laufen wird zur Ergänzung.",days:[
-{dow:"Mo",dat:"17.08.",t:"u",p:"pu",ti:"✈️ Rückreise",su:"Athen → Stuttgart",dur:"—",hz:"—",it:"Reise",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Heimreise. Viel trinken, abends auspacken, früh schlafen – Zeitverschiebung gibt's zum Glück keine.",
-tp:"—"},
-{dow:"Di",dat:"18.08.",t:"fb",p:"pf",ti:"⚽ Training",su:"19:00 Uhr · Wiedereinstieg nach Urlaub",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Erste Einheit nach 12 Tagen Pause vom Mannschaftstraining. Die Urlaubsläufe haben die Grundlage gehalten – Antritte trotzdem dosieren wie in W1.",
-tp:"Gutes Warmup, Adduktoren aktivieren."},
-{dow:"Mi",dat:"19.08.",t:"l",p:"pl",ti:"Lockerer B2-Lauf",su:"30 min · B2",dur:"30min",hz:"HF: B2 · 124–143bpm",it:"Niedrig",bz:{b1:15,b2:80,b3:5,b4:0,b5:0},pa:"~5:40–6:20/km",
-go:"Zurück im Heimat-Klima – die HF/Pace-Relation wird sich sofort besser anfühlen als in Griechenland.",
-tp:"—"},
-{dow:"Do",dat:"20.08.",t:"rg",p:"pg",ti:"Ruhe / Mobility",su:"optional 20 min Dehnen",dur:"0–20min",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Frische sammeln für Fr Training + So Saisonstart.",
-tp:"—"},
-{dow:"Fr",dat:"21.08.",t:"fb",p:"pf",ti:"⚽ Training + Spielersitzung",su:"19:00 Uhr",dur:"~90min",hz:"gemischt",it:"Mittel",bz:{b1:20,b2:35,b3:25,b4:15,b5:5},pa:"—",
-go:"Abschlusstraining vor dem ersten Rundenspiel.",
-tp:"—"},
-{dow:"Sa",dat:"22.08.",t:"rg",p:"pg",ti:"Vollständige Ruhe",su:"Kein Training · morgen Saisonstart",dur:"—",hz:"—",it:"Ruhe",bz:{b1:100,b2:0,b3:0,b4:0,b5:0},pa:"—",
-go:"Frische für morgen.",
-tp:"KH-betont essen, früh schlafen."},
-{dow:"So",dat:"23.08.",t:"fb",p:"pf",key:1,ti:"⚽ 1. RUNDENSPIEL",su:"15:00 Uhr · Saisonstart 2026/27",dur:"90min",hz:"gemischt",it:"Hoch",bz:{b1:10,b2:25,b3:25,b4:30,b5:10},pa:"—",
-go:"Los geht's. Du startest mit der besten Laufgrundlage, die du je in eine Saison mitgenommen hast – VO₂max 58, Schwelle 4:14, und (Plan A oder B) hoffentlich einer Sub-20 im Rücken.",
-tp:"<b>Ab jetzt gilt der Saisonrhythmus:</b> So Spiel · Di/Do Training · ein lockerer B2-Lauf Mi ODER Sa (30–40 min) · Radpendeln als Grundlage. Kein 5K-Maximalversuch in Spielwochen – dafür braucht es eine spielfreie Woche."},
-]},
+{id:'w5',title:'Montag · 17. August',desc:'Übergangs- und Prüftag – kein versprochener Fußballstart am 18.08.',days:[
+['Mo','17.08.','rest','Rückreise + Bauch/Mobility optional','0–30 min · RPE 2','Optional 30 min Bauch, Rumpf und Mobility. Danach Rückkehr-Check lesen.','Keine oder Yoga','Noch kein Laufen/Fußball. Entscheidung nach Beschwerden und ärztlicher Freigabe.','30 min Core Mobility Workout ohne Geräte no jumping']
+]}
 ];
-
-const SK='vb2026v1';
-let done={};
-try{done=JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){}
-function sv(){try{localStorage.setItem(SK,JSON.stringify(done));}catch(e){}}
-const NW=W.length-1;
-
-function showTab(i){
-  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',j===i));
-  for(let j=0;j<=NW;j++) document.getElementById('t'+j).classList.toggle('hidden',j!==i);
-  if(i>0&&!document.getElementById('t'+i).dataset.r){renderW(i);document.getElementById('t'+i).dataset.r='1';}
-  updProg();
-}
-
-function hzBar(m){
-  return `<div class="hzb"><div class="z1" style="flex:${m.b1}"></div><div class="z2" style="flex:${m.b2}"></div><div class="z3" style="flex:${m.b3}"></div><div class="z4" style="flex:${m.b4}"></div><div class="z5" style="flex:${m.b5}"></div></div>
-  <div class="hzn"><span style="color:#1a7a4a">B1</span><span style="color:#5a8a1a">B2</span><span style="color:#b57a00">B3</span><span style="color:#c05020">B4</span><span style="color:#c03030">B5</span></div>`;
-}
-
-const PILLS={fb:'⚽ FUSSBALL',ev:'🎯 VERSUCH',k:'⚡ SCHLÜSSEL',rg:'RUHE',l:'LAUFEN',r:'RAD',u:'🏖️ URLAUB'};
-
-function renderW(wi){
-  const w=W[wi];if(!w)return;
-  const el=document.getElementById('t'+wi);
-  let g0=0;for(let i=1;i<wi;i++)g0+=W[i].days.length;
-  const ds=w.days,nd=ds.filter((_,i)=>done[g0+i]).length;
-  let h=`<div class="ww"><div class="wh"><div class="wt">${w.tag}</div><div class="wn">${w.name}</div><div class="wd">${w.desc}</div><div class="wp" id="wp${wi}">${nd}/${ds.length} ✓</div></div>`;
-  ds.forEach((d,i)=>{
-    const gi=g0+i,isDone=done[gi]||0,isEv=d.t==='ev',isKey=d.key||0;
-    let cls='day';
-    if(isDone)cls+=' done';
-    else if(isEv)cls+=' is-ev';
-    else if(isKey)cls+=' is-key';
-    const pl=PILLS[d.t]||'—';
-    h+=`<div class="${cls}" id="dy${gi}"><div class="dh" onclick="tog(${gi})">
-      <div class="dm"><span class="ddow">${d.dow}</span><span class="ddat">${d.dat}</span></div>
-      <div class="db"><span class="pill ${d.p}">${pl}</span><div class="dt">${d.ti}</div><div class="ds">${d.su}</div></div>
-      <div class="ck${isDone?' on':''}" id="ck${gi}" onclick="chk(${gi},event)">${isDone?'✓':''}</div>
-    </div>
-    <div class="dd" id="dd${gi}">
-      <div class="chips"><div class="chip"><div class="chl">Dauer</div><div class="chv">${d.dur}</div></div><div class="chip"><div class="chl">Intensität</div><div class="chv">${d.it}</div></div></div>
-      <div class="hzs"><div class="hzl">Steuerung: ${d.hz}</div>${hzBar(d.bz)}</div>
-      ${d.pa&&d.pa!=='—'?`<div class="pb">🏃 <b>Ablauf:</b><br>${d.pa}</div>`:''}
-      ${d.s2?`<div class="s2">🎯 <b>Sub-20:</b> ${d.s2}</div>`:''}
-      <div class="gb${isEv?' gev':isKey?' gkey':''}">${d.go}</div>
-      ${d.tp&&d.tp!=='—'?`<div class="tb">${d.tp}</div>`:''}
-    </div></div>`;
-  });
-  el.innerHTML=h+'</div>';
-  updWP(wi);
-}
-
-function tog(gi){document.getElementById('dd'+gi)?.classList.toggle('open');}
-
-function chk(gi,e){
-  e.stopPropagation();
-  done[gi]=!done[gi];sv();
-  const d=getD(gi);
-  const card=document.getElementById('dy'+gi);
-  if(card){
-    let cls='day';
-    if(done[gi])cls+=' done';
-    else{if(d&&d.t==='ev')cls+=' is-ev';else if(d&&d.key)cls+=' is-key';}
-    card.className=cls;
-  }
-  const c=document.getElementById('ck'+gi);
-  if(c){c.className='ck'+(done[gi]?' on':'');c.textContent=done[gi]?'✓':'';}
-  for(let i=1;i<=NW;i++)updWP(i);
-  updProg();
-}
-
-function getD(gi){let idx=0;for(let w=1;w<=NW;w++){if(gi<idx+W[w].days.length)return W[w].days[gi-idx];idx+=W[w].days.length;}return null;}
-function tot(){let t=0;for(let w=1;w<=NW;w++)t+=W[w].days.length;return t;}
-
-function updWP(wi){
-  const el=document.getElementById('wp'+wi);if(!el)return;
-  let s=0;for(let i=1;i<wi;i++)s+=W[i].days.length;
-  const n=Array.from({length:W[wi].days.length},(_,i)=>done[s+i]).filter(Boolean).length;
-  el.textContent=n+'/'+W[wi].days.length+' ✓';
-}
-
-function updProg(){
-  const total=tot(),n=Object.values(done).filter(Boolean).length,pct=Math.round(n/total*100);
-  let wr=document.getElementById('pw');
-  if(!wr){wr=document.createElement('div');wr.id='pw';wr.className='prog-wrap';
-    wr.innerHTML='<div class="prog-track"><div class="prog-fill" id="pf" style="width:0%"></div></div><div class="prog-lbl" id="plbl"></div>';
-    document.querySelector('.tabs').insertAdjacentElement('afterend',wr);}
-  document.getElementById('pf').style.width=pct+'%';
-  document.getElementById('plbl').textContent=n+' / '+total+' Einheiten';
-}
-updProg();
+const storageKey='trainingsplan-2026-07-simple-v1';
+let done=JSON.parse(localStorage.getItem(storageKey)||'{}');
+const typeLabel={bike:'Rad',strength:'Kraft',rest:'Leicht',trip:'Urlaub'};
+function render(){weeks.forEach(w=>{const el=document.getElementById(w.id);el.innerHTML=`<div class="weekhead"><div class="eyebrow">${w.id==='w4'||w.id==='w5'?'Griechenland / Rückreise':'Trainingsblock'}</div><h2>${w.title}</h2><p>${w.desc}</p></div>`+w.days.map((d,i)=>card(w,d,i)).join('')+(w.id==='w5'?returnCheck():'')});updateProgress()}
+function card(w,d,i){const key=w.id+'-'+i,checked=!!done[key];return `<article class="day ${checked?'done':''}" data-key="${key}"><div class="dayhead" role="button" tabindex="0" aria-expanded="false"><div class="date"><small>${d[0]}</small><b>${d[1]}</b></div><div class="main"><span class="pill ${d[2]}">${typeLabel[d[2]]}</span><div class="title">${d[3]}</div><div class="sub">${d[4]}</div></div><button class="check ${checked?'on':''}" aria-label="Tag als erledigt markieren">${checked?'✓':''}</button></div><div class="detail"><div class="chips"><span class="chip"><b>Dauer</b> · ${d[4].split(' · ')[0]}</span><span class="chip"><b>Intensität</b> · ${d[4].split(' · ')[1]||'locker'}</span></div><p><b>Ablauf:</b> ${d[5]}</p>${d[2]==='bike'?'<div class="zones">Rad immer zusätzlich nach Atmung und Gefühl steuern. Für lockere Einheiten gilt: ganze Sätze möglich.</div>':''}${d[8]?`<div class="search"><b>YouTube-Suche:</b> ${d[8]}</div>`:''}<p><b>Garmin:</b> ${d[6]}</p><div class="toe"><b>Zeh / Alternative:</b> ${d[7]}</div></div></article>`}
+function returnCheck(){return `<section class="box"><h3>Check vor einer späteren Rückkehr</h3><ul class="simple"><li>ärztliche Freigabe vorhanden</li><li>normales Gehen und Treppen ohne Hinken</li><li>keine relevante Schwellungszunahme</li><li>Schuh ohne problematischen Druck tragbar</li><li>lockeres Radfahren und Folgetag beschwerdefrei</li></ul><p><strong>Fehlt etwas:</strong> noch nicht bereit bzw. ärztliche Rücksprache. <strong>Alles erfüllt:</strong> vorsichtiger Belastungstest denkbar – nicht automatisch Mannschaftstraining.</p><p>Spätere Reihenfolge nach Freigabe: Gehen → zügiges Gehen → Lauf-Geh-Intervalle → lockeres Laufen → einfache Fußballbewegungen → Teiltraining → volles Training. Nie steigern, wenn Beschwerden zunehmen.</p></section>`}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id===b.dataset.tab));scrollTo({top:0,behavior:'smooth'})}));
+document.addEventListener('click',e=>{const check=e.target.closest('.check');if(check){e.stopPropagation();const day=check.closest('.day'),key=day.dataset.key;done[key]=!done[key];localStorage.setItem(storageKey,JSON.stringify(done));check.classList.toggle('on',done[key]);check.textContent=done[key]?'✓':'';day.classList.toggle('done',done[key]);updateProgress();return}const head=e.target.closest('.dayhead');if(head){const detail=head.nextElementSibling;detail.classList.toggle('open');head.setAttribute('aria-expanded',detail.classList.contains('open'))}});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('dayhead')){e.preventDefault();e.target.click()}});
+function updateProgress(){const total=weeks.reduce((n,w)=>n+w.days.length,0),n=Object.keys(done).filter(k=>done[k]).length;document.getElementById('fill').style.width=(100*n/total)+'%';document.getElementById('plabel').textContent=`${n} von ${total} Tagen erledigt`}
+render();
 </script>
 </body>
 </html>
