@@ -1,125 +1,1285 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101415">
-<title>Trainingsplan · 20.07.–17.08.2026</title>
-<style>
-:root{color-scheme:dark;--bg:#0b0f10;--card:#141a1c;--ink:#f1f5f3;--muted:#a7b2af;--line:#2b3638;--bike:#4bd5c1;--bike-bg:#123a35;--strength:#b8a8ff;--strength-bg:#302858;--rest:#adc1b6;--rest-bg:#25312b;--trip:#ffb176;--trip-bg:#4a2c1b;--red:#ff7770;--green:#52d695;--shadow:0 8px 24px rgba(0,0,0,.24)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
-button{font:inherit}header{position:sticky;top:0;z-index:20;background:#080b0c;color:#fff;padding:14px 16px 10px;box-shadow:0 5px 18px rgba(0,0,0,.35)}
-header h1{font-size:17px;margin:0;font-weight:750}header p{font-size:11px;margin:2px 0 0;color:#aeb8b5}
-.tabs{display:flex;gap:7px;padding:11px 12px 4px;overflow:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
-.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:650;cursor:pointer}.tab.on{background:var(--bike);border-color:var(--bike);color:#071311}
-.page{display:none;max-width:780px;margin:auto;padding:8px 12px 32px}.page.on{display:block}
-.hero{background:linear-gradient(135deg,#123b38,#0c665d);color:#fff;border:1px solid #27756d;border-radius:16px;padding:18px;margin:4px 0 10px;box-shadow:var(--shadow)}
-.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;opacity:.72}.hero h2{font-size:22px;line-height:1.18;margin:5px 0 8px}.hero p{font-size:13px;margin:0;color:#e1f4f0}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.stat,.box{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.stat{text-align:center;padding:10px 6px}.stat b{display:block;color:var(--bike);font-size:18px}.stat span{font-size:10px;color:var(--muted)}
-.box{padding:14px;margin:10px 0}.box h3{font-size:14px;margin:0 0 7px}.box p{font-size:12.5px;color:var(--muted);margin:5px 0}.box strong{color:var(--ink)}
-.callout{border-left:4px solid var(--bike);padding-left:11px}.warn{border-left-color:var(--red)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini{padding:12px}.mini b{display:block;font-size:12px}.mini span{font-size:11px;color:var(--muted)}
-.progress{margin:8px 0 0}.track{height:7px;background:#263031;border-radius:9px;overflow:hidden}.fill{height:100%;width:0;background:var(--bike);transition:.25s}.plabel{text-align:right;font-size:10px;color:#b9c5c2;margin-top:3px}
-.weekhead{padding:8px 3px 2px}.weekhead h2{font-size:17px;margin:0}.weekhead p{font-size:12px;color:var(--muted);margin:3px 0}
-.day{background:var(--card);border:1.5px solid var(--line);border-radius:13px;margin:9px 0;overflow:hidden;box-shadow:var(--shadow)}.day.done{border-color:var(--green);background:#12291f}
-.dayhead{display:flex;gap:11px;align-items:center;padding:12px;cursor:pointer;user-select:none}.date{min-width:47px;text-align:center}.date small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:800}.date b{font-size:15px}.main{flex:1;min-width:0}.pill{display:inline-block;border-radius:999px;padding:2px 8px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.bike{background:var(--bike-bg);color:var(--bike)}.strength{background:var(--strength-bg);color:var(--strength)}.rest{background:var(--rest-bg);color:var(--rest)}.trip{background:var(--trip-bg);color:var(--trip)}
-.title{font-weight:700;font-size:14px;line-height:1.3;margin-top:3px}.sub{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.check{width:32px;height:32px;border:2px solid var(--line);background:var(--bg);border-radius:50%;display:grid;place-items:center;font-weight:800;cursor:pointer;flex:none}.check.on{background:var(--green);border-color:var(--green);color:#fff}
-.detail{display:none;border-top:1px solid var(--line);padding:12px 14px 14px}.detail.open{display:block}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}.chip{background:var(--bg);border-radius:8px;padding:6px 9px;font-size:11px}.detail p{font-size:12.5px;margin:7px 0;color:var(--muted)}.detail b{color:var(--ink)}
-.zones{background:var(--bike-bg);color:#b9eee5;border-radius:9px;padding:9px 10px;font-size:11.5px;margin:8px 0}.toe{background:#34271b;border-radius:9px;padding:9px 10px;font-size:11.5px;color:#f2c79d}.search{background:var(--strength-bg);border-radius:9px;padding:9px 10px;font-size:11.5px;color:#ddd6ff;margin:8px 0}.simple{font-size:12px;color:var(--muted);margin:8px 0 0;padding-left:18px}.simple li{margin:4px 0}
-.legend{font-size:11px;color:var(--muted);padding:5px 2px}.foot{text-align:center;color:#929997;font-size:10px;padding:14px 10px 35px}
-@media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.hero h2{font-size:20px}.page{padding-left:10px;padding-right:10px}.dayhead{padding:11px 10px}}
-@media print{header,.tabs,.check{display:none!important}.page{display:block!important;max-width:none;padding:0}.hero,.box,.day{box-shadow:none;break-inside:avoid}.detail{display:block}.page:not(#overview){page-break-before:always}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trainingsplan">
+  <title>Trainingsplan</title>
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --surface: #151518;
+      --surface-2: #1c1c20;
+      --line: #2b2b31;
+      --line-soft: #222227;
+      --text: #f5f3f3;
+      --muted: #989399;
+      --muted-2: #67636a;
+      --red: #ff453a;
+      --red-dark: #341412;
+      --red-soft: rgba(255, 69, 58, .12);
+      --good: #66d17a;
+      --orange: #ff9f43;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+
+    * { box-sizing: border-box; }
+    html { color-scheme: dark; background: var(--bg); }
+    body {
+      min-width: 320px;
+      margin: 0;
+      background:
+        radial-gradient(circle at 100% -8%, rgba(255, 69, 58, .08), transparent 27rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    button, summary { -webkit-tap-highlight-color: transparent; }
+    [hidden] { display: none !important; }
+
+    .app {
+      width: min(100%, 760px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: max(26px, env(safe-area-inset-top)) 16px calc(46px + env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 2px 2px 20px;
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 0;
+      font-size: 34px;
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+    .week-count {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
+    }
+    .week-count strong { color: var(--text); font-size: 18px; }
+
+    .main-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .main-tabs button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .main-tabs button.active {
+      background: var(--red);
+      color: #160504;
+    }
+
+    .view { padding-top: 25px; }
+
+    .week {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 5px;
+      margin-bottom: 22px;
+    }
+    .day {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      min-height: 62px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 9px 6px;
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .day span {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+    .day b {
+      overflow: hidden;
+      color: #cbc7cb;
+      font-size: 9px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .day::after {
+      content: "";
+      position: absolute;
+      right: 7px;
+      bottom: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--muted-2);
+    }
+    .day.strength::after { background: var(--red); }
+    .day.football::after { background: #c97570; }
+    .day.match::after { background: var(--orange); }
+    .day.today {
+      border-color: #8a322d;
+      background: #1b1112;
+    }
+    .day.today span { color: var(--red); }
+
+    details.info {
+      margin-bottom: 12px;
+      border: 1px solid #4a2725;
+      border-radius: 14px;
+      background: #171112;
+    }
+    details.info summary {
+      min-height: 50px;
+      padding: 16px;
+      cursor: pointer;
+      color: #f1cac7;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .info-body {
+      padding: 0 16px 16px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .info-body ol { margin: 0; padding-left: 20px; }
+    .info-body li + li { margin-top: 8px; }
+    .example {
+      margin: 13px 0 0;
+      padding: 11px 12px;
+      border-left: 3px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      background: var(--red-soft);
+      color: #d8d3d5;
+    }
+
+    .session-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 18px;
+    }
+    .session-tabs button {
+      min-height: 58px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--muted);
+      text-align: left;
+    }
+    .session-tabs button span {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .session-tabs button strong { font-size: 14px; }
+    .session-tabs button.active {
+      border-color: var(--red);
+      background: var(--red-dark);
+      color: var(--text);
+    }
+
+    .session-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 2px 14px;
+    }
+    .session-heading h2 {
+      margin-bottom: 0;
+      font-size: 25px;
+      letter-spacing: -.04em;
+    }
+    .session-meta {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .exercise-list { display: grid; gap: 10px; }
+    .exercise {
+      padding: 16px 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+    }
+    .exercise-top {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 11px;
+      align-items: start;
+    }
+    .exercise-number {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--red-dark);
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .exercise h3 {
+      margin: 1px 0 5px;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+    .prescription {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 650;
+    }
+    .exercise-note {
+      margin: 10px 0 0 43px;
+      color: var(--muted-2);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .plan-box {
+      margin-top: 15px;
+      padding: 11px;
+      border-radius: 11px;
+      background: var(--surface-2);
+    }
+    .plan-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+      color: var(--muted-2);
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: .12em;
+    }
+    .plan-head strong {
+      color: var(--red);
+      font-size: 9px;
+      letter-spacing: .06em;
+    }
+    .plan-sets {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 5px;
+    }
+    .plan-set {
+      min-width: 0;
+      padding: 8px 5px;
+      border-radius: 8px;
+      background: #121215;
+      color: #d6d2d5;
+      font-size: 10px;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .plan-set b {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--muted-2);
+      font-size: 8px;
+    }
+
+    .actual { margin-top: 13px; }
+    .set-labels, .set-row {
+      display: grid;
+      grid-template-columns: 36px minmax(55px, 1fr) minmax(55px, 1fr) 42px;
+      gap: 7px;
+      align-items: center;
+    }
+    .actual.seconds .set-labels,
+    .actual.seconds .set-row {
+      grid-template-columns: 36px minmax(90px, 1fr) 42px;
+    }
+    .set-labels {
+      margin-bottom: 5px;
+      color: var(--muted-2);
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: .1em;
+      text-align: center;
+    }
+    .set-labels span:first-child { text-align: left; }
+    .set-row + .set-row { margin-top: 6px; }
+    .set-row.done { opacity: .55; }
+    .set-no {
+      padding-left: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+    }
+    .set-row input {
+      width: 100%;
+      height: 43px;
+      padding: 0 8px;
+      border: 1px solid #35353b;
+      border-radius: 9px;
+      outline: none;
+      background: #111114;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .set-row input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px var(--red-soft);
+    }
+    .set-row input::placeholder { color: #514d52; }
+    .set-check {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid #38383e;
+      border-radius: 10px;
+      background: var(--surface-2);
+      color: #180504;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .set-check.on {
+      border-color: var(--red);
+      background: var(--red);
+    }
+    .last-line {
+      margin: 11px 0 0 43px;
+      overflow: hidden;
+      color: var(--muted-2);
+      font-size: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .last-line b { color: #a9a4aa; }
+
+    .save-wrap {
+      position: sticky;
+      z-index: 5;
+      bottom: max(10px, env(safe-area-inset-bottom));
+      padding-top: 12px;
+    }
+    .save-button {
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      border-radius: 13px;
+      background: var(--red);
+      box-shadow: 0 12px 32px rgba(255, 69, 58, .18);
+      color: #180504;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .toast {
+      margin-bottom: 8px;
+      padding: 11px 13px;
+      border: 1px solid #60302c;
+      border-radius: 10px;
+      background: #211211;
+      color: #ffc3be;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .analytics-title {
+      margin-bottom: 19px;
+      font-size: 25px;
+      letter-spacing: -.04em;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-bottom: 24px;
+    }
+    .stat {
+      padding: 13px 11px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    .stat span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+    .stat strong { font-size: 20px; }
+
+    .analytics-section {
+      margin-top: 14px;
+      padding: 16px 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--surface);
+    }
+    .analytics-section h2 {
+      margin-bottom: 15px;
+      font-size: 17px;
+      letter-spacing: -.025em;
+    }
+    .control-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    label {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .06em;
+    }
+    select, .metric-form input {
+      width: 100%;
+      height: 42px;
+      margin-top: 5px;
+      padding: 0 10px;
+      border: 1px solid #37373d;
+      border-radius: 9px;
+      outline: none;
+      background: #111114;
+      color: var(--text);
+      font-size: 12px;
+    }
+    select:focus, .metric-form input:focus { border-color: var(--red); }
+    .chart {
+      position: relative;
+      width: 100%;
+      min-height: 230px;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 230px;
+    }
+    .chart-caption {
+      margin: 8px 0 0;
+      color: var(--muted-2);
+      font-size: 9px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .metric-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .metric-form label:first-child { grid-column: 1 / -1; }
+    .metric-add {
+      grid-column: 1 / -1;
+      min-height: 42px;
+      border: 1px solid #64312d;
+      border-radius: 9px;
+      background: var(--red-dark);
+      color: #ffc1bc;
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .body-tools {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 1px;
+      margin-top: 8px;
+    }
+    .history-row {
+      display: grid;
+      grid-template-columns: 72px 74px 1fr;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      border-top: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .history-row strong { color: #d3cfd2; }
+    .history-row span:last-child { text-align: right; }
+    .empty {
+      padding: 22px 5px;
+      color: var(--muted-2);
+      font-size: 11px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .danger-button {
+      min-height: 42px;
+      margin-top: 18px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #a05c58;
+      font-size: 10px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 30px 2px 0;
+      color: #4f4b51;
+      font-size: 8px;
+      font-weight: 750;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 620px) {
+      .app { padding-right: 24px; padding-left: 24px; }
+      .day { min-height: 69px; padding: 10px 8px; }
+      .day b { font-size: 10px; }
+      .exercise { padding: 18px; }
+      .plan-sets { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 380px) {
+      .day { min-height: 58px; padding-right: 4px; padding-left: 4px; }
+      .day b { font-size: 8px; }
+      .plan-sets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .control-grid { grid-template-columns: 1fr; }
+      .stats { gap: 5px; }
+      .stat { padding: 11px 8px; }
+      .stat strong { font-size: 17px; }
+    }
+  </style>
 </head>
 <body>
-<header><h1>🚴 Trainingsblock · Sommer 2026</h1><p>20. Juli – 17. August · Rad + Oberkörper · Griechenland 07.–17.08.</p><div class="progress" aria-label="Trainingsfortschritt"><div class="track"><div id="fill" class="fill"></div></div><div id="plabel" class="plabel">0 von 29 Tagen erledigt</div></div></header>
-<nav class="tabs" aria-label="Planabschnitte">
-  <button class="tab on" data-tab="overview">Übersicht</button>
-  <button class="tab" data-tab="w1">W1 · 20–26 Jul</button>
-  <button class="tab" data-tab="w2">W2 · 27 Jul–02 Aug</button>
-  <button class="tab" data-tab="w3">W3 · 03–09 Aug</button>
-  <button class="tab" data-tab="w4">W4 · 10–16 Aug</button>
-  <button class="tab" data-tab="w5">17. Aug</button>
-</nav>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">FUSSBALL + KRAFT</p>
+        <h1>Trainingsplan</h1>
+      </div>
+      <div class="week-count"><strong>2</strong><br>Krafttage</div>
+    </header>
 
-<main id="overview" class="page on">
-  <section class="hero"><div class="eyebrow">Aktueller Stand · 20.07.2026</div><h2>Fit genug für einen echten Trainingsblock – nur ohne Stoßbelastung.</h2><p>Der linke mittlere Zeh ist unverschoben gebrochen. Radfahren ist ärztlich erlaubt, solange es funktioniert. Deshalb ersetzt viel kontrolliertes Rad aktuell Fußball und Laufen; Oberkörper und Rumpf bleiben regelmäßig dabei.</p></section>
-  <div class="stats">
-    <div class="stat"><b>7,1 h</b><span>Ø Training/Woche · letzte 12 W.</span></div>
-    <div class="stat"><b>12,6 h</b><span>Training · letzte 7 Tage</span></div>
-    <div class="stat"><b>50</b><span>Readiness · moderat</span></div>
-    <div class="stat"><b>44</b><span>Ruhepuls · bpm</span></div>
-    <div class="stat"><b>57</b><span>VO₂max Laufen</span></div>
-    <div class="stat"><b>197</b><span>höchste HF · 12 W.</span></div>
-  </div>
-  <section class="box callout"><h3>Der Plan in einem Satz</h3><p><strong>Bis zum Urlaub:</strong> 3–4 Radeinheiten und 2–3 kurze Kraft-/Rumpfreize pro Woche. <strong>Im Urlaub:</strong> 30–45 Minuten Oberkörper oder Core, Pool optional. Keine Lauf-, Fußball- oder Sprungbelastung während dieses Plans.</p></section>
-  <div class="grid2">
-    <div class="box mini"><b>W1 · Rad 6:15 h</b><span>Kraft/Core 2:10 h · Einstieg in den Radblock</span></div>
-    <div class="box mini"><b>W2 · Rad 8:15 h</b><span>Kraft/Core 2:25 h · größte Umfangswoche</span></div>
-    <div class="box mini"><b>W3 · Rad 5:30 h</b><span>Kraft/Core 2:15 h · dann Reise</span></div>
-    <div class="box mini"><b>W4 · kein Rad verfügbar</b><span>3 Kraft + 2 Core/Mobility · Pool optional</span></div>
-  </div>
-  <section class="box"><h3>Warum das Körperfett-Ziel so angegangen wird</h3><p>Der zusätzliche Energieverbrauch kommt vor allem über <strong>lange, lockere Radeinheiten</strong> – nicht über tägliche Maximalbelastung. Kraftreize und proteinreiche Mahlzeiten unterstützen den Muskelerhalt. Kein aggressives Kaloriendefizit: Bei 67 kg auf 1,79 m sind ungefähr 65 kg ein mögliches Nebenresultat, aber Training, Heilung und Körperkomposition sind wichtiger als die Tageszahl auf der Waage.</p></section>
-  <section class="box"><h3>Radsteuerung</h3><p><strong>Garmin-Radzonen:</strong> Z1 98–116 · Z2 117–136 · Z3 137–155 · Z4 156–175 · Z5 ab 176 bpm. Auf dem Rad gilt immer zusätzlich: locker = ganze Sätze; Tempo = kurze Sätze; RPE schlägt eine unplausible HF. Keine Wattvorgaben.</p><p>Überwiegend sitzen, normal bis leicht treten. Der Zeh darf währenddessen und am nächsten Morgen nicht schlechter sein.</p></section>
-  <section class="box"><h3>HFmax: testen?</h3><p><strong>Garmin-Messwert:</strong> In den 12 betrachteten Wochen wurden bis zu 197 bpm aufgezeichnet. Die in Garmin hinterlegte HFmax-Schätzung war über den MCP nicht verfügbar. Deine tatsächliche HFmax ist damit mindestens so hoch wie ein verlässlich gemessener Wert – eine Altersformel ist dafür nur grob.</p><p><strong>Mein Vorschlag:</strong> Jetzt keinen Lauf-HFmax-Test. Ein Radtest liefert außerdem eine radbezogene, nicht automatisch eine Lauf-HFmax. Wenn du nach der Zehheilung wirklich exakt kalibrieren willst, ist ein überwachter Leistungs-/Belastungstest die sauberste Variante. Ein eigener maximaler Radtest kommt erst infrage, wenn hartes Pedalieren komplett beschwerdefrei ist und keine Belastungswarnzeichen bestehen; er ersetzt dann eine Tempoeinheit, kommt nie zusätzlich obendrauf.</p></section>
-  <section class="box warn callout"><h3>Eine einfache Zeh-Regel</h3><p><strong>Fahren:</strong> Schuh passt, Gangbild wird nicht schlechter, Pedalieren schmerzt höchstens minimal und die Schwellung nimmt nicht zu. <strong>Abbrechen:</strong> zunehmender Schmerz, mehr Schwellung, Hinken, Taubheit/Kribbeln, Verfärbung oder schlechterer Folgemorgen. Dann keine weitere Fußbelastung und ärztlich rückfragen. Garmin ist keine medizinische Freigabe.</p></section>
-</main>
-<section id="w1" class="page"></section><section id="w2" class="page"></section><section id="w3" class="page"></section><section id="w4" class="page"></section><section id="w5" class="page"></section>
-<div class="foot">Tag antippen für Kurzdetails · Kreis = erledigt · Fortschritt bleibt lokal auf diesem Gerät gespeichert</div>
+    <nav class="main-tabs" aria-label="Bereich auswählen">
+      <button id="tab-training" class="active" type="button">Training</button>
+      <button id="tab-analytics" type="button">Analytics</button>
+    </nav>
 
-<script>
-const weeks=[
-{id:'w1',title:'Woche 1 · 20.–26. Juli',desc:'Radumfang aufbauen, ohne direkt die jüngste 12,6-h-Woche zu kopieren.',days:[
-['Mo','20.07.','strength','Brust · Schultern · Trizeps','35 min · RPE 6','Ein Homeworkout für Brust, Schultern und Armrückseite; Übungen kniend, sitzend oder liegend anpassen.','Krafttraining','Kein Fußdruck und keine Liegestütze auf den Zehen.','35 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
-['Di','21.07.','bike','Grundlage Rad','75 min · RPE 3–4','15 min locker · 50 min Z2 · 10 min locker. Ganze Sätze sprechen können.','Radfahren','Z2 117–136 bpm. Bei Zehreaktion: 40 min sehr locker oder Brust/Schultern/Trizeps 30 min.'],
-['Mi','22.07.','strength','Rücken · Schultern · Bizeps','40 min · RPE 6–7','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite; bei Bedarf Wasserflaschen oder einen Rucksack verwenden.','Krafttraining','Sitzende, kniende oder liegende Varianten wählen.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
-['Do','23.07.','bike','Rad Tempo 3 × 10','85 min · RPE 6','20 min locker · 3 × 10 min Z3 mit 5 min locker · 10 min ausrollen.','Radfahren','Z3 137–155 bpm; kurze Sätze möglich. Alles sitzend, kein Sprint.'],
-['Fr','24.07.','rest','Bauch · Rumpf · Mobility','35 min · RPE 3–4','Ein ruhiges Homeworkout für Bauch, seitlichen Rumpf und Beweglichkeit.','Yoga oder Krafttraining','Leichter Tag. Komplett fußfrei auf der Matte.','35 min Core Mobility Workout ohne Geräte no jumping'],
-['Sa','25.07.','bike','Lange lockere Ausfahrt','150 min · RPE 3–4','20 min locker · 115 min stabile Z2 · 15 min ausrollen. Flache, sichere Route.','Radfahren','Z2 117–136 bpm, gleichmäßig essen/trinken. Kürzer: 90 min. Fußfrei: Rücken und Arme 35 min.'],
-['So','26.07.','bike','Lockeres Rad + Bauch','65 + 20 min · RPE 2–3','65 min Z1/untere Z2, danach optional 20 min Bauch und Rumpf. Kein Tempo.','Radfahren + Krafttraining','Regeneration, ganze Sätze. Wenn müde: nur das Homeworkout oder komplett frei.','20 min Bauch Rumpf Workout ohne Geräte no jumping']
-]},
-{id:'w2',title:'Woche 2 · 27. Juli–2. August',desc:'Größter Radblock. Viel Umfang, aber nur eine echte Tempoeinheit.',days:[
-['Mo','27.07.','bike','Recovery Ride + Brust/Arme','45 + 35 min · RPE 2 / 6','45 min sehr locker; später oder direkt danach 35 min Brust, Schultern und Trizeps.','Radfahren + Krafttraining','Rad Z1 bis untere Z2. Wenn müde: nur das Homeworkout.','35 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
-['Di','28.07.','bike','Grundlage Rad','90 min · RPE 3–4','15 min locker · 65 min Z2 · 10 min ausrollen.','Radfahren','Z2 117–136 bpm, Gesprächstempo. Kürzer: 60 min.'],
-['Mi','29.07.','strength','Rücken · Schultern · Arme','45 min · RPE 7','Ein Homeworkout für Rücken, hintere Schultern und Bizeps; Wasserflaschen oder Rucksack sind optional.','Krafttraining','Keine stehende Vorfußarbeit.','45 min Rücken Schultern Arme Home Workout ohne Geräte no jumping'],
-['Do','30.07.','bike','Rad Tempo 4 × 8','90 min · RPE 6–7','20 min locker · 4 × 8 min obere Z3, je 4 min locker · ausrollen.','Radfahren','Z3 137–155; nur kurz bis niedrige Z4, falls RPE passt. Kein Sprint.'],
-['Fr','31.07.','rest','Bauch · Rumpf · Mobility','35 min · RPE 3','Ruhiges Bauch-/Rumpfvideo plus entspannte Beweglichkeit.','Yoga oder Krafttraining','Bewusst leichter Tag vor der langen Fahrt.','35 min Core Mobility Workout ohne Geräte no jumping'],
-['Sa','01.08.','bike','Lange Z2-Ausfahrt','210 min · RPE 3–4','20 min locker · 170 min Z2 · 20 min locker. Verpflegung ab Start.','Radfahren','Ganze Sätze, Z2 117–136. Kürzer: 135–150 min. Bei Zehreaktion: abbrechen.'],
-['So','02.08.','bike','Lockeres Rad + Brust/Bauch','60 + 30 min · RPE 2–3 / 6','60 min regenerativ; optional 30 min Brust, Arme und Bauch.','Radfahren + Krafttraining','Kein Nachholen, wenn Samstag verkürzt wurde. Bei Gesamtmüdigkeit kompletter Ruhetag.','30 min Brust Arme Bauch Home Workout ohne Geräte no jumping']
-]},
-{id:'w3',title:'Woche 3 · 3.–9. August',desc:'Drei Radeinheiten vor Abflug; danach kompakt und ohne Equipment.',days:[
-['Mo','03.08.','bike','Grundlage Rad + Bauch','90 + 20 min · RPE 4','90 min Z2, danach optional 20 min Bauch und Rumpf.','Radfahren + Krafttraining','Z2 117–136, ganze Sätze. Homeworkout fußfrei.','20 min Bauch Rumpf Workout ohne Geräte no jumping'],
-['Di','04.08.','strength','Brust · Schultern · Trizeps','40 min · RPE 7','Ein Homeworkout für Brust, Schultern und Armrückseite; Körpergewicht auf Knien, sitzend oder liegend.','Krafttraining','Keine Planks oder Liegestütze auf den Zehen.','40 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
-['Mi','05.08.','bike','Rad Tempo 3 × 12','90 min · RPE 6','20 min locker · 3 × 12 min Z3, 5 min locker · ausrollen.','Radfahren','Kein HFmax-Test als Zusatz. Z3 137–155 und kontrollierte Atmung.'],
-['Do','06.08.','bike','Lange Ausfahrt vor Urlaub','150 min · RPE 3–4','15 min locker · 120 min Z2 · 15 min ausrollen.','Radfahren','Locker halten; morgen ist Reisetag. Kürzer: 90 min.'],
-['Fr','07.08.','trip','Reisetag · frei','0–15 min · sehr leicht','Kein Training nötig. Optional kurze Mobility auf der Matte.','Keine oder Yoga','Urlaub. Kein schlechtes Gewissen und keine Schritte-Challenge mit unrundem Gang.'],
-['Sa','08.08.','trip','Rücken · Schultern · Bizeps','40 min · RPE 6','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite.','Krafttraining','Urlaub ohne besondere Ausrüstung.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
-['So','09.08.','trip','Bauch · Rumpf + Pool optional','35 min + optional 25 min · RPE 4','Bauch/Rumpf und Mobility; Pool nur locker und ohne kräftigen Wandabstoß.','Yoga/Kraft + Schwimmen','Urlaub. Pool ist Bonus, nicht Pflicht.','35 min Core Bauch Mobility Workout ohne Geräte no jumping']
-]},
-{id:'w4',title:'Woche 4 · 10.–16. August',desc:'Urlaub: Muskelerhalt, Routine und Erholung – kein künstliches Cardio ohne Rad.',days:[
-['Mo','10.08.','trip','Brust · Schultern · Trizeps','40 min · RPE 7','Ein Homeworkout für Brust, Schultern und Armrückseite; kniende, sitzende oder liegende Varianten.','Krafttraining','Urlaub mit üblichen Haushaltsgegenständen.','40 min Brust Schulter Trizeps Home Workout ohne Geräte no jumping'],
-['Di','11.08.','trip','Bauch · Rumpf + Pool optional','30 min + optional 30 min · RPE 4','Bauch/Rumpf und Mobility; Pool locker bis moderat, sicherer Ein-/Ausstieg.','Kraft/Yoga + Schwimmen','Kein Abstoß über den verletzten Vorfuß.','30 min Core Bauch Mobility Workout ohne Geräte no jumping'],
-['Mi','12.08.','trip','Rücken · Schultern · Bizeps','40 min · RPE 7','Ein Homeworkout für Rücken, hintere Schultern und Armvorderseite.','Krafttraining','Langsames Tempo; Wasserflaschen oder Rucksack optional.','40 min Rücken Schulter Bizeps Home Workout ohne Geräte no jumping'],
-['Do','13.08.','trip','Oberkörper komplett','45 min · RPE 7','Brust, Rücken, Schultern und Arme in einer Einheit; ohne Springen und stehende Beinarbeit.','Krafttraining','Heute kein HFmax- oder Lauftest.','45 min Full Upper Body Home Workout ohne Geräte no jumping'],
-['Fr','14.08.','trip','Schultern · Rücken · Mobility','25 min · RPE 2','Lockere Beweglichkeit für Schultern, Brustwirbelsäule und Rücken; ruhig atmen.','Yoga','Echter leichter Tag. Komplett frei ist genauso vorgesehen.','25 min Shoulder Back Mobility Workout no equipment'],
-['Sa','15.08.','trip','Brust · Arme · Bauch','40 min · RPE 6–7','Ein kombiniertes Homeworkout für Brust, Bizeps, Trizeps und Bauch; Pool optional sehr locker.','Krafttraining','Alle Varianten fußfrei.','40 min Brust Arme Bauch Home Workout ohne Geräte no jumping'],
-['So','16.08.','trip','Ruhetag','frei · optional 20 min Pool','Keine Pflicht. Optional sehr locker schwimmen.','Keine oder Schwimmen','Erholung vor Rückreise und Entscheidungstag.']
-]},
-{id:'w5',title:'Montag · 17. August',desc:'Übergangs- und Prüftag – kein versprochener Fußballstart am 18.08.',days:[
-['Mo','17.08.','rest','Rückreise + Bauch/Mobility optional','0–30 min · RPE 2','Optional 30 min Bauch, Rumpf und Mobility. Danach Rückkehr-Check lesen.','Keine oder Yoga','Noch kein Laufen/Fußball. Entscheidung nach Beschwerden und ärztlicher Freigabe.','30 min Core Mobility Workout ohne Geräte no jumping']
-]}
-];
-const storageKey='trainingsplan-2026-07-simple-v1';
-let done=JSON.parse(localStorage.getItem(storageKey)||'{}');
-const typeLabel={bike:'Rad',strength:'Kraft',rest:'Leicht',trip:'Urlaub'};
-function render(){weeks.forEach(w=>{const el=document.getElementById(w.id);el.innerHTML=`<div class="weekhead"><div class="eyebrow">${w.id==='w4'||w.id==='w5'?'Griechenland / Rückreise':'Trainingsblock'}</div><h2>${w.title}</h2><p>${w.desc}</p></div>`+w.days.map((d,i)=>card(w,d,i)).join('')+(w.id==='w5'?returnCheck():'')});updateProgress()}
-function card(w,d,i){const key=w.id+'-'+i,checked=!!done[key];return `<article class="day ${checked?'done':''}" data-key="${key}"><div class="dayhead" role="button" tabindex="0" aria-expanded="false"><div class="date"><small>${d[0]}</small><b>${d[1]}</b></div><div class="main"><span class="pill ${d[2]}">${typeLabel[d[2]]}</span><div class="title">${d[3]}</div><div class="sub">${d[4]}</div></div><button class="check ${checked?'on':''}" aria-label="Tag als erledigt markieren">${checked?'✓':''}</button></div><div class="detail"><div class="chips"><span class="chip"><b>Dauer</b> · ${d[4].split(' · ')[0]}</span><span class="chip"><b>Intensität</b> · ${d[4].split(' · ')[1]||'locker'}</span></div><p><b>Ablauf:</b> ${d[5]}</p>${d[2]==='bike'?'<div class="zones">Rad immer zusätzlich nach Atmung und Gefühl steuern. Für lockere Einheiten gilt: ganze Sätze möglich.</div>':''}${d[8]?`<div class="search"><b>YouTube-Suche:</b> ${d[8]}</div>`:''}<p><b>Garmin:</b> ${d[6]}</p><div class="toe"><b>Zeh / Alternative:</b> ${d[7]}</div></div></article>`}
-function returnCheck(){return `<section class="box"><h3>Check vor einer späteren Rückkehr</h3><ul class="simple"><li>ärztliche Freigabe vorhanden</li><li>normales Gehen und Treppen ohne Hinken</li><li>keine relevante Schwellungszunahme</li><li>Schuh ohne problematischen Druck tragbar</li><li>lockeres Radfahren und Folgetag beschwerdefrei</li></ul><p><strong>Fehlt etwas:</strong> noch nicht bereit bzw. ärztliche Rücksprache. <strong>Alles erfüllt:</strong> vorsichtiger Belastungstest denkbar – nicht automatisch Mannschaftstraining.</p><p>Spätere Reihenfolge nach Freigabe: Gehen → zügiges Gehen → Lauf-Geh-Intervalle → lockeres Laufen → einfache Fußballbewegungen → Teiltraining → volles Training. Nie steigern, wenn Beschwerden zunehmen.</p></section>`}
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id===b.dataset.tab));scrollTo({top:0,behavior:'smooth'})}));
-document.addEventListener('click',e=>{const check=e.target.closest('.check');if(check){e.stopPropagation();const day=check.closest('.day'),key=day.dataset.key;done[key]=!done[key];localStorage.setItem(storageKey,JSON.stringify(done));check.classList.toggle('on',done[key]);check.textContent=done[key]?'✓':'';day.classList.toggle('done',done[key]);updateProgress();return}const head=e.target.closest('.dayhead');if(head){const detail=head.nextElementSibling;detail.classList.toggle('open');head.setAttribute('aria-expanded',detail.classList.contains('open'))}});
-document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('dayhead')){e.preventDefault();e.target.click()}});
-function updateProgress(){const total=weeks.reduce((n,w)=>n+w.days.length,0),n=Object.keys(done).filter(k=>done[k]).length;document.getElementById('fill').style.width=(100*n/total)+'%';document.getElementById('plabel').textContent=`${n} von ${total} Tagen erledigt`}
-render();
-</script>
+    <section id="training-view" class="view">
+      <div id="week" class="week" aria-label="Wochenplan"></div>
+
+      <details id="first-workout-info" class="info" open>
+        <summary>Erstes Training: Arbeitsgewicht finden</summary>
+        <div class="info-body">
+          <ol>
+            <li>Bei Langhantelübungen mit der leeren Stange beginnen, bei Kurzhanteln bewusst leicht. Mache 2–4 kurze Steigerungssätze; diese zählen nicht als Arbeitssätze.</li>
+            <li>Erhöhe schrittweise, bis du im vorgegebenen Wiederholungsbereich landest und noch ungefähr <strong>2–3 saubere Wiederholungen</strong> schaffen würdest.</li>
+            <li>Dieses Gewicht verwendest du für die Arbeitssätze. Trage Gewicht und tatsächlich erreichte Wiederholungen ein – nicht das Wunschresultat.</li>
+            <li>Teste kein Maximalgewicht. Technik und kontrollierte Wiederholungen entscheiden, nicht das schwerste mögliche Gewicht.</li>
+          </ol>
+          <p class="example"><strong>Beispiel 3 × 6–8:</strong> 40 kg × 8 fühlen sich sehr leicht an. Nach einer Pause schaffst du 45 kg × 7 mit etwa zwei Wiederholungen im Tank. Dann sind 45 kg dein erstes Arbeitsgewicht. Danach zeigt dir der Plan automatisch das Ziel fürs nächste Mal.</p>
+        </div>
+      </details>
+
+      <div class="session-tabs">
+        <button id="session-a" class="active" type="button"><span>MONTAG</span><strong>Kraft A</strong></button>
+        <button id="session-b" type="button"><span>MITTWOCH</span><strong>Kraft B</strong></button>
+      </div>
+
+      <div class="session-heading">
+        <div>
+          <p id="session-day" class="eyebrow"></p>
+          <h2 id="session-focus"></h2>
+        </div>
+        <div id="session-duration" class="session-meta"></div>
+      </div>
+
+      <div id="exercise-list" class="exercise-list"></div>
+
+      <div class="save-wrap">
+        <div id="toast" class="toast" hidden></div>
+        <button id="save-workout" class="save-button" type="button">Einheit abschließen</button>
+      </div>
+    </section>
+
+    <section id="analytics-view" class="view" hidden>
+      <h2 class="analytics-title">Entwicklung</h2>
+
+      <div class="stats">
+        <div class="stat"><span>Einheiten</span><strong id="stat-workouts">0</strong></div>
+        <div class="stat"><span>Sätze</span><strong id="stat-sets">0</strong></div>
+        <div class="stat"><span>Messungen</span><strong id="stat-body">0</strong></div>
+      </div>
+
+      <section class="analytics-section">
+        <h2>Kraftverlauf</h2>
+        <div class="control-grid">
+          <label>Übung
+            <select id="exercise-select"></select>
+          </label>
+          <label>Darstellung
+            <select id="strength-metric">
+              <option value="load">Max. Arbeitsgewicht</option>
+              <option value="reps">Beste Wiederholungen</option>
+              <option value="volume">Trainingsvolumen</option>
+            </select>
+          </label>
+        </div>
+        <div class="chart">
+          <canvas id="strength-chart" role="img" aria-label="Kraftentwicklung über die Zeit"></canvas>
+        </div>
+        <p id="strength-caption" class="chart-caption">Speichere mindestens zwei Einheiten für eine aussagekräftige Kurve.</p>
+      </section>
+
+      <section class="analytics-section">
+        <h2>Körperwerte <span style="color:var(--muted);font-size:11px;font-weight:500">(optional)</span></h2>
+        <form id="body-form" class="metric-form">
+          <label>Datum
+            <input id="body-date" type="date">
+          </label>
+          <label>Gewicht in kg
+            <input id="body-weight" inputmode="decimal" placeholder="69,0">
+          </label>
+          <label>KFA in %
+            <input id="body-fat" inputmode="decimal" placeholder="16,0">
+          </label>
+          <button class="metric-add" type="submit">Messung eintragen</button>
+        </form>
+        <div class="control-grid body-tools">
+          <label>Kurve
+            <select id="body-metric">
+              <option value="weight">Körpergewicht</option>
+              <option value="fat">Körperfettanteil</option>
+            </select>
+          </label>
+        </div>
+        <div class="chart">
+          <canvas id="body-chart" role="img" aria-label="Körperwerte über die Zeit"></canvas>
+        </div>
+        <p class="chart-caption">KFA-Werte nur als längerfristigen Trend betrachten; Tageswerte schwanken stark.</p>
+      </section>
+
+      <section class="analytics-section">
+        <h2>Letzte Einheiten</h2>
+        <div id="history-list" class="history-list"></div>
+      </section>
+
+      <button id="delete-data" class="danger-button" type="button">Alle lokalen Einträge löschen</button>
+    </section>
+
+    <footer>
+      <span>Offline verwendbar</span>
+      <span>Daten bleiben im Browser</span>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEY = "football-strength-plan-v2";
+      var todayIndex = (new Date().getDay() + 6) % 7;
+      var week = [
+        { day: "MO", label: "Kraft A", kind: "strength" },
+        { day: "DI", label: "Fußball", kind: "football" },
+        { day: "MI", label: "Kraft B", kind: "strength" },
+        { day: "DO", label: "Frei", kind: "rest" },
+        { day: "FR", label: "Fußball", kind: "football" },
+        { day: "SA", label: "Primer", kind: "rest" },
+        { day: "SO", label: "Spiel", kind: "match" }
+      ];
+
+      var sessions = {
+        A: {
+          day: "Montag",
+          focus: "Oberkörper · Beine erholen",
+          duration: "50–60 Min.",
+          exercises: [
+            { id: "bench", name: "Langhantel-Bankdrücken", sets: 3, min: 6, max: 8, increment: 2.5, note: "Gewicht = Gesamtgewicht inklusive Stange. 2 RIR, 2–3 Min. Pause." },
+            { id: "pulldown", name: "Klimmzug oder Latzug", sets: 3, min: 6, max: 10, increment: 2.5, unit: "bodyweight", note: "Bei Klimmzügen BW oder Zusatzgewicht, beim Latzug Steckgewicht. 2 RIR." },
+            { id: "row", name: "Einarmiges Kurzhantelrudern", sets: 3, min: 8, max: 12, increment: 2, note: "Gewicht pro Kurzhantel; Wiederholungen je Seite. 90 Sek. Pause." },
+            { id: "press", name: "Kurzhantel-Schulterdrücken", sets: 2, min: 8, max: 12, increment: 2, note: "Gewicht pro Kurzhantel. 2 RIR, 90 Sek. Pause." },
+            { id: "facepull", name: "Face Pull am Kabel", sets: 2, min: 12, max: 15, increment: 2.5, note: "Steckgewicht. Sauber ziehen, 60 Sek. Pause." },
+            { id: "lateral", name: "Seitheben", sets: 2, min: 12, max: 20, increment: 1, note: "Gewicht pro Kurzhantel. Kontrolliert, 60 Sek. Pause." },
+            { id: "kneeraise", name: "Hängendes Knieheben", sets: 3, min: 8, max: 15, increment: 2.5, unit: "bodyweight", note: "Ohne Schwung. BW oder Zusatzgewicht, 60 Sek. Pause." }
+          ]
+        },
+        B: {
+          day: "Mittwoch",
+          focus: "Ganzkörper · Hauptreiz",
+          duration: "60–70 Min.",
+          exercises: [
+            { id: "squat", name: "Kniebeuge im Rack", sets: 3, min: 5, max: 8, increment: 5, note: "Gewicht = Gesamtgewicht inklusive Stange. 2 RIR, 3 Min. Pause." },
+            { id: "rdl", name: "Rumänisches Kreuzheben", sets: 2, min: 6, max: 8, increment: 5, note: "Gesamtgewicht inklusive Stange. Langsam ablassen, 2–3 Min. Pause." },
+            { id: "incline", name: "Schrägbankdrücken Kurzhanteln", sets: 3, min: 8, max: 12, increment: 2, note: "Gewicht pro Kurzhantel. 2 RIR, 90 Sek. Pause." },
+            { id: "latb", name: "Latzug oder Klimmzug", sets: 3, min: 8, max: 12, increment: 2.5, unit: "bodyweight", note: "Steckgewicht oder BW/Zusatzgewicht. 2 RIR." },
+            { id: "split", name: "Bulgarian Split Squat", sets: 2, min: 8, max: 10, increment: 2, note: "Gewicht = Summe beider Kurzhanteln; Wdh. je Bein. Woche 1–2 nur 1 Satz." },
+            { id: "calf", name: "Sitzendes Wadenheben mit Hantel", sets: 2, min: 12, max: 20, increment: 2.5, note: "Gesamtgewicht auf den Knien. Oben kurz halten." },
+            { id: "copenhagen", name: "Copenhagen Plank", sets: 2, min: 20, max: 30, increment: 5, unit: "seconds", note: "Zeit je Seite in Sekunden. Saubere Position vor längerer Haltedauer." },
+            { id: "crunch", name: "Cable Crunch", sets: 2, min: 10, max: 15, increment: 2.5, note: "Steckgewicht. Wirbelsäule kontrolliert einrollen." }
+          ]
+        }
+      };
+
+      function defaultState() {
+        return { activeSession: "A", history: [], body: [], drafts: { A: {}, B: {} } };
+      }
+
+      function loadState() {
+        try {
+          var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          if (!saved) return defaultState();
+          var base = defaultState();
+          base.activeSession = saved.activeSession === "B" ? "B" : "A";
+          base.history = Array.isArray(saved.history) ? saved.history : [];
+          base.body = Array.isArray(saved.body) ? saved.body : [];
+          base.drafts = saved.drafts && saved.drafts.A && saved.drafts.B ? saved.drafts : base.drafts;
+          return base;
+        } catch (error) {
+          return defaultState();
+        }
+      }
+
+      var state = loadState();
+
+      function persist() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function numberValue(value) {
+        if (value === null || value === undefined || value === "") return NaN;
+        return Number(String(value).replace(",", "."));
+      }
+
+      function tidyNumber(value) {
+        if (!Number.isFinite(value)) return "";
+        return String(Math.round(value * 100) / 100).replace(".", ",");
+      }
+
+      function dateText(value) {
+        return new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", year: "2-digit" }).format(new Date(value));
+      }
+
+      function allExercises() {
+        return sessions.A.exercises.concat(sessions.B.exercises);
+      }
+
+      function exerciseById(id) {
+        return allExercises().find(function (exercise) { return exercise.id === id; });
+      }
+
+      function latestPerformance(sessionId, exerciseId) {
+        for (var i = 0; i < state.history.length; i += 1) {
+          var entry = state.history[i];
+          if (entry.session === sessionId && entry.exercises && entry.exercises[exerciseId]) return entry;
+        }
+        return null;
+      }
+
+      function getDraft(sessionId, exercise) {
+        if (!state.drafts[sessionId][exercise.id]) {
+          state.drafts[sessionId][exercise.id] = Array.from({ length: exercise.sets }, function () {
+            return { load: "", reps: "", done: false };
+          });
+        }
+        while (state.drafts[sessionId][exercise.id].length < exercise.sets) {
+          state.drafts[sessionId][exercise.id].push({ load: "", reps: "", done: false });
+        }
+        return state.drafts[sessionId][exercise.id];
+      }
+
+      function planFor(exercise, lastEntry) {
+        if (!lastEntry) {
+          return {
+            status: "ERMITTELN",
+            first: true,
+            sets: Array.from({ length: exercise.sets }, function () {
+              return { load: "", reps: exercise.min + "–" + exercise.max };
+            })
+          };
+        }
+
+        var previous = lastEntry.exercises[exercise.id] || [];
+        var valid = previous.slice(0, exercise.sets);
+        var allAtTop = valid.length === exercise.sets && valid.every(function (set) {
+          return numberValue(set.reps) >= exercise.max;
+        });
+
+        if (exercise.unit === "seconds") {
+          return {
+            status: allAtTop ? "HALTUNG ERSCHWEREN" : "ZEIT STEIGERN",
+            first: false,
+            sets: Array.from({ length: exercise.sets }, function (_, index) {
+              var old = valid[index] || valid[0] || {};
+              var oldSeconds = numberValue(old.reps);
+              var target = Number.isFinite(oldSeconds)
+                ? Math.min(exercise.max, Math.max(exercise.min, oldSeconds + 5))
+                : exercise.min;
+              return { load: "", reps: target };
+            })
+          };
+        }
+
+        var numericLoads = valid.map(function (set) { return numberValue(set.load); });
+        var canIncreaseLoad = allAtTop && numericLoads.length === exercise.sets && numericLoads.every(Number.isFinite);
+        var bodyweightTop = allAtTop && exercise.unit === "bodyweight" && !numericLoads.some(Number.isFinite);
+
+        return {
+          status: canIncreaseLoad ? "GEWICHT ERHÖHEN" : (bodyweightTop ? "SCHWERER MACHEN" : "WIEDERHOLUNG STEIGERN"),
+          first: false,
+          sets: Array.from({ length: exercise.sets }, function (_, index) {
+            var old = valid[index] || valid[0] || {};
+            var oldLoad = numberValue(old.load);
+            var oldReps = numberValue(old.reps);
+            var load = Number.isFinite(oldLoad) ? tidyNumber(oldLoad + (canIncreaseLoad ? exercise.increment : 0)) : (old.load || "");
+            var reps = canIncreaseLoad
+              ? exercise.min
+              : Math.min(exercise.max, Math.max(exercise.min, (Number.isFinite(oldReps) ? oldReps : exercise.min - 1) + 1));
+            if (bodyweightTop) {
+              load = old.load || "BW";
+              reps = exercise.min;
+            }
+            return { load: load, reps: reps };
+          })
+        };
+      }
+
+      function planLoadText(exercise, set) {
+        if (!set.load) return "Gewicht finden";
+        if (String(set.load).toUpperCase() === "BW") return "BW";
+        return set.load + " kg";
+      }
+
+      function previousText(exercise, lastEntry) {
+        if (!lastEntry) return "Noch kein Eintrag";
+        var sets = lastEntry.exercises[exercise.id] || [];
+        var parts = sets.filter(function (set) { return set.load || set.reps; }).map(function (set) {
+          if (exercise.unit === "seconds") return (set.reps || "–") + " Sek.";
+          var load = set.load ? set.load + " kg" : (exercise.unit === "bodyweight" ? "BW" : "– kg");
+          return load + " × " + (set.reps || "–");
+        });
+        return parts.length ? parts.join(" · ") : "Noch kein Eintrag";
+      }
+
+      function renderWeek() {
+        document.getElementById("week").innerHTML = week.map(function (item, index) {
+          return '<div class="day ' + item.kind + (index === todayIndex ? ' today' : '') + '">' +
+            '<span>' + item.day + '</span><b>' + item.label + '</b></div>';
+        }).join("");
+      }
+
+      function renderTraining() {
+        var sessionId = state.activeSession;
+        var session = sessions[sessionId];
+        document.getElementById("session-a").classList.toggle("active", sessionId === "A");
+        document.getElementById("session-b").classList.toggle("active", sessionId === "B");
+        document.getElementById("session-day").textContent = session.day.toUpperCase();
+        document.getElementById("session-focus").textContent = session.focus;
+        document.getElementById("session-duration").textContent = session.duration;
+        document.getElementById("first-workout-info").open = state.history.length === 0;
+
+        var list = document.getElementById("exercise-list");
+        list.innerHTML = session.exercises.map(function (exercise, exerciseIndex) {
+          var last = latestPerformance(sessionId, exercise.id);
+          var plan = planFor(exercise, last);
+          var draft = getDraft(sessionId, exercise);
+          var planSets = plan.sets.map(function (set, setIndex) {
+            return '<div class="plan-set"><b>SATZ ' + (setIndex + 1) + '</b>' +
+              (exercise.unit === "seconds"
+                ? set.reps + ' Sek.'
+                : planLoadText(exercise, set) + ' × ' + set.reps) +
+              '</div>';
+          }).join("");
+
+          var labelRow = exercise.unit === "seconds"
+            ? '<div class="set-labels"><span>SATZ</span><span>SEK.</span><span>OK</span></div>'
+            : '<div class="set-labels"><span>SATZ</span><span>KG</span><span>WIED.</span><span>OK</span></div>';
+
+          var setRows = draft.map(function (set, setIndex) {
+            var target = plan.sets[setIndex];
+            var loadInput = exercise.unit === "seconds" ? "" :
+              '<input data-field="load" data-exercise="' + exercise.id + '" data-set="' + setIndex +
+              '" inputmode="decimal" value="' + (set.load || "") + '" placeholder="' + (target.load || (exercise.unit === "bodyweight" ? "BW" : "0")) +
+              '" aria-label="' + exercise.name + ', Satz ' + (setIndex + 1) + ', Gewicht">';
+            return '<div class="set-row' + (set.done ? ' done' : '') + '">' +
+              '<span class="set-no">' + (setIndex + 1) + '</span>' +
+              loadInput +
+              '<input data-field="reps" data-exercise="' + exercise.id + '" data-set="' + setIndex +
+              '" inputmode="numeric" value="' + (set.reps || "") + '" placeholder="' + target.reps +
+              '" aria-label="' + exercise.name + ', Satz ' + (setIndex + 1) + (exercise.unit === "seconds" ? ', Sekunden' : ', Wiederholungen') + '">' +
+              '<button class="set-check' + (set.done ? ' on' : '') + '" data-check="' + exercise.id + '" data-set="' + setIndex +
+              '" type="button" aria-label="Satz ' + (setIndex + 1) + ' abhaken">' + (set.done ? "✓" : "") + '</button>' +
+              '</div>';
+          }).join("");
+
+          return '<article class="exercise">' +
+            '<div class="exercise-top"><span class="exercise-number">' + String(exerciseIndex + 1).padStart(2, "0") + '</span>' +
+            '<div><h3>' + exercise.name + '</h3><p class="prescription">' + exercise.sets + ' × ' + exercise.min + '–' + exercise.max + ' · 2–3 Wiederholungen im Tank</p></div></div>' +
+            '<p class="exercise-note">' + exercise.note + '</p>' +
+            '<div class="plan-box"><div class="plan-head"><span>PLAN HEUTE</span><strong>' + plan.status + '</strong></div><div class="plan-sets">' + planSets + '</div></div>' +
+            '<div class="actual' + (exercise.unit === "seconds" ? ' seconds' : '') + '">' + labelRow + setRows + '</div>' +
+            '<p class="last-line"><b>Letztes Mal:</b> ' + previousText(exercise, last) + '</p>' +
+            '</article>';
+        }).join("");
+
+        list.querySelectorAll("input[data-field]").forEach(function (input) {
+          input.addEventListener("input", function () {
+            var exercise = session.exercises.find(function (item) { return item.id === input.dataset.exercise; });
+            var draft = getDraft(sessionId, exercise);
+            draft[Number(input.dataset.set)][input.dataset.field] = input.value;
+            persist();
+          });
+          input.addEventListener("focus", function () { input.select(); });
+        });
+
+        list.querySelectorAll("button[data-check]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var exercise = session.exercises.find(function (item) { return item.id === button.dataset.check; });
+            var draft = getDraft(sessionId, exercise);
+            var set = draft[Number(button.dataset.set)];
+            set.done = !set.done;
+            persist();
+            renderTraining();
+          });
+        });
+
+        persist();
+      }
+
+      function showToast(message) {
+        var toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.hidden = false;
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(function () { toast.hidden = true; }, 4200);
+      }
+
+      function saveWorkout() {
+        var sessionId = state.activeSession;
+        var session = sessions[sessionId];
+        var captured = {};
+        var any = false;
+
+        session.exercises.forEach(function (exercise) {
+          var draft = getDraft(sessionId, exercise);
+          var last = latestPerformance(sessionId, exercise.id);
+          var plan = planFor(exercise, last);
+          captured[exercise.id] = draft.map(function (set, index) {
+            var target = plan.sets[index];
+            var load = String(set.load || "").trim();
+            var reps = String(set.reps || "").trim();
+            if (set.done && !load && target.load && target.load !== "BW") load = String(target.load);
+            if (set.done && !load && target.load === "BW") load = "";
+            if (set.done && !reps && !plan.first) reps = String(target.reps);
+            if (load || reps) any = true;
+            return { load: load, reps: reps };
+          });
+        });
+
+        if (!any) {
+          showToast("Trage mindestens einen tatsächlichen Satz ein.");
+          return;
+        }
+
+        state.history.unshift({
+          id: String(Date.now()),
+          date: new Date().toISOString(),
+          session: sessionId,
+          exercises: captured
+        });
+        state.history = state.history.slice(0, 100);
+        state.drafts[sessionId] = {};
+        persist();
+        showToast("Einheit gespeichert. Der Plan fürs nächste Mal ist berechnet.");
+        renderTraining();
+        renderAnalytics();
+      }
+
+      function setMainTab(tab) {
+        var training = tab === "training";
+        document.getElementById("training-view").hidden = !training;
+        document.getElementById("analytics-view").hidden = training;
+        document.getElementById("tab-training").classList.toggle("active", training);
+        document.getElementById("tab-analytics").classList.toggle("active", !training);
+        if (!training) {
+          renderAnalytics();
+          setTimeout(drawCharts, 0);
+        }
+      }
+
+      function strengthSeries(exerciseId, metric) {
+        var points = [];
+        state.history.slice().reverse().forEach(function (entry) {
+          var sets = entry.exercises && entry.exercises[exerciseId];
+          if (!sets) return;
+          var valid = sets.filter(function (set) { return set.load || set.reps; });
+          if (!valid.length) return;
+          var value;
+          if (metric === "reps") {
+            value = Math.max.apply(null, valid.map(function (set) { return numberValue(set.reps); }).filter(Number.isFinite));
+          } else if (metric === "volume") {
+            value = valid.reduce(function (sum, set) {
+              var load = numberValue(set.load);
+              var reps = numberValue(set.reps);
+              return sum + (Number.isFinite(load) && Number.isFinite(reps) ? load * reps : 0);
+            }, 0);
+          } else {
+            value = Math.max.apply(null, valid.map(function (set) { return numberValue(set.load); }).filter(Number.isFinite));
+          }
+          if (Number.isFinite(value) && value > 0) points.push({ date: entry.date, value: value });
+        });
+        return points;
+      }
+
+      function bodySeries(metric) {
+        return state.body.slice().sort(function (a, b) { return new Date(a.date) - new Date(b.date); })
+          .map(function (entry) {
+            return { date: entry.date, value: numberValue(metric === "fat" ? entry.fat : entry.weight) };
+          })
+          .filter(function (entry) { return Number.isFinite(entry.value); });
+      }
+
+      function drawLineChart(canvas, points, unit, emptyText) {
+        var parentWidth = canvas.parentElement.clientWidth;
+        var width = Math.max(280, parentWidth);
+        var height = 230;
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * ratio;
+        canvas.height = height * ratio;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        var context = canvas.getContext("2d");
+        context.scale(ratio, ratio);
+        context.clearRect(0, 0, width, height);
+
+        var colors = getComputedStyle(document.documentElement);
+        var grid = colors.getPropertyValue("--line").trim();
+        var text = colors.getPropertyValue("--muted").trim();
+        var red = colors.getPropertyValue("--red").trim();
+        var bg = colors.getPropertyValue("--surface-2").trim();
+        var left = 48, right = 14, top = 18, bottom = 34;
+        var plotW = width - left - right;
+        var plotH = height - top - bottom;
+
+        context.font = "10px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
+        context.textBaseline = "middle";
+
+        if (!points.length) {
+          context.fillStyle = bg;
+          context.fillRect(left, top, plotW, plotH);
+          context.fillStyle = text;
+          context.textAlign = "center";
+          context.fillText(emptyText, left + plotW / 2, top + plotH / 2);
+          return;
+        }
+
+        var values = points.map(function (point) { return point.value; });
+        var min = Math.min.apply(null, values);
+        var max = Math.max.apply(null, values);
+        var spread = max - min;
+        var padding = spread === 0 ? Math.max(1, max * .08) : spread * .18;
+        var domainMin = Math.max(0, min - padding);
+        var domainMax = max + padding;
+
+        context.fillStyle = bg;
+        context.fillRect(left, top, plotW, plotH);
+        context.strokeStyle = grid;
+        context.lineWidth = 1;
+        context.fillStyle = text;
+
+        for (var i = 0; i < 4; i += 1) {
+          var y = top + (plotH / 3) * i;
+          var value = domainMax - ((domainMax - domainMin) / 3) * i;
+          context.beginPath();
+          context.moveTo(left, y);
+          context.lineTo(left + plotW, y);
+          context.stroke();
+          context.textAlign = "right";
+          context.fillText(tidyNumber(value) + unit, left - 7, y);
+        }
+
+        function xAt(index) {
+          return points.length === 1 ? left + plotW / 2 : left + (plotW * index / (points.length - 1));
+        }
+        function yAt(value) {
+          return top + (domainMax - value) / (domainMax - domainMin) * plotH;
+        }
+
+        if (points.length > 1) {
+          context.beginPath();
+          points.forEach(function (point, index) {
+            var x = xAt(index), y = yAt(point.value);
+            if (index === 0) context.moveTo(x, y);
+            else context.lineTo(x, y);
+          });
+          context.strokeStyle = red;
+          context.lineWidth = 2.5;
+          context.lineJoin = "round";
+          context.stroke();
+        }
+
+        points.forEach(function (point, index) {
+          var x = xAt(index), y = yAt(point.value);
+          context.beginPath();
+          context.arc(x, y, 4, 0, Math.PI * 2);
+          context.fillStyle = red;
+          context.fill();
+        });
+
+        context.fillStyle = text;
+        context.textAlign = "left";
+        context.fillText(dateText(points[0].date), left, height - 15);
+        if (points.length > 1) {
+          context.textAlign = "right";
+          context.fillText(dateText(points[points.length - 1].date), left + plotW, height - 15);
+        }
+      }
+
+      function drawCharts() {
+        var exerciseId = document.getElementById("exercise-select").value;
+        var strengthMetric = document.getElementById("strength-metric").value;
+        var strengthUnit = strengthMetric === "reps" ? " Wdh." : " kg";
+        if (strengthMetric === "volume") strengthUnit = " kg";
+        var strengthPoints = strengthSeries(exerciseId, strengthMetric);
+        drawLineChart(document.getElementById("strength-chart"), strengthPoints, strengthUnit, "Noch keine Daten für diese Übung");
+        document.getElementById("strength-caption").textContent = strengthPoints.length < 2
+          ? "Speichere mindestens zwei Einheiten für eine aussagekräftige Kurve."
+          : strengthPoints.length + " Einheiten in dieser Kurve.";
+
+        var bodyMetric = document.getElementById("body-metric").value;
+        drawLineChart(
+          document.getElementById("body-chart"),
+          bodySeries(bodyMetric),
+          bodyMetric === "fat" ? " %" : " kg",
+          "Noch keine Körperwerte eingetragen"
+        );
+      }
+
+      function renderAnalytics() {
+        var totalSets = state.history.reduce(function (sum, entry) {
+          return sum + Object.values(entry.exercises || {}).reduce(function (inner, sets) {
+            return inner + sets.filter(function (set) { return set.load || set.reps; }).length;
+          }, 0);
+        }, 0);
+        document.getElementById("stat-workouts").textContent = state.history.length;
+        document.getElementById("stat-sets").textContent = totalSets;
+        document.getElementById("stat-body").textContent = state.body.length;
+
+        var select = document.getElementById("exercise-select");
+        var current = select.value;
+        select.innerHTML =
+          '<optgroup label="Kraft A">' + sessions.A.exercises.map(function (exercise) {
+            return '<option value="' + exercise.id + '">' + exercise.name + '</option>';
+          }).join("") + '</optgroup>' +
+          '<optgroup label="Kraft B">' + sessions.B.exercises.map(function (exercise) {
+            return '<option value="' + exercise.id + '">' + exercise.name + '</option>';
+          }).join("") + '</optgroup>';
+        if (exerciseById(current)) select.value = current;
+
+        var history = document.getElementById("history-list");
+        if (!state.history.length) {
+          history.innerHTML = '<div class="empty">Noch keine Einheit gespeichert.</div>';
+        } else {
+          history.innerHTML = state.history.slice(0, 10).map(function (entry) {
+            var setCount = Object.values(entry.exercises || {}).reduce(function (sum, sets) {
+              return sum + sets.filter(function (set) { return set.load || set.reps; }).length;
+            }, 0);
+            return '<div class="history-row"><span>' + dateText(entry.date) + '</span><strong>Kraft ' +
+              entry.session + '</strong><span>' + setCount + ' Sätze</span></div>';
+          }).join("");
+        }
+        drawCharts();
+      }
+
+      function saveBodyMetric(event) {
+        event.preventDefault();
+        var date = document.getElementById("body-date").value;
+        var weight = document.getElementById("body-weight").value.trim();
+        var fat = document.getElementById("body-fat").value.trim();
+        if (!date || (!weight && !fat)) return;
+        var existing = state.body.find(function (entry) { return entry.date === date; });
+        if (existing) {
+          if (weight) existing.weight = weight;
+          if (fat) existing.fat = fat;
+        } else {
+          state.body.push({ date: date, weight: weight, fat: fat });
+        }
+        state.body.sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
+        document.getElementById("body-weight").value = "";
+        document.getElementById("body-fat").value = "";
+        persist();
+        renderAnalytics();
+      }
+
+      function deleteAllData() {
+        if (!confirm("Wirklich alle Trainings- und Körperdaten aus diesem Browser löschen?")) return;
+        state = defaultState();
+        persist();
+        renderTraining();
+        renderAnalytics();
+        setMainTab("training");
+      }
+
+      document.getElementById("tab-training").addEventListener("click", function () { setMainTab("training"); });
+      document.getElementById("tab-analytics").addEventListener("click", function () { setMainTab("analytics"); });
+      document.getElementById("session-a").addEventListener("click", function () {
+        state.activeSession = "A"; persist(); renderTraining();
+      });
+      document.getElementById("session-b").addEventListener("click", function () {
+        state.activeSession = "B"; persist(); renderTraining();
+      });
+      document.getElementById("save-workout").addEventListener("click", saveWorkout);
+      document.getElementById("exercise-select").addEventListener("change", drawCharts);
+      document.getElementById("strength-metric").addEventListener("change", drawCharts);
+      document.getElementById("body-metric").addEventListener("change", drawCharts);
+      document.getElementById("body-form").addEventListener("submit", saveBodyMetric);
+      document.getElementById("delete-data").addEventListener("click", deleteAllData);
+      window.addEventListener("resize", function () {
+        clearTimeout(window.__chartResize);
+        window.__chartResize = setTimeout(drawCharts, 120);
+      });
+
+      document.getElementById("body-date").value = new Date().toISOString().slice(0, 10);
+      renderWeek();
+      renderTraining();
+      renderAnalytics();
+    }());
+  </script>
 </body>
 </html>
